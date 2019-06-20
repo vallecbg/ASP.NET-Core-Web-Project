@@ -8,7 +8,7 @@
     {
         public static void Main()
         {
-            var currDirectory = "D:\\Project\\ASP.NET-Core-Final-Project\\ASP.NET Core";
+            var currDirectory = "D:\\Project\\ASP.NET-Core-Web-Project\\AspNetCourseProject";
             Console.WriteLine("ASP.NET MVC Template Renamer v1.0");
             Console.WriteLine("Working in: " + currDirectory);
 
@@ -65,6 +65,10 @@
             var files = Directory.GetFiles(currentDirectory);
             foreach (var file in files)
             {
+                if (file.Contains("git") || file.Contains("vs"))
+                {
+                    continue;
+                }
                 var newFileName = file.Replace(originalName, newName);
                 if (newFileName != file)
                 {
@@ -75,6 +79,10 @@
             var subDirectories = Directory.GetDirectories(currentDirectory);
             foreach (var directory in subDirectories)
             {
+                if (directory.Contains("git") || directory.Contains("vs"))
+                {
+                    continue;
+                }
                 RenameFiles(directory, originalName, newName);
             }
         }
@@ -84,6 +92,10 @@
             var files = Directory.GetFiles(currentDirectory);
             foreach (var file in files)
             {
+                if (file.Contains("git") || file.Contains("vs"))
+                {
+                    continue;
+                }
                 if (!file.EndsWith(".exe"))
                 {
                     var contents = File.ReadAllText(file);
@@ -95,6 +107,10 @@
             var subDirectories = Directory.GetDirectories(currentDirectory);
             foreach (var directory in subDirectories)
             {
+                if (directory.Contains("git") || directory.Contains("vs"))
+                {
+                    continue;
+                }
                 RenameFileContents(directory, originalName, newName);
             }
         }

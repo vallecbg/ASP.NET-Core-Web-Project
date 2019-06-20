@@ -1,0 +1,97 @@
+﻿body {
+}
+
+.nav-item:hover{
+    transform:scale(1.425);
+    color:red;
+    transition: 0.2s;
+}
+
+.img{
+    height:400px !important;
+    width:400px !important;
+   
+}
+
+#about{
+    display:flex;
+    
+    margin:auto;
+    width:70% !important;
+    justify-content:space-between;
+    align-items:center;
+}
+
+#navBar {
+    background-color: rgba(0, 0, 0, 0.69);
+    color: black;
+    background-color: none !important;
+    border-radius: 3%;
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+    margin: 2px;
+    padding: 20px;
+}
+
+.col-md-4 {
+    height: 400px !important;
+    width: 400px !important;
+}
+
+.register{
+    width:200px;
+}
+
+.loggedHome{
+    margin:auto 50%;
+}
+
+.entireDiv {
+    background-image: url("https://i.pinimg.com/originals/de/97/49/de9749d9e54aa7de9940b67f0daf1107.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.mainDiv {
+    overflow:auto;
+    margin: auto;
+    height: 100vh;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.picture {
+    width: 100%;
+    height: 100%;
+}
+
+#homeAnon{
+    border-radius:50%;
+   
+    height: 70%;
+    display:flex;
+    justify-content:center;
+}
+
+.myCarro{
+    height:100%;
+    border-style:solid;
+    border-color:black;
+    border-width:2px;
+    border-radius:3%;
+
+    
+}
+
+.myCarroMain {
+    width:1000px;
+    height:500px;
+   
+    
+}
+

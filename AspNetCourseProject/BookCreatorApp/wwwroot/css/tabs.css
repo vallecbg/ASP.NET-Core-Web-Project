@@ -1,0 +1,70 @@
+﻿/* Tabs*/
+section {
+    padding: 60px 0;
+}
+
+    section .section-title {
+        text-align: center;
+        color: #007b5e;
+        margin-bottom: 50px;
+        text-transform: uppercase;
+    }
+
+#tabs {
+    background: #007b5e;
+    color: #eee;
+}
+
+    #tabs h6.section-title {
+        color: #eee;
+    }
+
+    #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+        color: #f3f3f3;
+        background-color: transparent;
+        border-color: transparent transparent #f3f3f3;
+        border-bottom: 4px solid !important;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    #tabs .nav-tabs .nav-link {
+        border: 1px solid transparent;
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+        color: #eee;
+        font-size: 20px;
+    }
+
+table.dataTable tbody tr {
+    background-color: #007b5e !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: white !important;
+    border: 1px solid white !important;
+    background-color: white !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #2980B9)) !important;
+    background: -webkit-linear-gradient(top, white 0%, white 100%) !important;
+    background: -moz-linear-gradient(top, white 0%, white 100%) !important;
+    background: -ms-linear-gradient(top, white 0%, #2980B9 100%) !important;
+    background: -o-linear-gradient(top, white 0%, white 100%) !important;
+    background: linear-gradient(to bottom, white 0%, white 100%) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    color: black !important
+}
+
+dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: white !important;
+    border: 1px solid black !important;
+    background-color: white !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #2980B9)) !important;
+    background: -webkit-linear-gradient(top, white 0%, white 100%) !important;
+    background: -moz-linear-gradient(top, white 0%, white 100%) !important;
+    background: -ms-linear-gradient(top, white 0%, #2980B9 100%) !important;
+    background: -o-linear-gradient(top, white 0%, white 100%) !important;
+    background: linear-gradient(to bottom, white 0%, white 100%) !important;
+    box-sizing: border-box
+}

@@ -1,0 +1,69 @@
+﻿@model UserOutputViewModel
+@inject UserManager<BookCreatorUser> userManager
+@{
+    ViewData["Title"] = "Profile";
+    var error = TempData[GlobalConstants.Error];
+    var user = this.userManager.FindByNameAsync(this.User.Identity.Name).GetAwaiter().GetResult();
+    var hasRole = this.userManager.GetRolesAsync(user).GetAwaiter().GetResult().Any(x => x == GlobalConstants.Admin);
+    bool sameUser = this.User.Identity.Name.Equals(@Model.Username);
+
+}
+
+<div class="row container col-md-12 mt-5 mb-5 ml-1">
+
+    <div class="col-md-8 " style="overflow-y: auto; min-height: 300px; max-height:700px;">
+        
+    </div>
+    <div class=" col-md-4">
+
+        <div class="panel panel-info w-100 border border-dark">
+            <div class="panel-heading w-100 d-flex  justify-content-center">
+                <h3 class="text-capitalize">User Details</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class=" col-md-12 col-lg-12">
+                        <table class="table  border border-dark" style="background-color:deepskyblue">
+                            <tbody>
+                            <tr>
+                                <td>Name:</td>
+                                <td>@Model.Username</td>
+                            </tr>
+                            <tr>
+                            <td>Nickname:</td>
+                            <td>@Model.NickName</td>
+                            <tr>
+                                <td>Email:</td>
+                                <td>@Model.Email</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+    <script>
+        $(document).ready(function () {
+            var len = 0;
+            var maxchar = 400;
+
+            $('#my-input').keyup(function () {
+                len = this.value.length;
+                if (len > maxchar) {
+                    return false;
+                } else if (len > 0) {
+                    $("#remainingC").html("Remaining characters: " + (maxchar - len));
+                } else {
+                    $("#remainingC").html("Remaining characters: " + (maxchar));
+                }
+            })
+        });
+    </script>
+
+}

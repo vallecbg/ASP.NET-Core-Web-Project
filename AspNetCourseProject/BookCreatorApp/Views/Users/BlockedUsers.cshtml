@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BlockedUserOutputModel>
+@{
+    ViewData["Title"] = "BlockedUsers";
+    var count = 0;
+}
+<div class="container  col-md-6 mt-5 display"style="width:100%"  >
+
+    <table class="display table table-bordered table-striped table-hover  col-md-12 " style="width: 100%;border-width:0px" id="@GlobalConstants.DbConstName">
+        <thead class="thead-dark w-100">
+            <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Username</th>
+                <th scope="col" class="text-center">Nickname</th>
+                <th scope="col" class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody class="w-100">
+            @foreach (var m in Model)
+            {
+                {
+                    count++;
+                }
+                <tr>
+                    <th scope="row" class="text-center">@count</th>
+                    <td class="text-center">@m.Nickname</td>
+                    <td class="text-center">@m.Username</td>
+
+                    <td>
+                        <div class=" d-flex justify-content-around ">
+                            <a asp-action="UnblockUser" asp-controller="Users" asp-area="" asp-route-id="@m.Id" class="btn btn-dark ">Unblock</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+
+}

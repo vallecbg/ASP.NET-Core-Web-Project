@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Error";
+}
+
+
+    <div class="jumbotron-fluid justify-content-center" style="margin-top: 10em">
+
+        <img src="~/images/sorry.jpg" alt="Something is wrong" style="width: 600px; height: 400px" class="col-4 offset-4">
+        <p class="text-dark text-center">Sorry something went wrong!</p>
+        <p class="text-dark text-center">Pls try again! If problem persist contact our support!</p>
+    </div>
+
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+}

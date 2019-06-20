@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookCreator.Data\BookCreator.Data.csproj" />
+    <ProjectReference Include="..\BookCreator.ViewModels\BookCreator.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="CloudinaryDotNet" Version="1.7.0" />
+  </ItemGroup>
+
+</Project>

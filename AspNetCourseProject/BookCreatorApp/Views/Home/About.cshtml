@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+
+
+    <div id="about" >
+        <div class="">
+            <img src="~/images/star-wars-x-wing.jpg" alt="star wars " class="img w-100" style="height: 500px" />
+        </div>
+        <div class="col-md-4" >
+            <text class="text-dark">
+                Have you ever dreamed to fly with Xan Solo?
+                Or join Aragorn and Frodo?Or join the Bridgeburners and WhiskeyJack!
+                Or travel the deserts of Dune with the seer?
+                Did you wanted to save Egveen in TarmonGaidon or Rand from Aies Sedai?
+                Or wanted to get drunk with Mat Cauton and tame the Daughter of the Nine moons?
+                Then this is the place for you!
+                Tell us your stories and alternative endings of storied franchises, books, movies,anime
+                It does not matter share with us and like minded people! Make friends while doing it!
+                See what other think about your favorites too!
+                Join us become a fan fiction writer!
+            </text>
+        </div>
+        <div class="">
+            <img  src="~/images/malazahn.jpg" alt="star wars"  class="img w-100" style="height: 500px"/>
+        </div>
+    </div>
+
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+}

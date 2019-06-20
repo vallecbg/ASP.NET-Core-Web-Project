@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookCreatorApp</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="~/css/reset-css.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/home.css" />
+</head>
+<body>
+    <div class="entireDiv">
+        <header>
+            <nav id="navBar" class="navbar navbar-expand-md       w-100">
+                <a class="navbar-brand text-white" href="/">Book Creator</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon text-white"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    @if (!this.User.Identity.IsAuthenticated)
+                    {
+                        <ul class="navbar-nav ">
+                            <li class="nav-item">
+                                <a class="nav-link" id="LoginButton" style="color: white" asp-controller="Users" asp-action="Login" asp-area="">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: white" asp-controller="Users" asp-action="Register" asp-area="">Register</a>
+                            </li>
+                        </ul>
+
+                    }
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" id="hello" style="color: white" asp-controller="Home" asp-action="Index">Hello @User.Identity.Name!</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: white" asp-controller="Users" asp-action="Logout" asp-area="">Logout</a>
+                            </li>
+                        </ul>
+                    }
+                </div>
+            </nav>
+        </header>
+        <div class="mainDiv">
+            @RenderBody()
+        </div>
+        <footer class=" text-center  bg-dark container-fluid mx-auto" style="position: fixed; bottom: 0;right:0">
+            <div>
+                <p class="text-primary mx-auto pt-2">&copy;CopyRight Vallec Studios 2018. All rights reserved. </p>
+            </div>
+        </footer>
+    </div>
+</body>
+@RenderSection("scripts", required: false)
+</html>
