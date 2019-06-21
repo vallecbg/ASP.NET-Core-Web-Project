@@ -1,3 +1,4 @@
+![alt text](https://37wz5x2r8vbh3om46wmfhy71-wpengine.netdna-ssl.com/wp-content/uploads/2016/07/Book-Creator-logo-landscape.png)
 # Project - Book Creator
 
 ## Type - Site for Book Writing
