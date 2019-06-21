@@ -1,17 +1,56 @@
-# ASP.NET-MVC-Template
-A ready-to-use templates for ASP.NET MVC 5, ASP.NET Core and ASP.NET Core with Angular with repositories, services, models mapping and DI and StyleCop warnings fixed.
+# Project - Stopify
 
-## Build status
+## Type - Web Store
 
-| ASP.NET MVC 5 | ASP.NET Core  | ASP.NET Core with Angular|
-|:--------------|:--------------|:-------------------------|
-[![Build status](https://ci.appveyor.com/api/projects/status/8dskbn908e27vevx/branch/master?svg=true)](https://ci.appveyor.com/project/NikolayIT/asp-net-mvc-template/branch/master) | [![Build status](https://ci.appveyor.com/api/projects/status/vwf51pxftk8xpa68/branch/master?svg=true)](https://ci.appveyor.com/project/NikolayIT/asp-net-mvc-template-ls0el/branch/master) | [![Build status](https://ci.appveyor.com/api/projects/status/ikl57x1doo7oxvox/branch/master?svg=true)](https://ci.appveyor.com/project/NikolayIT/asp-net-mvc-template-vg02a/branch/master)
+## Description
 
-## Video
+This is a simple Web Store project which 
+sells technical products such as TVs, Laptops, 
+Boilers, Air Conditioners etc. Guest Users can register
+and login to their accounts.
+Regular Users can view and order products with quantity.
+Regular Users can order products by creating a contract 
+with a Credit company.
+The project also supports Administration. 
+Administrators have all rights a Regular User has.
+Administrators can also Promote and Demote Users.
+Administrators can also add, edit or delete products to / from the shop. 
+Administrators can also add, edit and delete Credit companies.
+Credit companies provide convenient contracts to the Users.
+Credit companies are just data entities moderated by an Administrator.
 
-Video with ASP.NET MVC 5 template creation (in Bulgarian) can be seen on YouTube: [https://www.youtube.com/watch?v=xhoBt9MscrY](https://www.youtube.com/watch?v=xhoBt9MscrY)
+## Entities
 
-## Authors
-
-- [Nikolay Kostov](https://github.com/NikolayIT)
-- [Vladislav Karamfilov](https://github.com/vladislav-karamfilov)
+### User
+  - Id (string)
+  - Username (string)
+  - Password (string)
+  - Email (string)
+  - Full Name (string)
+  - Phone Number (string)
+### Product
+  - Id (string)
+  - Name (string)
+  - Type (enum) (TV/AirConditioner/WashingMachine etc . . .)
+  - Price (decimal)
+  - ManufactoredOn (dateTime)
+  - In Stock - (int:: quantity in stock)
+### Order
+  - Id (string)
+  - IssuedOn (dateTime)
+  - Quantity (int)
+  - Product (Product)
+  - Issuer (User)
+### Credit Company
+  - Id (string)
+  - Name (string)
+  - Active Since (dateTime)
+  - Contracts (list of Contract)
+### Credit Contracts
+  - Id (string)
+  - Issued On (dateTime)
+  - Active Until (dateTime)
+  - Price per Month (decimal)
+  - Company (Credit Company)
+  - Order (Order)
+  - Contractor (User)
