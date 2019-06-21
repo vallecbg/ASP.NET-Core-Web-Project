@@ -1,56 +1,92 @@
-# Project - Stopify
+# Project - Book Creator
 
-## Type - Web Store
+## Type - Site for Book Writing
 
 ## Description
 
-This is a simple Web Store project which 
-sells technical products such as TVs, Laptops, 
-Boilers, Air Conditioners etc. Guest Users can register
-and login to their accounts.
-Regular Users can view and order products with quantity.
-Regular Users can order products by creating a contract 
-with a Credit company.
-The project also supports Administration. 
-Administrators have all rights a Regular User has.
-Administrators can also Promote and Demote Users.
-Administrators can also add, edit or delete products to / from the shop. 
-Administrators can also add, edit and delete Credit companies.
-Credit companies provide convenient contracts to the Users.
-Credit companies are just data entities moderated by an Administrator.
+You are a reader and like to write. Book Creator is a platform
+where you can share your work with the other people.
+Users can Add or Delete Stories and Chapters in them,
+Users can Follow and Unfollow other Stories,
+Users receive Notification if the Story they follow get a new Chapter,
+Users can Comment and Rate other Stories,
+Users can Block and Unblock other Users,
+Users can write Messages to other Users.
+Moderators have all rights a Regular User has,
+Moderators can moderate Stories Comments.
+Administrators have all rights,
+Administrators can do everything.
 
 ## Entities
 
 ### User
   - Id (string)
-  - Username (string)
-  - Password (string)
-  - Email (string)
-  - Full Name (string)
-  - Phone Number (string)
-### Product
+  - Nickname (string)
+  - Stories (collection of Story)
+  - Chapters (collection of Chapter)
+  - Received Messages (collection of Message)
+  - Sent Messages (collection of Message)
+  - Followed Stories (collection of Story)
+  - Comments (collection of Comment)
+  - Notifications (collection of Notification)
+  - Announcements (collection of Announcement)
+  - Blocked Users (collection of User)
+  - Blocked From (collection of User)
+### Story
   - Id (string)
-  - Name (string)
-  - Type (enum) (TV/AirConditioner/WashingMachine etc . . .)
-  - Price (decimal)
-  - ManufactoredOn (dateTime)
-  - In Stock - (int:: quantity in stock)
-### Order
+  - Title (string)
+  - Image URL (string)
+  - Summary (string)
+  - Created On (DateTime)
+  - Last Edited On (DateTime)
+  - Chapters (collection of Chapter)
+  - Followers (collection of User)
+  - Comments (collection of Comment)
+  - Ratings (collection of Book Rating)
+  - Story Genre (Story Genre)
+  - Author (User)
+  - Rating (double)
+  - Length (int)
+### Chapter
   - Id (string)
-  - IssuedOn (dateTime)
-  - Quantity (int)
-  - Product (Product)
-  - Issuer (User)
-### Credit Company
+  - Title (string)
+  - Length (int)
+  - Author (User)
+  - Story (Story)
+  - Content (string)
+  - Created On (DateTime)
+### Message
   - Id (string)
-  - Name (string)
-  - Active Since (dateTime)
-  - Contracts (list of Contract)
-### Credit Contracts
+  - Sent On (DateTime)
+  - Sender (User)
+  - Receiver (User)
+  - Text (string)
+  - Is Readed (bool)
+### Comment
   - Id (string)
-  - Issued On (dateTime)
-  - Active Until (dateTime)
-  - Price per Month (decimal)
-  - Company (Credit Company)
-  - Order (Order)
-  - Contractor (User)
+  - User (User)
+  - Story (Story)
+  - Message (string)
+  - Commented On (DateTime)
+### Notification
+  - Id (string)
+  - Is Seen (bool)
+  - Message (string)
+  - User (User)
+### Story Genre
+  - Id (string)
+  - Genre (string)
+  - Stories (collection of Story)
+### Announcement
+  - Id (string)
+  - Published On (DateTime)
+  - Content (string)
+  - Author (User)
+### Book Rating
+  - Rating (Story Rating)
+  - Story (Story)
+### Story Rating
+  - Id (string)
+  - Rating (double)
+  - User (User)
+  - Book Ratings (collection of BookRating)
