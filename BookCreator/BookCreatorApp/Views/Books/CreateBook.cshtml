@@ -1,0 +1,75 @@
+﻿@model BookInputModel
+@inject IBookService BookService
+
+@{
+    ViewData["Title"] = "CreateBook";
+    var genres = this.BookService.Genres().Select(x => x.Genre).ToList();
+}
+
+<div class=" row container d-flex  col-md-12" style="margin-top: 100px">
+    <div class=" offset-3 col-md-6 border align-content-between border-left border-bottom border-right border-top">
+
+        <h2 class="d-flex justify-content-center">@ViewData["Title"] </h2>
+        <hr class="h2" />
+
+        <form role="form" enctype="multipart/form-data" method="post" asp-area="" asp-controller="Books" asp-action="CreateBook">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Title" class="d-flex justify-content-center "></label>
+                        <input asp-for="Title" class="form-control" placeholder="Title..." />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <p class="text-center">Select Genre</p>
+                        <select name="Genre" class="col-md-12">
+                            <option selected class="text-center" disabled="disabled">choose Genre</option>
+                            @foreach (var r in genres)
+                            {
+                                <option class="text-center">@r</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Genre" class="text-danger"></span>
+                    </div>
+                    @if (ViewData.ContainsKey(GlobalConstants.Error))
+                    {
+                        <div class="row col-md-12">
+                            <span class="row ml-1 text-danger ">@ViewData[GlobalConstants.Error]</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Summary" class="d-flex justify-content-center "></label>
+                    <textarea asp-for="Summary" class="form-control" type="text" rows="6"></textarea>
+                    <span asp-validation-for="Summary" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="Author" class="form-control" placeholder="Author..." name="Author" value="@this.User.Identity.Name" type="hidden" />
+                        <input asp-for="CreatedOn" class="form-control" placeholder="CreatedOn..." name="CreatedOn" value="@DateTime.UtcNow" type="hidden" />
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="d-flex  col-md-12">
+                    <button type="submit" class="btn btn-info btn-block" id="CreateBookButton">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+
+}
