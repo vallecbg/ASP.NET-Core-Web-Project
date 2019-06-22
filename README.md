@@ -86,7 +86,7 @@ Administrators can do everything.
 ### Book Rating
   - Rating (Book Rating)
   - Book (Book)
-### Book Rating
+### User Rating
   - Id (string)
   - Rating (double)
   - User (User)
