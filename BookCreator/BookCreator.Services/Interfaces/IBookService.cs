@@ -9,9 +9,9 @@ namespace BookCreator.Services.Interfaces
 {
     public interface IBookService
     {
-        //ICollection<BookOutputModel> CurrentStories(string type);
+        ICollection<BookOutputModel> CurrentBooks(string genre);
 
-        //ICollection<BookOutputModel> UserStories(string username);
+        ICollection<BookOutputModel> UserBooks(string id);
 
         ICollection<BookGenreOutputModel> Genres();
 

@@ -44,13 +44,20 @@
 
         public const string AlreadyExistsInDb = "{0} already exists";
 
-		public class RouteConstants
+        public const string ReturnAllBooks = "All";
+
+        public const string UnknownUser = "Unknown User";
+
+        public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";
 
 			public const string UserBlockRoute = "/Users/BlockUser/{username}";
 
 			public const string ErrorPageRoute = "/Home/Error";
-		}
-	}
+
+            public const string UserBooksRoute = "/Books/UserBooks/{username}";
+        }
+
+    }
 }

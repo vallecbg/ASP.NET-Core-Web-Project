@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BookCreator.ViewModels.OutputModels.Books.BookOutputModel>
+@{
+    ViewData["Title"] = "All Books";
+    string username = ViewData[GlobalConstants.UsernameHolder].ToString();
+    bool author = this.User.Identity.Name == username;
+}
+
+<div class="container-fluid">
+    <div class="row mt-5 col-md-3">
+        @if (author)
+        {
+            <a class="btn btn-dark" asp-action="CreateBook" asp-controller="Books">Add Book</a>
+        }
+    </div>
+    <div class="row mt-5 mb-5" style="overflow-y: auto;">
+
+        @foreach (var s in Model)
+        {
+            <div class="col-lg-4 col-md-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top w-100" src="@s.ImageUrl" alt="@s.Title" style="height: 250px;">
+                    <div class="card-body">
+                        <h4 class="card-title d-flex justify-content-between">
+                            <small>Title: @s.Title</small>
+                            <small>Genre: @s.Genre.Genre</small>
+                        </h4>
+
+                        <hr />
+                        <p class="card-text">@s.Summary</p>
+                    </div>
+                    <div class="card-footer">
+                        <a small class="text-muted card-link text-info" asp-controller="Books" asp-action="Details" asp-route-id="@s.Id" as>Go to Book</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="mt-5">
+    </div>
+</div>
+@section scripts{
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+}

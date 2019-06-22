@@ -89,6 +89,7 @@
 
             var user = this.UserService.GetUser(username);
 
+            //TODO: Create the view and check the access
             //if (fullAccess && !seeProfile)
             //{
             //    return this.View("UserDetails", user);

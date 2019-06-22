@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookCreator.Services\BookCreator.Services.csproj" />
-    <ProjectReference Include="..\BookCreator.ViewModels\BookCreator.ViewModels.csproj" />
 
   </ItemGroup>
 

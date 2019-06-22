@@ -8,9 +8,11 @@ using AutoMapper.QueryableExtensions;
 using BookCreator.Data;
 using BookCreator.Models;
 using BookCreator.Services.Interfaces;
+using BookCreator.Services.Utilities;
 using BookCreator.ViewModels.InputModels;
 using BookCreator.ViewModels.OutputModels.Books;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookCreator.Services
 {
@@ -43,6 +45,30 @@ namespace BookCreator.Services
             await this.Context.SaveChangesAsync();
 
             return newBook.Id;
+        }
+
+        public ICollection<BookOutputModel> CurrentBooks(string genre)
+        {
+            if (string.IsNullOrEmpty(genre) || genre == GlobalConstants.ReturnAllBooks)
+            {
+                return this.Context.Books.ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider).ToArray();
+            }
+            var books = this.Context.Books.Where(x => string.Equals(x.Genre.Genre, genre, StringComparison.CurrentCultureIgnoreCase))
+                .ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider).ToArray();
+
+            return books;
+        }
+
+        public ICollection<BookOutputModel> UserBooks(string id)
+        {
+            var userBooks = this.Context.Books
+                .Include(x => x.Author)
+                .Where(x => x.AuthorId == id)
+                .ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider)
+                .ToList();
+
+            return userBooks;
+
         }
 
         public ICollection<BookGenreOutputModel> Genres()

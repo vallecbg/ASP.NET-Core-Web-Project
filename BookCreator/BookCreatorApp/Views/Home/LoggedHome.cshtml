@@ -19,8 +19,9 @@
             <div class=" card-header text-center text-dark"> Options</div>
             <div class="card-body">
                 <a asp-action="Profile" asp-controller="Users" asp-route-id="@this.User.Identity.Name" class="btn btn-info btn-block">My profile</a>
-                <a asp-action="UserStories" id="MyStories" asp-controller="Stories" asp-route-username="@this.User.Identity.Name" class="btn btn-info btn-block">My Stories</a>
+                <a asp-action="UserBooks" id="MyBooks" asp-controller="Books" asp-route-username="@this.User.Identity.Name" class="btn btn-info btn-block">My Books</a>
                 <a asp-action="BlockedUsers" asp-controller="Users" asp-route-id="@this.User.Identity.Name" class="btn btn-info btn-block">Blocked Users</a>
+                <a asp-action="AllBooks" asp-controller="Books" class="btn btn-info btn-block">All Books</a>
             </div>
         </div>
     </div>
