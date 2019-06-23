@@ -1,5 +1,9 @@
+*Important*
+- Add image url and rating in Books
+- Books all view Genre selection not working
+- Fix books view
+
+*Minor*
 - Add top writer in home page slider
 - Genre.Genre in Books views
-- Add image url and rating in Books
 - It's possible to add chat using signalr
--! Books all view Genre selection not working

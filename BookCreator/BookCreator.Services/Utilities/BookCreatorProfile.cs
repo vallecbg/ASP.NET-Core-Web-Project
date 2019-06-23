@@ -24,6 +24,13 @@
 				.ForMember(x => x.Role, cfg => cfg.Ignore())
 				.ForMember(x => x.NewRole, cfg => cfg.Ignore())
 				.ForMember(x => x.AppRoles, cfg => cfg.Ignore());
+
+            CreateMap<BookInputModel, Book>()
+                .ForMember(x => x.CreatedOn, cfg => cfg.MapFrom(x => x.CreatedOn))
+                .ForMember(x => x.LastEditedOn, cfg => cfg.MapFrom(x => x.CreatedOn))
+                .ForMember(x => x.Summary, cfg => cfg.MapFrom(x => x.Summary))
+                .ForMember(x => x.Title, cfg => cfg.MapFrom(x => x.Title))
+                .ForAllOtherMembers(x => x.Ignore());
 		}
 	}
 }

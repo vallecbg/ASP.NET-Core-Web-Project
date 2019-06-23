@@ -1,4 +1,6 @@
-﻿namespace BookCreator.Services.Utilities
+﻿using System.Runtime.InteropServices.WindowsRuntime;
+
+namespace BookCreator.Services.Utilities
 {
 	public class GlobalConstants
 	{
@@ -48,6 +50,13 @@
 
         public const string UnknownUser = "Unknown User";
 
+        public const string NoImageAvailableUrl =
+            "https://res.cloudinary.com/vallec/image/upload/v1561301682/No_image_available_zvvugj.png";
+
+        public static readonly string[] ImageExtensions = { "png", "jpg", "jpeg" };
+
+        public static string WrongFileType = $"The image type should be: {string.Join(", ", ImageExtensions)}";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";
@@ -57,7 +66,18 @@
 			public const string ErrorPageRoute = "/Home/Error";
 
             public const string UserBooksRoute = "/Books/UserBooks/{username}";
+            
         }
 
+        public class CloudinaryConfig
+        {
+            public const string CloudinaryCloudName = "vallec";
+
+            public const string CloudinaryApiKey = "148382891263925";
+
+            public const string CloudinaryApiSecret = "GDijvH1mRWflHJa0J6oerHATqqI";
+
+            public const string CloudinaryEnvironmentVariable = "cloudinary://148382891263925:GDijvH1mRWflHJa0J6oerHATqqI@vallec/";
+        }
     }
 }

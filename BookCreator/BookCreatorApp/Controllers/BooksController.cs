@@ -30,29 +30,30 @@ namespace BookCreatorApp.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBook(BookInputModel inputModel)
         {
-            //bool imageNotNull = inputModel.ImageUrl != null;
-            //bool wrongType = false;
+            bool imageNotNull = inputModel.BookCoverImage != null;
+            bool wrongType = false;
 
-            //if (imageNotNull)
-            //{
-            //    var fileType = inputModel.StoryImage.ContentType.Split('/')[1];
+            if (imageNotNull)
+            {
+                var fileType = inputModel.BookCoverImage.ContentType.Split('/')[1];
 
-            //    wrongType = GlobalConstants.imageFormat.Contains(fileType);
-            //}
+                wrongType = GlobalConstants.ImageExtensions.Contains(fileType);
+            }
 
             if (!ModelState.IsValid)
             {
                 return this.View(inputModel);
             }
 
-            //if (!wrongType)
-            //{
-            //    this.ViewData[GlobalConstants.Error] = GlobalConstants.WrongFileType;
-            //    return this.View(inputModel);
-            //}
+            if (!wrongType)
+            {
+                this.ViewData[GlobalConstants.Error] = GlobalConstants.WrongFileType;
+                return this.View(inputModel);
+            }
 
             var id = await this.bookService.CreateBook(inputModel);
 
+            //TODO: change it!!!
             return this.Redirect("/");
             //return RedirectToAction("Details", "Books", new { id });
         }

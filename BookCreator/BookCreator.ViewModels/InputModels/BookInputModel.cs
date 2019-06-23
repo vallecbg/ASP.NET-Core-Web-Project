@@ -26,8 +26,8 @@ namespace BookCreator.ViewModels.InputModels
 
         public string Author { get; set; }
 
-        //[Display(Name = ViewModelsConstants.StoryImageDisplay)]
-        //[DataType(DataType.Upload)]
-        //public IFormFile StoryImage { get; set; }
+        [Display(Name = ViewModelsConstants.StoryImageDisplay)]
+        [DataType(DataType.Upload)]
+        public IFormFile BookCoverImage { get; set; }
     }
 }
