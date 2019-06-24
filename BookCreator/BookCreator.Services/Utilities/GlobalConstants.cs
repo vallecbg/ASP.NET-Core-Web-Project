@@ -57,6 +57,8 @@ namespace BookCreator.Services.Utilities
 
         public static string WrongFileType = $"The image type should be: {string.Join(", ", ImageExtensions)}";
 
+        public const string BookNotFound = "No Book with such Id was found.";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";

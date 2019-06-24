@@ -15,11 +15,11 @@ namespace BookCreator.Services.Interfaces
 
         ICollection<BookGenreOutputModel> Genres();
 
-        //Task DeleteStory(int id, string username);
+        Task DeleteBook(string id, string username);
 
         Task<string> CreateBook(BookInputModel inputModel);
 
-        //BookDetailsOutputModel GetStoryById(int id);
+        BookDetailsOutputModel GetBookById(string id);
 
 
     }

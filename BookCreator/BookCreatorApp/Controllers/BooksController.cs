@@ -53,9 +53,17 @@ namespace BookCreatorApp.Controllers
 
             var id = await this.bookService.CreateBook(inputModel);
 
-            //TODO: change it!!!
-            return this.Redirect("/");
-            //return RedirectToAction("Details", "Books", new { id });
+            return RedirectToAction("Details", "Books", new { id });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteBook(string id)
+        {
+            var username = this.User.Identity.Name;
+
+            await this.bookService.DeleteBook(id, username);
+
+            return this.RedirectToAction("UserBooks", "Books", new {username});
         }
 
         [HttpGet]
@@ -80,6 +88,15 @@ namespace BookCreatorApp.Controllers
             this.ViewData[GlobalConstants.UsernameHolder] = username;
             var userBooks = this.bookService.UserBooks(id);
             return this.View(userBooks);
+        }
+
+
+        [HttpGet]
+        public IActionResult Details(string id)
+        {
+            //TODO: If i use the new theme I should check for authorize
+            var book = this.bookService.GetBookById(id);
+            return this.View(book);
         }
     }
 }

@@ -1,0 +1,71 @@
+﻿@using BookCreator.ViewModels.OutputModels.Books
+@model BookDetailsOutputModel
+@inject IBookService BookService
+@inject UserManager<BookCreatorUser> UserManager
+@{
+    ViewData["Title"] = "Details";
+
+    var isAuthor = this.User.Identity.Name == Model.Author;
+    var user = await this.UserManager.FindByNameAsync(this.User.Identity.Name);
+
+}
+<div class="row col-md-12">
+
+    <div class="col-md-4">
+        <div class="card w-100">
+            <img class="card-img-top" src="@Model.ImageUrl" alt="Card image cap" style="height:250px">
+            <div class="card-body ">
+                <h5 class="card-title">Title:  @Model.Title</h5>
+                <hr />
+                <p class=" card-text">@Model.Summary</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                @if (Model.Author == null)
+                {
+                    <li><a class="list-group-item">Author: @GlobalConstants.UnknownUser</a></li>
+
+                }
+                else
+                {
+                    <li><a class="list-group-item card-link" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@Model.Author">Author: @Model.Author</a></li>
+
+                }
+                <li class="list-group-item">Created on: @Model.CreatedOn</li>
+                <li class="list-group-item">Last edit on: @Model.LastEditedOn</li>
+                <li class="list-group-item">Rating: @Model.Rating</li>
+            </ul>
+            <div class="card-body btn-group-justified">
+                @if (isAuthor)
+                {
+                    <div class="container d-flex justify-content-between">
+
+                        <a asp-area="" asp-action="DeleteBook" asp-controller="Books" asp-route-id="@Model.Id" class="btn btn-primary"><i class="far fa-trash-alt">Delete</i> </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+    <script>
+        $(document).ready(function () {
+            var len = 0;
+            var maxchar = 100;
+
+            $('#my-input').keyup(function () {
+                len = this.value.length;
+                if (len > maxchar) {
+                    return false;
+                } else if (len > 0) {
+                    $("#remainingC").html("Remaining characters: " + (maxchar - len));
+                } else {
+                    $("#remainingC").html("Remaining characters: " + (maxchar));
+                }
+            })
+        });
+    </script>
+
+}

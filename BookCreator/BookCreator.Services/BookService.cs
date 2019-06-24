@@ -56,6 +56,45 @@ namespace BookCreator.Services
             return newBook.Id;
         }
 
+        public async Task DeleteBook(string id, string username)
+        {
+            var book = this.Context.Books
+                .Include(x => x.Author)
+                .FirstOrDefaultAsync(x => x.Id == id).Result;
+
+            var user = await this.UserManager.FindByNameAsync(username);
+            var roles = await this.UserManager.GetRolesAsync(user);
+
+            bool hasRights = roles.Any(x => x == GlobalConstants.Admin || x == GlobalConstants.ModelError);
+            bool isAuthor = user.Nickname == book?.Author.Nickname;
+
+            if (!hasRights && !isAuthor)
+            {
+                throw new OperationCanceledException(GlobalConstants.UserLackRights);
+            }
+
+            this.Context.Books.Remove(book ?? throw new InvalidOperationException(GlobalConstants.NoRecordInDb));
+            this.Context.SaveChanges();
+        }
+
+        public BookDetailsOutputModel GetBookById(string id)
+        {
+            //TODO: Don't forget to add the properties
+            var book = this.Context.Books
+                .Include(x => x.Genre)
+                .Include(x => x.Author)
+                .FirstOrDefault(x => x.Id == id);
+
+            if (book == null)
+            {
+                throw new ArgumentException(GlobalConstants.BookNotFound);
+            }
+
+            var bookModel = this.Mapper.Map<BookDetailsOutputModel>(book);
+
+            return bookModel;
+        }
+
         public ICollection<BookOutputModel> CurrentBooks(string genre)
         {
             if (string.IsNullOrEmpty(genre) || genre == GlobalConstants.ReturnAllBooks)

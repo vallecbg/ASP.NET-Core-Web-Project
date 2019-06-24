@@ -1,4 +1,6 @@
-﻿namespace BookCreator.Data
+﻿using BookCreator.Data.Configurations;
+
+namespace BookCreator.Data
 {
 	using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore;
@@ -17,8 +19,9 @@
 
 		protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<BlockedUser>()
-                .HasKey(x => new {x.BookCreatorUserId, x.BlockedUserId});
+            builder.ApplyConfiguration(new BookConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new BlockedUserConfiguration());
 
 			base.OnModelCreating(builder);
 		}
