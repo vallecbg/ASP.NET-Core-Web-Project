@@ -11,3 +11,4 @@
 - It's possible to add chat using signalr
 - Add menu languages
 - Improve front end of the website
+- Add sms notifications

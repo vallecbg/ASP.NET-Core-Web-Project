@@ -38,18 +38,6 @@ namespace BookCreator.Services
             newBook.Genre = this.Context.BooksGenres.First(x => x.Genre == inputModel.Genre);
             newBook.ImageUrl = url ?? GlobalConstants.NoImageAvailableUrl;
 
-            //var newBook = new Book()
-            //{
-            //    Title = inputModel.Title,
-            //    Summary = inputModel.Summary,
-            //    Genre = this.Context.BooksGenres.First(x => x.Genre == inputModel.Genre),
-            //    CreatedOn = inputModel.CreatedOn,
-            //    Author = await this.UserManager.FindByNameAsync(inputModel.Author),
-            //    ImageUrl = url
-            //};
-
-            ;
-
             this.Context.Books.Add(newBook);
             await this.Context.SaveChangesAsync();
 
@@ -58,6 +46,7 @@ namespace BookCreator.Services
 
         public async Task DeleteBook(string id, string username)
         {
+            //TODO: Don't forget to add the include
             var book = this.Context.Books
                 .Include(x => x.Author)
                 .FirstOrDefaultAsync(x => x.Id == id).Result;
@@ -79,7 +68,7 @@ namespace BookCreator.Services
 
         public BookDetailsOutputModel GetBookById(string id)
         {
-            //TODO: Don't forget to add the properties
+            //TODO: Don't forget to add the include
             var book = this.Context.Books
                 .Include(x => x.Genre)
                 .Include(x => x.Author)
@@ -109,6 +98,7 @@ namespace BookCreator.Services
 
         public ICollection<BookOutputModel> UserBooks(string id)
         {
+            //TODO: Don't forget to add the include
             var userBooks = this.Context.Books
                 .Include(x => x.Author)
                 .Where(x => x.AuthorId == id)
