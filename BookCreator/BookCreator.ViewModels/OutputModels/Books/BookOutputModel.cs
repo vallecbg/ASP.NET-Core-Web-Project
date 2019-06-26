@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using BookCreator.ViewModels.OutputModels.Users;
 
@@ -24,8 +25,7 @@ namespace BookCreator.ViewModels.OutputModels.Books
 
         public DateTime LastEditedOn { get; set; }
 
-        //TODO: Change it!!!
-        public double Rating => 0;
+        public double Rating => this.Ratings.Any() ? this.Ratings.Average() : 0;
 
         public ICollection<double> Ratings { get; set; }
 

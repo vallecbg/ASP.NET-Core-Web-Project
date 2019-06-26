@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/linearicons.css">
     <link rel="stylesheet" href="~/css/font-awesome.min.css">
-    @*<link rel="stylesheet" href="~/css/bootstrap.css">*@
+    <link rel="stylesheet" href="~/css/bootstrap.css">
     <link rel="stylesheet" href="~/css/magnific-popup.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/animate.min.css">
@@ -59,12 +59,11 @@
                 </div>
 
                 <nav id="nav-menu-container">
-
                     <ul class="nav-menu">
                         <li class="menu-active"><a class="nav-link" href="/">Home</a></li>
                         @if (!this.User.Identity.IsAuthenticated)
                         {
-                            <li><a class="nav-link" asp-controller="Users" asp-action="Login" asp-area="">Login</a></li>
+                            <li><a class="nav-link"  asp-controller="Users" asp-action="Login" asp-area="">Login</a></li>
                             <li><a class="nav-link" asp-controller="Users" asp-action="Register" asp-area="">Register</a></li>
                         }
                         @if (this.User.Identity.IsAuthenticated)

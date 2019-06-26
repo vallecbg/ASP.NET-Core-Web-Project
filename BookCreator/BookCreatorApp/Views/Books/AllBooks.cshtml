@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BookCreator.ViewModels.OutputModels.Books.BookOutputModel>
+﻿@using BookCreator.ViewModels.OutputModels.Books
+@model IEnumerable<BookOutputModel>
 @inject IBookService BookService
 @{
     ViewData["Title"] = "All Books";
@@ -15,7 +16,7 @@
                         <option selected>Choose...</option>
                         @foreach (var g in genres)
                         {
-                            <option value="@g.Genre">@g.Genre</option>
+                            <option value="@g.GenreName">@g.GenreName</option>
                         }
                         <option value="All">All</option>
                     </select>
@@ -34,7 +35,7 @@
                     <div class="card-body">
                         <h4 class="card-title d-flex justify-content-between">
                             <small>Title: @s.Title</small>
-                            <small>Genre: @s.Genre.Genre</small>
+                            <small>Genre: @s.Genre.GenreName</small>
                         </h4>
                         @if (s.Author == null)
                         {

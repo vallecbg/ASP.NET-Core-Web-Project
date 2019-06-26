@@ -8,6 +8,6 @@ namespace BookCreator.ViewModels.OutputModels.Books
     {
         public string Id { get; set; }
 
-        public string Genre { get; set; }
+        public string GenreName { get; set; }
     }
 }

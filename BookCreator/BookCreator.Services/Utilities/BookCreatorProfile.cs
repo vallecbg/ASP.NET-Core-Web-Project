@@ -50,6 +50,9 @@ namespace BookCreator.Services.Utilities
                 .ForMember(x => x.CreatedOn, cfg => cfg.MapFrom(x => x.CreatedOn))
                 .ForMember(x => x.Title, cfg => cfg.MapFrom(x => x.Title))
                 .ForAllOtherMembers(x => x.Ignore());
+
+            CreateMap<BookGenre, BookGenreOutputModel>()
+                .ForMember(x => x.GenreName, cfg => cfg.MapFrom(x => x.Genre));
         }
 	}
 }

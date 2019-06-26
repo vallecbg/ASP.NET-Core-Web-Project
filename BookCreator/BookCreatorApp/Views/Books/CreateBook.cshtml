@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "CreateBook";
-    var genres = this.BookService.Genres().Select(x => x.Genre).ToList();
+    var genres = this.BookService.Genres().Select(x => x.GenreName).ToList();
 }
 
 <div class=" row container d-flex  col-md-12" style="margin-top: 100px">
