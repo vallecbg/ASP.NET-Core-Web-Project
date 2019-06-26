@@ -57,6 +57,7 @@
 
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IChapterService, ChapterService>();
 
 			services.AddAutoMapper(x => x.AddProfile<BookCreatorProfile>());
 

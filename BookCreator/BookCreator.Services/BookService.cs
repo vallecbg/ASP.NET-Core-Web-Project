@@ -22,6 +22,7 @@ namespace BookCreator.Services
 {
     public class BookService : BaseService, IBookService
     {
+        //TODO: Add notification here
         public BookService(UserManager<BookCreatorUser> userManager, BookCreatorContext context, IMapper mapper) : base(userManager, context, mapper)
         {
         }

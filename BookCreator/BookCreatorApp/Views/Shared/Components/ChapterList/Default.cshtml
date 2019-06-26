@@ -1,0 +1,48 @@
+﻿@using BookCreator.ViewModels.OutputModels.Chapters
+@model IEnumerable<ChapterOutputModel>
+@{
+    bool haschapter = Model.Any();
+    bool author = Model.All(x => x.Author == this.User.Identity.Name);
+    var BookId = ViewData["bookId"].ToString();
+}
+
+    <div class="col-md-12 w-100">
+        @if (Model.Any())
+        {
+            foreach (var s in Model)
+            {
+                <div class="col-md-12">
+
+                    <div class="col-md-12 media-heading  justify-content-center">
+                        <h4 class="mt-0"> Chapter Title:@s.Title</h4>
+                        <h5 class="mt-0"> Added On: @s.CreatedOn</h5>
+                        <hr />
+                    </div>
+                    <div class="media-body col-md-12">
+                        <span class=" w-100" style="word-spacing: 3px; word-break:break-all">
+                            @s.Content
+                        </span>
+                    </div>
+                    @if (haschapter && author)
+                    {
+                        <div class="btn-block">
+                            <a asp-action="DeleteChapter" asp-area="" asp-controller="Chapters"
+                               asp-all-route-data="new Dictionary<string, string>{
+                    {GlobalConstants.BookId,@BookId},
+                    { GlobalConstants.ChapterId,@s.Id.ToString()}};" class="btn btn-block btn-danger">Delete Chapter</a>
+
+                            <a asp-action="EditChapter" asp-area="" asp-controller="Chapters"
+                               asp-route-id="@s.Id" class="btn btn-block btn-info">Edit Chapter</a>
+                        </div>
+                    }
+                </div>
+                <hr style="height: 2px" />
+            }
+        }
+        else
+        {
+            <h3 class="text-center">Book has no added chapters</h3>
+            <hr />
+        }
+    </div>
+

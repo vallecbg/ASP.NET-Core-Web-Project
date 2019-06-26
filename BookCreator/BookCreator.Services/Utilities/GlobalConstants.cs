@@ -59,6 +59,12 @@ namespace BookCreator.Services.Utilities
 
         public const string BookNotFound = "No Book with such Id was found.";
 
+        public const string BookId = "bookId";
+
+        public const string ChapterLength = "ChapterLength";
+
+        public const string ChapterId = "chapterId";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";
@@ -68,7 +74,8 @@ namespace BookCreator.Services.Utilities
 			public const string ErrorPageRoute = "/Home/Error";
 
             public const string UserBooksRoute = "/Books/UserBooks/{username}";
-            
+
+            public const string AddChapterRoute = "/Chapters/AddChapter/{bookId}";
         }
 
         public class CloudinaryConfig

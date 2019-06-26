@@ -1,4 +1,5 @@
-﻿using BookCreator.ViewModels.OutputModels.Books;
+﻿using BookCreator.ViewModels.InputModels.Chapters;
+using BookCreator.ViewModels.OutputModels.Books;
 
 namespace BookCreator.Services.Utilities
 {
@@ -42,6 +43,13 @@ namespace BookCreator.Services.Utilities
                 .ForMember(x => x.Role, cfg => cfg.Ignore())
                 .ForMember(x => x.BlockedUsers, cfg => cfg.MapFrom(x => x.BlockedUsers.Count))
                 .ForMember(x => x.BlockedBy, cfg => cfg.MapFrom(x => x.BlockedBy.Count));
+
+            CreateMap<ChapterInputModel, Chapter>()
+                .ForMember(x => x.BookId, cfg => cfg.MapFrom(x => x.BookId))
+                .ForMember(x => x.Content, cfg => cfg.MapFrom(x => x.Content))
+                .ForMember(x => x.CreatedOn, cfg => cfg.MapFrom(x => x.CreatedOn))
+                .ForMember(x => x.Title, cfg => cfg.MapFrom(x => x.Title))
+                .ForAllOtherMembers(x => x.Ignore());
         }
 	}
 }
