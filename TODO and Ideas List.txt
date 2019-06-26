@@ -1,5 +1,6 @@
 *Important*
 - It's very important to fix all the includes to this point and add all of the entities in the database!!!!!!!
+- Fix the colors of the footer index not logged in
 - Add image url and rating in Books
 - Books all view Genre selection not working
 - Fix books view

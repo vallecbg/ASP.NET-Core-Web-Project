@@ -85,6 +85,17 @@ namespace BookCreator.Services
             return bookModel;
         }
 
+        public BookOutputModel GetRandomBook()
+        {
+            var allBooks = this.Context.Books
+                .OrderBy(r => Guid.NewGuid())
+                .ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider)
+                .ToList();
+            var randomBook = allBooks.First();
+
+            return randomBook;
+        }
+
         public ICollection<BookOutputModel> CurrentBooks(string genre)
         {
             if (string.IsNullOrEmpty(genre) || genre == GlobalConstants.ReturnAllBooks)

@@ -11,6 +11,63 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="wwwrootoriginal\css\bootstrap.css" />
+    <Content Include="wwwrootoriginal\css\bootstrap.css.map" />
+    <Content Include="wwwrootoriginal\css\bootstrap.min.css" />
+    <Content Include="wwwrootoriginal\css\bootstrap.min.css.map" />
+    <Content Include="wwwrootoriginal\css\dataTables.bootstrap4.min.css" />
+    <Content Include="wwwrootoriginal\css\home.css" />
+    <Content Include="wwwrootoriginal\css\jquery.dataTables.min.css" />
+    <Content Include="wwwrootoriginal\css\reset-css.css" />
+    <Content Include="wwwrootoriginal\css\tabs.css" />
+    <Content Include="wwwrootoriginal\favicon.ico" />
+    <Content Include="wwwrootoriginal\images\book1.jpg" />
+    <Content Include="wwwrootoriginal\images\book2.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="wwwrootoriginal\images\book3.jpg" />
+    <Content Include="wwwrootoriginal\images\sorry.png" />
+    <Content Include="wwwrootoriginal\images\Untitled.png" />
+    <Content Include="wwwrootoriginal\js\bootbox.min.js" />
+    <Content Include="wwwrootoriginal\js\bootstrap.js" />
+    <Content Include="wwwrootoriginal\js\bootstrap.js.map" />
+    <Content Include="wwwrootoriginal\js\bootstrap.min.js" />
+    <Content Include="wwwrootoriginal\js\bootstrap.min.js.map" />
+    <Content Include="wwwrootoriginal\js\jquery-3.3.1.min.js" />
+    <Content Include="wwwrootoriginal\js\jquery.dataTables.min.js" />
+    <Content Include="wwwrootoriginal\js\popper.min.js" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\dist\js\npm.js" />
+    <Content Include="wwwrootoriginal\lib\bootstrap\LICENSE" />
+    <Content Include="wwwrootoriginal\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="wwwrootoriginal\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="wwwrootoriginal\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+    <Content Include="wwwrootoriginal\lib\jquery-validation\dist\additional-methods.js" />
+    <Content Include="wwwrootoriginal\lib\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="wwwrootoriginal\lib\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="wwwrootoriginal\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="wwwrootoriginal\lib\jquery-validation\LICENSE.md" />
+    <Content Include="wwwrootoriginal\lib\jquery\dist\jquery.js" />
+    <Content Include="wwwrootoriginal\lib\jquery\dist\jquery.min.js" />
+    <Content Include="wwwrootoriginal\lib\jquery\dist\jquery.min.map" />
+    <Content Include="wwwrootoriginal\lib\jquery\LICENSE.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="jquery.datatables" Version="1.10.15" />
@@ -29,6 +86,124 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\css\bootstrap.map" />
+    <None Include="wwwroot\css\main.map" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\fonts\Linearicons-Free.svg" />
+    <None Include="wwwroot\fonts\Linearicons-Free.woff2" />
+    <None Include="wwwroot\js\easing.min.js" />
+    <None Include="wwwroot\js\hoverIntent.js" />
+    <None Include="wwwroot\js\jquery.ajaxchimp.min.js" />
+    <None Include="wwwroot\js\jquery.counterup.min.js" />
+    <None Include="wwwroot\js\jquery.magnific-popup.min.js" />
+    <None Include="wwwroot\js\jquery.nice-select.min.js" />
+    <None Include="wwwroot\js\jquery.sticky.js" />
+    <None Include="wwwroot\js\mail-script.js" />
+    <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\owl.carousel.min.js" />
+    <None Include="wwwroot\js\parallax.min.js" />
+    <None Include="wwwroot\js\slick.js" />
+    <None Include="wwwroot\js\superfish.js" />
+    <None Include="wwwroot\js\superfish.min.js" />
+    <None Include="wwwroot\js\vendor\bootstrap.min.js" />
+    <None Include="wwwroot\js\vendor\jquery-2.2.4.min.js" />
+    <None Include="wwwroot\js\waypoints.min.js" />
+    <None Include="wwwroot\scss\bootstrap.scss" />
+    <None Include="wwwroot\scss\bootstrap\.DS_Store" />
+    <None Include="wwwroot\scss\bootstrap\bootstrap-grid.scss" />
+    <None Include="wwwroot\scss\bootstrap\bootstrap-reboot.scss" />
+    <None Include="wwwroot\scss\bootstrap\bootstrap.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_alert.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_background-variant.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_badge.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_border-radius.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_box-shadow.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_breakpoints.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_buttons.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_caret.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_clearfix.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_float.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_forms.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_gradients.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_grid-framework.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_grid.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_hover.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_image.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_list-group.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_lists.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_nav-divider.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_navbar-align.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_pagination.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_reset-text.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_resize.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_screen-reader.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_size.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_table-row.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_text-hide.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_text-truncate.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_transition.scss" />
+    <None Include="wwwroot\scss\bootstrap\mixins\_visibility.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_align.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_background.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_borders.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_clearfix.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_display.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_embed.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_flex.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_float.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_position.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_screenreaders.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_sizing.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_spacing.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_text.scss" />
+    <None Include="wwwroot\scss\bootstrap\utilities\_visibility.scss" />
+    <None Include="wwwroot\scss\bootstrap\_alert.scss" />
+    <None Include="wwwroot\scss\bootstrap\_badge.scss" />
+    <None Include="wwwroot\scss\bootstrap\_breadcrumb.scss" />
+    <None Include="wwwroot\scss\bootstrap\_button-group.scss" />
+    <None Include="wwwroot\scss\bootstrap\_buttons.scss" />
+    <None Include="wwwroot\scss\bootstrap\_card.scss" />
+    <None Include="wwwroot\scss\bootstrap\_carousel.scss" />
+    <None Include="wwwroot\scss\bootstrap\_close.scss" />
+    <None Include="wwwroot\scss\bootstrap\_code.scss" />
+    <None Include="wwwroot\scss\bootstrap\_custom-forms.scss" />
+    <None Include="wwwroot\scss\bootstrap\_dropdown.scss" />
+    <None Include="wwwroot\scss\bootstrap\_forms.scss" />
+    <None Include="wwwroot\scss\bootstrap\_functions.scss" />
+    <None Include="wwwroot\scss\bootstrap\_grid.scss" />
+    <None Include="wwwroot\scss\bootstrap\_images.scss" />
+    <None Include="wwwroot\scss\bootstrap\_input-group.scss" />
+    <None Include="wwwroot\scss\bootstrap\_jumbotron.scss" />
+    <None Include="wwwroot\scss\bootstrap\_list-group.scss" />
+    <None Include="wwwroot\scss\bootstrap\_media.scss" />
+    <None Include="wwwroot\scss\bootstrap\_mixins.scss" />
+    <None Include="wwwroot\scss\bootstrap\_modal.scss" />
+    <None Include="wwwroot\scss\bootstrap\_nav.scss" />
+    <None Include="wwwroot\scss\bootstrap\_navbar.scss" />
+    <None Include="wwwroot\scss\bootstrap\_pagination.scss" />
+    <None Include="wwwroot\scss\bootstrap\_popover.scss" />
+    <None Include="wwwroot\scss\bootstrap\_print.scss" />
+    <None Include="wwwroot\scss\bootstrap\_progress.scss" />
+    <None Include="wwwroot\scss\bootstrap\_reboot.scss" />
+    <None Include="wwwroot\scss\bootstrap\_root.scss" />
+    <None Include="wwwroot\scss\bootstrap\_tables.scss" />
+    <None Include="wwwroot\scss\bootstrap\_tooltip.scss" />
+    <None Include="wwwroot\scss\bootstrap\_transitions.scss" />
+    <None Include="wwwroot\scss\bootstrap\_type.scss" />
+    <None Include="wwwroot\scss\bootstrap\_utilities.scss" />
+    <None Include="wwwroot\scss\bootstrap\_variables.scss" />
+    <None Include="wwwroot\scss\main.scss" />
+    <None Include="wwwroot\scss\theme\.DS_Store" />
+    <None Include="wwwroot\scss\theme\_elements.scss" />
+    <None Include="wwwroot\scss\theme\_flexbox.scss" />
+    <None Include="wwwroot\scss\theme\_footer.scss" />
+    <None Include="wwwroot\scss\theme\_header.scss" />
+    <None Include="wwwroot\scss\theme\_home.scss" />
+    <None Include="wwwroot\scss\theme\_mixins.scss" />
+    <None Include="wwwroot\scss\theme\_reset.scss" />
+    <None Include="wwwroot\scss\theme\_variables.scss" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,9 +212,6 @@
     </Content>
     <Content Update="Areas\Administration\Views\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="wwwroot\images\book2.jpg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

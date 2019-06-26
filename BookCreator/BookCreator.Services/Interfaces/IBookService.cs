@@ -22,5 +22,9 @@ namespace BookCreator.Services.Interfaces
         BookDetailsOutputModel GetBookById(string id);
 
 
+        //TODO: I can change it to another model, because there's so much information.
+        BookOutputModel GetRandomBook();
+
+
     }
 }
