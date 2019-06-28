@@ -2,6 +2,7 @@
 - It's very important to fix all the includes to this point and add all of the entities in the database!!!!!!!
 - Add last published stories
 - Check _ViewImports page i think i can put all usings here
+- Fix the button in the main menu highlighting the text
 - Fix the colors of the footer index not logged in
 - Fix when resizing not showing navbar menu
 - Add image url and rating in Books
@@ -11,7 +12,7 @@
 
 *Minor*
 - Add top writer in home page slider or the book with most likes or followers using the new theme
-- Genre.Genre in Books views
+(now is displaying random books)
 - It's possible to add chat using signalr
 - Add menu languages
 - Improve front end of the website
