@@ -86,29 +86,13 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
-    <None Include="wwwroot\css\bootstrap.map" />
     <None Include="wwwroot\css\main.map" />
     <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
     <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
     <None Include="wwwroot\fonts\Linearicons-Free.svg" />
     <None Include="wwwroot\fonts\Linearicons-Free.woff2" />
-    <None Include="wwwroot\js\easing.min.js" />
-    <None Include="wwwroot\js\hoverIntent.js" />
-    <None Include="wwwroot\js\jquery.ajaxchimp.min.js" />
-    <None Include="wwwroot\js\jquery.counterup.min.js" />
-    <None Include="wwwroot\js\jquery.magnific-popup.min.js" />
-    <None Include="wwwroot\js\jquery.nice-select.min.js" />
-    <None Include="wwwroot\js\jquery.sticky.js" />
-    <None Include="wwwroot\js\mail-script.js" />
-    <None Include="wwwroot\js\main.js" />
-    <None Include="wwwroot\js\owl.carousel.min.js" />
-    <None Include="wwwroot\js\parallax.min.js" />
-    <None Include="wwwroot\js\slick.js" />
-    <None Include="wwwroot\js\superfish.js" />
-    <None Include="wwwroot\js\superfish.min.js" />
     <None Include="wwwroot\js\vendor\bootstrap.min.js" />
     <None Include="wwwroot\js\vendor\jquery-2.2.4.min.js" />
-    <None Include="wwwroot\js\waypoints.min.js" />
     <None Include="wwwroot\scss\bootstrap.scss" />
     <None Include="wwwroot\scss\bootstrap\.DS_Store" />
     <None Include="wwwroot\scss\bootstrap\bootstrap-grid.scss" />
