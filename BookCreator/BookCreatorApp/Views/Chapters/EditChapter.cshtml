@@ -1,0 +1,42 @@
+﻿@using BookCreator.ViewModels.OutputModels.Chapters
+@model ChapterEditModel
+@{
+    ViewData["Title"] = "EditChapter";
+}
+
+<div class="container d-flex col-md-6 offset-3 mt-2" style="min-height: 400px; max-height: 600px;">
+    <div class=" card col-md-12 w-100 mt-3" style="border: 1px solid black; min-height: 400px;max-height:100%">
+        <form asp-controller="Chapters" asp-action="EditChapter" asp-area="" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Author" type="hidden" class="form-control text-center" value="@Model.Author" />
+                <input asp-for="BookId" type="hidden" class="form-control text-center" value="@Model.BookId" />
+                <input asp-for="CreatedOn" type="hidden" class="form-control text-center" value="@DateTime.UtcNow" />
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4 offset-4" style="text-align:center" name="Title">Title</label>
+                <input asp-for="Title" type="text" class="form-control" name="Title" placeholder="Add\Edit title..." />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center" style="max-height: 500px; overflow-y:auto ">
+                <label class="control-label text-center">Edit Content</label>
+                <textarea asp-for="Content" class="form-control" rows="12" style="min-height:300px" id="editor"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+                @if (this.ViewData.ContainsKey(GlobalConstants.ChapterLength))
+                {
+                    <span class="text-danger">Currently your chapter is: @ViewData[GlobalConstants.ChapterLength] long</span>
+                }
+            </div>
+            <div class="form-group col-md-12 text-center">
+                <input type="submit" value="Edit Chapter" style="align-content: center" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+
+}

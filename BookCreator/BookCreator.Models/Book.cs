@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BookCreator.Models
 {
     public class Book
     {
+        public Book()
+        {
+            this.Chapters = new HashSet<Chapter>();
+        }
+
         public string Id { get; set; }
 
         public string Title { get; set; }
@@ -25,8 +31,10 @@ namespace BookCreator.Models
         public string AuthorId { get; set; }
         public BookCreatorUser Author { get; set; }
 
+        public ICollection<Chapter> Chapters { get; set; }
+
         //TODO: Add functionality
         public double Rating => 0.00;
-        public int Length => 0;
+        public int Length => this.Chapters.Sum(x => x.Length);
     }
 }

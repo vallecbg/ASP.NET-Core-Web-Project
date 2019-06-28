@@ -50,6 +50,7 @@ namespace BookCreator.Services
             //TODO: Don't forget to add the include
             var book = this.Context.Books
                 .Include(x => x.Author)
+                .Include(x => x.Chapters)
                 .FirstOrDefaultAsync(x => x.Id == id).Result;
 
             var user = await this.UserManager.FindByNameAsync(username);
@@ -73,6 +74,7 @@ namespace BookCreator.Services
             var book = this.Context.Books
                 .Include(x => x.Genre)
                 .Include(x => x.Author)
+                .Include(x => x.Chapters)
                 .FirstOrDefault(x => x.Id == id);
 
             if (book == null)
@@ -113,6 +115,7 @@ namespace BookCreator.Services
             //TODO: Don't forget to add the include
             var userBooks = this.Context.Books
                 .Include(x => x.Author)
+                .Include(x => x.Chapters)
                 .Where(x => x.AuthorId == id)
                 .ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider)
                 .ToList();

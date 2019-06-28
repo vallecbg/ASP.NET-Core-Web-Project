@@ -65,6 +65,12 @@ namespace BookCreator.Services.Utilities
 
         public const string ChapterId = "chapterId";
 
+        public const string UserHasNoRights = "User need role Admin or Moderator for this action!";
+
+        public const string NotAuthor = "To do this action you need to be author of this book!";
+
+        public const string NotValidChapterStoryConnection = "This book with id: {0} or chapter with id: {1} don't have a connection";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";

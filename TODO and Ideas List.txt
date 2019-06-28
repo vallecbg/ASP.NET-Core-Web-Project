@@ -3,6 +3,7 @@
 - Fix book details not showing icon
 - Fix register validation
 - Add last published stories
+- Add functionality to block user
 - Check _ViewImports page i think i can put all usings here
 - Remove full path of services in views
 - Fix the button in the main menu highlighting the text
