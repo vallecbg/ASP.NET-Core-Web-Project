@@ -1,19 +1,22 @@
 *Important*
 - It's very important to fix all the includes to this point and add all of the entities in the database!!!!!!!
+- Fix book details not showing icon
+- Fix register validation
 - Add last published stories
 - Check _ViewImports page i think i can put all usings here
+- Remove full path of services in views
 - Fix the button in the main menu highlighting the text
 - Fix the colors of the footer index not logged in
 - Fix when resizing not showing navbar menu
 - Add image url and rating in Books
 - Books all view Genre selection not working
 - Fix books view
-- Remove full path of services in views
 
 *Minor*
 - Add top writer in home page slider or the book with most likes or followers using the new theme
-(now is displaying random books)
+(now it is displaying random books)
 - It's possible to add chat using signalr
 - Add menu languages
 - Improve front end of the website
 - Add sms notifications
+- Maybe need to store the last random book to avoid dublicate of every reload

@@ -11,63 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="wwwrootoriginal\css\bootstrap.css" />
-    <Content Include="wwwrootoriginal\css\bootstrap.css.map" />
-    <Content Include="wwwrootoriginal\css\bootstrap.min.css" />
-    <Content Include="wwwrootoriginal\css\bootstrap.min.css.map" />
-    <Content Include="wwwrootoriginal\css\dataTables.bootstrap4.min.css" />
-    <Content Include="wwwrootoriginal\css\home.css" />
-    <Content Include="wwwrootoriginal\css\jquery.dataTables.min.css" />
-    <Content Include="wwwrootoriginal\css\reset-css.css" />
-    <Content Include="wwwrootoriginal\css\tabs.css" />
-    <Content Include="wwwrootoriginal\favicon.ico" />
-    <Content Include="wwwrootoriginal\images\book1.jpg" />
-    <Content Include="wwwrootoriginal\images\book2.jpg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="wwwrootoriginal\images\book3.jpg" />
-    <Content Include="wwwrootoriginal\images\sorry.png" />
-    <Content Include="wwwrootoriginal\images\Untitled.png" />
-    <Content Include="wwwrootoriginal\js\bootbox.min.js" />
-    <Content Include="wwwrootoriginal\js\bootstrap.js" />
-    <Content Include="wwwrootoriginal\js\bootstrap.js.map" />
-    <Content Include="wwwrootoriginal\js\bootstrap.min.js" />
-    <Content Include="wwwrootoriginal\js\bootstrap.min.js.map" />
-    <Content Include="wwwrootoriginal\js\jquery-3.3.1.min.js" />
-    <Content Include="wwwrootoriginal\js\jquery.dataTables.min.js" />
-    <Content Include="wwwrootoriginal\js\popper.min.js" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap-theme.css" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap.css" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap.css.map" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap.min.css" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\css\bootstrap.min.css.map" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\js\bootstrap.js" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\js\bootstrap.min.js" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\dist\js\npm.js" />
-    <Content Include="wwwrootoriginal\lib\bootstrap\LICENSE" />
-    <Content Include="wwwrootoriginal\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
-    <Content Include="wwwrootoriginal\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
-    <Content Include="wwwrootoriginal\lib\jquery-validation-unobtrusive\LICENSE.txt" />
-    <Content Include="wwwrootoriginal\lib\jquery-validation\dist\additional-methods.js" />
-    <Content Include="wwwrootoriginal\lib\jquery-validation\dist\additional-methods.min.js" />
-    <Content Include="wwwrootoriginal\lib\jquery-validation\dist\jquery.validate.js" />
-    <Content Include="wwwrootoriginal\lib\jquery-validation\dist\jquery.validate.min.js" />
-    <Content Include="wwwrootoriginal\lib\jquery-validation\LICENSE.md" />
-    <Content Include="wwwrootoriginal\lib\jquery\dist\jquery.js" />
-    <Content Include="wwwrootoriginal\lib\jquery\dist\jquery.min.js" />
-    <Content Include="wwwrootoriginal\lib\jquery\dist\jquery.min.map" />
-    <Content Include="wwwrootoriginal\lib\jquery\LICENSE.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="jquery.datatables" Version="1.10.15" />

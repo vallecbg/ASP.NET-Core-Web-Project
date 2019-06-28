@@ -6,17 +6,33 @@
 
 <div class="container">
     <div class="row d-flex align-items-center justify-content-start">
-        <div class="banner-content col-lg-7">
-            <h5 class="text-white text-uppercase">Author: @randomBook.Author.Username</h5>
-            <h1 class="text-uppercase">
-                @randomBook.Title
-            </h1>
-            <p class="text-white pt-20 pb-20">
-                @randomBook.Summary
-            </p>
-            @* //TODO: Check the class type *@
-            <a asp-action="Details" asp-controller="Books" asp-route-id="@randomBook.Id" class="primary-btn text-uppercase link">Go to book</a>
-        </div>
+        @if (randomBook == null)
+        {
+            <div class="banner-content col-lg-7">
+                <h5 class="text-white text-uppercase">Author: Travor James</h5>
+                <h1 class="text-uppercase">
+                    New Adventure
+                </h1>
+                <p class="text-white pt-20 pb-20">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp <br> or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+                </p>
+                <a href="#" class="primary-btn text-uppercase link">Go to book</a>
+            </div>
+        }
+        else
+        { 
+            <div class="banner-content col-lg-7">
+                <h5 class="text-white text-uppercase">Author: @randomBook.Author.Username</h5>
+                <h1 class="text-uppercase">
+                    @randomBook.Title
+                </h1>
+                <p class="text-white pt-20 pb-20">
+                    @randomBook.Summary
+                </p>
+                @* //TODO: Check the class type *@
+                <a asp-action="Details" asp-controller="Books" asp-route-id="@randomBook.Id" class="primary-btn text-uppercase link">Go to book</a>
+            </div>
+        }
         <div class="col-lg-5 banner-right">
             <img class="img-fluid" src="img/header-img.png" alt="">
         </div>
