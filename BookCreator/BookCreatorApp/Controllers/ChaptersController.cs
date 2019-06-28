@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
 using BookCreator.ViewModels.InputModels.Chapters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookCreatorApp.Controllers
 {
+    [Authorize]
     public class ChaptersController : Controller
     {
         private readonly IChapterService chapterService;
