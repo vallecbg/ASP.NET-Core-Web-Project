@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@inject IUserService  UserService
+<!DOCTYPE html>
 <html lang="zxx" class="no-js">
 <head>
     <!-- Mobile Specific Meta -->
@@ -47,12 +49,14 @@
                         <li class="menu-active"><a class="nav-link" href="/">Home</a></li>
                         @if (!this.User.Identity.IsAuthenticated)
                         {
-                            <li><a class="nav-link"  asp-controller="Users" asp-action="Login" asp-area="">Login</a></li>
+                            <li><a class="nav-link" asp-controller="Users" asp-action="Login" asp-area="">Login</a></li>
                             <li><a class="nav-link" asp-controller="Users" asp-action="Register" asp-area="">Register</a></li>
                         }
                         @if (this.User.Identity.IsAuthenticated)
                         {
-                            <li><a class="nav-link" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@this.User.Identity.Name">Hello @User.Identity.Name!</a></li>
+                            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                            var name = UserService.GetName(userId);
+                            <li><a class="nav-link" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@this.User.Identity.Name">Hello @name!</a></li>
                             <li><a class="nav-link" asp-controller="Users" asp-action="Logout" asp-area="">Logout</a></li>
                         }
                     </ul>

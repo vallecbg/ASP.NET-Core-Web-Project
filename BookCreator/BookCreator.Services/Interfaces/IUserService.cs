@@ -22,5 +22,7 @@
 		Task BlockUser(string currentUser, string name);
 
 		void UnblockUser(string userId, string id);
-	}
+
+        string GetName(string id);
+    }
 }

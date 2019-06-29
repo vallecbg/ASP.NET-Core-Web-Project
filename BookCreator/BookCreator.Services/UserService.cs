@@ -30,7 +30,7 @@
 
 		public SignInResult LogUser(LoginInputModel loginModel)
 		{
-			var user = this.Context.Users.FirstOrDefault(x => x.Nickname == loginModel.Nickname);
+			var user = this.Context.Users.FirstOrDefault(x => x.UserName == loginModel.Username);
 
 			if (user == null)
 			{
@@ -45,7 +45,7 @@
 
 		public async Task<SignInResult> RegisterUser(RegisterInputModel registerModel)
 		{
-			bool uniqueNickname = this.Context.Users.All(x => x.Nickname != registerModel.Nickname);
+			bool uniqueNickname = this.Context.Users.All(x => x.Name != registerModel.Name);
 			bool uniqueUsername = this.Context.Users.All(x => x.UserName != registerModel.Username);
 
 			if (!uniqueNickname || !uniqueUsername)
@@ -125,5 +125,14 @@
 			this.Context.Remove(blocked);
 			this.Context.SaveChanges();
 		}
-	}
+
+        public string GetName(string id)
+        {
+            var name = this.Context.Users
+                .Find(id)
+                .Name;
+
+            return name;
+        }
+    }
 }

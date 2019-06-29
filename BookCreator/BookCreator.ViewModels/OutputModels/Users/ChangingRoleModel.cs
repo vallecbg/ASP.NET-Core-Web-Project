@@ -9,7 +9,7 @@
             this.AppRoles = new HashSet<string>();
         }
 
-        public string Nickname { get; set; }
+        public string Name { get; set; }
 
         public string Id { get; set; }
 

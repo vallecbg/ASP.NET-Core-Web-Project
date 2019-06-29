@@ -56,14 +56,14 @@
 			{
 				UserName = "admin",
 				Email = "admin@admin.com",
-				Nickname = "Admin"
+				Name = "Admin"
 			};
 
 			var normalUser = new BookCreatorUser
 			{
 				UserName = "user",
 				Email = "user@user.com",
-				Nickname = "User"
+				Name = "User"
 			};
 
 			string normalUserPass = "user";

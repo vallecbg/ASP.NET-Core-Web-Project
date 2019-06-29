@@ -1,9 +1,10 @@
 ﻿@using System.Security.Claims
-@inject IUserService  service
+@inject IUserService  UserService
 @{
     ViewData["Title"] = "LoggedHome";
 
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    
 }
 
 <div class="loggedHome container d-flex justify-content-around col-md-12 col-sm-6 card-group" style="margin-top:50px;">

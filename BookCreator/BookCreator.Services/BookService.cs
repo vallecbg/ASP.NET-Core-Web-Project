@@ -57,7 +57,7 @@ namespace BookCreator.Services
             var roles = await this.UserManager.GetRolesAsync(user);
 
             bool hasRights = roles.Any(x => x == GlobalConstants.Admin || x == GlobalConstants.ModelError);
-            bool isAuthor = user.Nickname == book?.Author.Nickname;
+            bool isAuthor = user.UserName == book?.Author.UserName;
 
             if (!hasRights && !isAuthor)
             {

@@ -12,7 +12,7 @@ namespace BookCreator.ViewModels.Utilities
 
         public const string ErrorMessageInRegisterModel = "Your nickname/username should contain only alphabet symbols and they should not be cyrilic";
 
-        public const string RegexForValidationNicknameOrUsername = "[A-Za-z]+";
+        public const string RegexForValidationNicknameOrUsername = "[A-Za-z0-9]+";
 
         public const string ConfirmPasswordDisplay = "Confirm Password";
 
