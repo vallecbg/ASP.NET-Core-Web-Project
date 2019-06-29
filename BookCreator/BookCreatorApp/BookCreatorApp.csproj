@@ -34,8 +34,6 @@
     <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
     <None Include="wwwroot\fonts\Linearicons-Free.svg" />
     <None Include="wwwroot\fonts\Linearicons-Free.woff2" />
-    <None Include="wwwroot\js\vendor\bootstrap.min.js" />
-    <None Include="wwwroot\js\vendor\jquery-2.2.4.min.js" />
     <None Include="wwwroot\scss\bootstrap.scss" />
     <None Include="wwwroot\scss\bootstrap\.DS_Store" />
     <None Include="wwwroot\scss\bootstrap\bootstrap-grid.scss" />

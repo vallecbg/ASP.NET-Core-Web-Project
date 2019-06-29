@@ -1,7 +1,4 @@
 *Important*
-- It's very important to fix all the includes to this point and add all of the entities in the database!!!!!!!
-- Fix book details not showing icon
-- Fix register validation
 - Add last published stories
 - Add functionality to block user
 - Need to improve profile view
