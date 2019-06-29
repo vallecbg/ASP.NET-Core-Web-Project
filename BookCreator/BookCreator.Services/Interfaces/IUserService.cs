@@ -24,5 +24,7 @@
 		void UnblockUser(string userId, string id);
 
         string GetName(string id);
+
+        HomeLoggedModel GetHomeViewDetails();
     }
 }

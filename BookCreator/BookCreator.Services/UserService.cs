@@ -1,4 +1,6 @@
-﻿namespace BookCreator.Services
+﻿using BookCreator.ViewModels.OutputModels.Books;
+
+namespace BookCreator.Services
 {
 	using Data;
 	using Models;
@@ -133,6 +135,22 @@
                 .Name;
 
             return name;
+        }
+
+        public HomeLoggedModel GetHomeViewDetails()
+        {
+            var model = new HomeLoggedModel()
+            {
+                LatestBooks = this.Context.Books
+                    .Include(x => x.Chapters)
+                    .Include(x => x.Author)
+                    .OrderByDescending(x => x.CreatedOn)
+                    .Take(2)
+                    .ProjectTo<BookHomeOutputModel>(Mapper.ConfigurationProvider)
+                    .ToList()
+            };
+
+            return model;
         }
     }
 }

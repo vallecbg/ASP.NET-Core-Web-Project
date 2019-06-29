@@ -1,5 +1,6 @@
 *Important*
-- Add last published stories
+- Books all view Genre selection not working
+- Add last published books
 - Add functionality to block user
 - Need to improve profile view
 - Check _ViewImports page i think i can put all usings here
@@ -8,7 +9,6 @@
 - Fix the colors of the footer index not logged in
 - Fix when resizing not showing navbar menu
 - Add image url and rating in Books
-- Books all view Genre selection not working
 - Fix books view
 
 *Minor*

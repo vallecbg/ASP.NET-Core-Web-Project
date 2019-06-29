@@ -1,4 +1,5 @@
-﻿using BookCreator.ViewModels.InputModels.Chapters;
+﻿using System.Security.Policy;
+using BookCreator.ViewModels.InputModels.Chapters;
 using BookCreator.ViewModels.OutputModels.Books;
 
 namespace BookCreator.Services.Utilities
@@ -53,6 +54,9 @@ namespace BookCreator.Services.Utilities
 
             CreateMap<BookGenre, BookGenreOutputModel>()
                 .ForMember(x => x.GenreName, cfg => cfg.MapFrom(x => x.Genre));
+
+            CreateMap<Book, BookHomeOutputModel>()
+                .ForMember(x => x.Genre, cfg => cfg.MapFrom(x => x.Genre.Genre));
         }
 	}
 }

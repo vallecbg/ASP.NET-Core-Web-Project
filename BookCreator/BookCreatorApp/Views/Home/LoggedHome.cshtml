@@ -4,6 +4,7 @@
     ViewData["Title"] = "LoggedHome";
 
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var model = UserService.GetHomeViewDetails();
     
 }
 
@@ -11,7 +12,36 @@
     <div class="col-md-4" style="overflow: auto; margin-bottom: 20px;max-height:500px">
         <div class="col-md-12 border border-dark">
             <div class=" card-header text-center text-dark  container-fluid">Last Published Books</div>
-            @* TODO: Last Published Books  *@
+            @foreach (var s in model.LatestBooks)
+            {
+                <div class="card-body w-100 border border-dark mt-1 mb-1">
+                    <div class="container d-flex justify-content-between row mx-auto" style="word-wrap: break-word">
+                        <h5 class="card-title">Title: @s.Title</h5>
+                        <h6 class="card-subtitle text-muted">Published: @s.CreatedOn.ToShortDateString()</h6>
+                    </div>
+                    <hr style="height: 2px" />
+                    <div class="container d-flex justify-content-between row">
+                        @if (s.Author == null)
+                        {
+                            <h6 class="card-title text-center">Author: @GlobalConstants.UnknownUser</h6>
+
+                        }
+                        else
+                        {
+                            <h6 class="card-title text-center">Author: @s.Author</h6>
+
+                        }
+                        <h6 class="card-subtitle text-muted">Genre: @s.Genre</h6>
+                    </div>
+                    <hr style="word-wrap: break-word" />
+
+                    @s.Summary
+
+                    <hr />
+                    <a asp-action="Details" asp-controller="Books" asp-route-id="@s.Id" class="card-link"><i class="fas fa-book-open"></i>Go to Book</a>
+                    <hr />
+                </div>
+            }
 
         </div>
     </div>
