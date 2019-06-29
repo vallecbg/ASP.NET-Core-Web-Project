@@ -1,6 +1,5 @@
 *Important*
 - Books all view Genre selection not working
-- Add last published books
 - Add functionality to block user
 - Need to improve profile view
 - Check _ViewImports page i think i can put all usings here
