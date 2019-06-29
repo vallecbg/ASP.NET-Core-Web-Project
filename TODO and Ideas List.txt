@@ -4,11 +4,11 @@
 - Need to improve profile view
 - Check _ViewImports page i think i can put all usings here
 - Remove full path of services in views
-- Fix the button in the main menu highlighting the text
 - Fix the colors of the footer index not logged in
 - Fix when resizing not showing navbar menu
 - Add image url and rating in Books
 - Fix books view
+- Improve last published books view
 
 *Minor*
 - Add top writer in home page slider or the book with most likes or followers using the new theme

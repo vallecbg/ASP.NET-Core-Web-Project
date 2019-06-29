@@ -2347,12 +2347,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .primary-btn {
-  background: #fff;
-  border: 1px solid transparent;
-  color: #222;
-  padding-left: 40px;
-  padding-right: 40px;
-  border-radius: 50px;
+    background: #fff;
+    border: 1px solid transparent;
+    color: #222;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 50px;
+    /*vallec*/
+    text-decoration: none !important;
 }
 
 .primary-btn:hover {
