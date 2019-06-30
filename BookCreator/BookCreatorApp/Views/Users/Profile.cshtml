@@ -5,6 +5,7 @@
     ViewData["Title"] = "Profile";
     var error = TempData[GlobalConstants.Error];
     var user = this.userManager.FindByNameAsync(this.User.Identity.Name).GetAwaiter().GetResult();
+    //var usertest = this.UserService.GetUser(this.User.Identity.Name);
     var hasRole = this.userManager.GetRolesAsync(user).GetAwaiter().GetResult().Any(x => x == GlobalConstants.Admin);
     bool sameUser = this.User.Identity.Name.Equals(@Model.Username);
     bool notBlocked = this.UserService.IsBlocked(this.User.Identity.Name, Model.Username);
@@ -12,8 +13,9 @@
 }
 
 <div class="row container col-md-12 mt-5 mb-5 ml-1">
-
-    <div class="col-md-8 " style="overflow-y: auto; min-height: 300px; max-height:700px;">
+    <div class="col-md-8 " style="overflow-y: auto; min-height: 300px; max-height: 700px;">
+        <h3 class="text-center">@Model.Username's books</h3>
+        <hr />
         @if (Model.Books.Any())
         {
             foreach (var book in Model.Books)

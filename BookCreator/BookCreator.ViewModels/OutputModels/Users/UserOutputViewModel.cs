@@ -12,8 +12,6 @@ namespace BookCreator.ViewModels.OutputModels.Users
             this.Books = new HashSet<BookOutputModel>();
         }
 
-        public ICollection<BookOutputModel> Books { get; set; }
-
 		public string Id { get; set; }
 
 		public string Username { get; set; }
@@ -27,5 +25,7 @@ namespace BookCreator.ViewModels.OutputModels.Users
 		public int BlockedBy { get; set; }
 
 		public string Email { get; set; }
-	}
+
+        public ICollection<BookOutputModel> Books { get; set; }
+    }
 }

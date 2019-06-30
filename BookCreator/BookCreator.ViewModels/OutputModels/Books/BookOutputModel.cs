@@ -25,7 +25,7 @@ namespace BookCreator.ViewModels.OutputModels.Books
 
         public DateTime LastEditedOn { get; set; }
 
-        public double Rating => this.Ratings.Any() ? this.Ratings.Average() : 0;
+        public double Rating => 0;//this.Ratings.Any() ? this.Ratings.Average() : 0;
 
         public ICollection<double> Ratings { get; set; }
 
