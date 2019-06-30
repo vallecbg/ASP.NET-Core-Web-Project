@@ -5,7 +5,6 @@
     ViewData["Title"] = "Profile";
     var error = TempData[GlobalConstants.Error];
     var user = this.userManager.FindByNameAsync(this.User.Identity.Name).GetAwaiter().GetResult();
-    //var usertest = this.UserService.GetUser(this.User.Identity.Name);
     var hasRole = this.userManager.GetRolesAsync(user).GetAwaiter().GetResult().Any(x => x == GlobalConstants.Admin);
     bool sameUser = this.User.Identity.Name.Equals(@Model.Username);
     bool notBlocked = this.UserService.IsBlocked(this.User.Identity.Name, Model.Username);

@@ -5,42 +5,36 @@
 
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     var model = UserService.GetHomeViewDetails();
-    
+
 }
 
 <div class="loggedHome container d-flex justify-content-around col-md-12 col-sm-6 card-group" style="margin-top:50px;">
     <div class="col-md-4" style="overflow: auto; margin-bottom: 20px;max-height:500px">
-        <div class="col-md-12 border border-dark">
-            <div class=" card-header text-center text-dark  container-fluid">Last Published Books</div>
+        <div class="col-md-12 card border border-dark">
+            <div class="card-header text-center text-dark container-fluid">Last Published Books</div>
             @foreach (var s in model.LatestBooks)
             {
-                <div class="card-body w-100 border border-dark mt-1 mb-1">
-                    <div class="container d-flex justify-content-between row mx-auto" style="word-wrap: break-word">
-                        <h5 class="card-title">Title: @s.Title</h5>
-                        <h6 class="card-subtitle text-muted">Published: @s.CreatedOn.ToShortDateString()</h6>
-                    </div>
-                    <hr style="height: 2px" />
-                    <div class="container d-flex justify-content-between row">
-                        @if (s.Author == null)
-                        {
-                            <h6 class="card-title text-center">Author: @GlobalConstants.UnknownUser</h6>
-
-                        }
-                        else
-                        {
-                            <h6 class="card-title text-center">Author: @s.Author</h6>
-
-                        }
-                        <h6 class="card-subtitle text-muted">Genre: @s.Genre</h6>
-                    </div>
-                    <hr style="word-wrap: break-word" />
-
-                    @s.Summary
-
-                    <hr />
-                    <a asp-action="Details" asp-controller="Books" asp-route-id="@s.Id" class="card-link"><i class="fas fa-book-open"></i>Go to Book</a>
-                    <hr />
+                <div class="card-body">
+                    <h5 class="card-title">Title: @s.Title</h5>
+                    <p class="card-text">@s.Summary</p>
+                    
                 </div>
+                <ul class="list-group list-group-flush">
+                    @if (s.Author == null)
+                    {
+                        <li class="list-group-item">Author: @GlobalConstants.UnknownUser</li>
+                    }
+                    else
+                    {
+                        <li class="list-group-item">Author: @s.Author</li>
+                    }
+                    <li class="list-group-item">Genre: @s.Genre</li>
+                    <li class="list-group-item">Published: @s.CreatedOn.ToShortDateString()</li>
+                </ul>
+                <div class="card-body">
+                    <a asp-action="Details" asp-controller="Books" asp-route-id="@s.Id" class="btn btn-primary">Go to Book</a>
+                </div>
+                <hr/>
             }
 
         </div>
@@ -50,9 +44,9 @@
             <div class=" card-header text-center text-dark"> Options</div>
             <div class="card-body">
                 <a class="btn btn-info btn-block" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@this.User.Identity.Name">My profile</a>
-                    <a asp-action="UserBooks" id="MyBooks" asp-controller="Books" asp-route-username="@this.User.Identity.Name" class="btn btn-info btn-block">My Books</a>
-                    <a asp-action="BlockedUsers" asp-controller="Users" asp-route-id="@this.User.Identity.Name" class="btn btn-info btn-block">Blocked Users</a>
-                    <a asp-action="AllBooks" asp-controller="Books" class="btn btn-info btn-block">All Books</a>
+                <a asp-action="UserBooks" id="MyBooks" asp-controller="Books" asp-route-username="@this.User.Identity.Name" class="btn btn-info btn-block">My Books</a>
+                <a asp-action="BlockedUsers" asp-controller="Users" asp-route-id="@this.User.Identity.Name" class="btn btn-info btn-block">Blocked Users</a>
+                <a asp-action="AllBooks" asp-controller="Books" class="btn btn-info btn-block">All Books</a>
             </div>
         </div>
     </div>
