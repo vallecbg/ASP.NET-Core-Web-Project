@@ -152,5 +152,21 @@ namespace BookCreator.Services
 
             return model;
         }
+
+        public bool IsBlocked(string user1Name, string user2Name)
+        {
+            var user1 = this.UserManager.FindByNameAsync(user1Name).GetAwaiter().GetResult();
+            var user2 = this.UserManager.FindByNameAsync(user2Name).GetAwaiter().GetResult();
+
+            var notBlocked =
+                this.Context.BlockedUsers.Any(x => x.BlockedUserId == user2.Id && x.BookCreatorUserId == user1.Id);
+
+            if (!notBlocked)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

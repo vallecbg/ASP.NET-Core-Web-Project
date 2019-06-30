@@ -1,9 +1,19 @@
-﻿namespace BookCreator.ViewModels.OutputModels.Users
+﻿using BookCreator.Models;
+using BookCreator.ViewModels.OutputModels.Books;
+
+namespace BookCreator.ViewModels.OutputModels.Users
 {
 	using System.Collections.Generic;
 
 	public class UserOutputViewModel
 	{
+        public UserOutputViewModel()
+        {
+            this.Books = new HashSet<BookOutputModel>();
+        }
+
+        public ICollection<BookOutputModel> Books { get; set; }
+
 		public string Id { get; set; }
 
 		public string Username { get; set; }

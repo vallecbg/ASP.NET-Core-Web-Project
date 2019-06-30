@@ -1,30 +1,58 @@
 ﻿@model UserOutputViewModel
 @inject UserManager<BookCreatorUser> userManager
+@inject IUserService UserService
 @{
     ViewData["Title"] = "Profile";
     var error = TempData[GlobalConstants.Error];
     var user = this.userManager.FindByNameAsync(this.User.Identity.Name).GetAwaiter().GetResult();
     var hasRole = this.userManager.GetRolesAsync(user).GetAwaiter().GetResult().Any(x => x == GlobalConstants.Admin);
     bool sameUser = this.User.Identity.Name.Equals(@Model.Username);
+    bool notBlocked = this.UserService.IsBlocked(this.User.Identity.Name, Model.Username);
 
 }
 
 <div class="row container col-md-12 mt-5 mb-5 ml-1">
 
     <div class="col-md-8 " style="overflow-y: auto; min-height: 300px; max-height:700px;">
+        @if (Model.Books.Any())
+        {
+            foreach (var book in Model.Books)
+            {
+                <div class="w-100 border border-info">
+                    <div class="media">
+                        <img class="align-self-start mt-1 mr-3 image-fluid" src="@book.ImageUrl" height="200" width="200" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h3 class="mt-0"> Book Title:@book.Title</h3>
 
+                            <a asp-action="Details" asp-controller="Books" asp-route-id="@book.Id" asp-area="" class="btn btn-link">Go to Book</a>
+                            <hr />
+                            <h5>Summary:</h5>
+                            <p>
+                                @book.Summary
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr style="height: 2px" />
+            }
+        }
+        else
+        {
+            <h3 class="text-center">User has no written books</h3>
+            <hr />
+        }
     </div>
-    <div class=" col-md-4">
+        <div class=" col-md-4">
 
-        <div class="panel panel-info w-100 border border-dark">
-            <div class="panel-heading w-100 d-flex  justify-content-center">
-                <h3 class="text-capitalize">User Details</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class=" col-md-12 col-lg-12">
-                        <table class="table  border border-dark" style="background-color:deepskyblue">
-                            <tbody>
+            <div class="panel panel-info w-100 border border-dark">
+                <div class="panel-heading w-100 d-flex  justify-content-center">
+                    <h3 class="text-capitalize">User Details</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class=" col-md-12 col-lg-12">
+                            <table class="table  border border-dark" style="background-color:deepskyblue">
+                                <tbody>
                                 <tr>
                                     <td>Name:</td>
                                     <td>@Model.Name</td>
@@ -37,34 +65,46 @@
                                     <td>Email:</td>
                                     <td>@Model.Email</td>
                                 </tr>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                    @if (!sameUser)
+                    {
+                        if (notBlocked)
+                        {
+                            <a class="btn btn-block btn-danger" asp-action="BlockUser" asp-controller="Users" asp-route-username="@Model.Username">Block User</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-block btn-danger" asp-action="BlockedUsers" asp-controller="Users">Unblock User</a>
+                        }
+                    }
                 </div>
             </div>
+            @* TODO: Add functionality to send messages *@
         </div>
     </div>
-</div>
 
-@section scripts{
+    @section scripts{
 
-    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
-    <script>
-        $(document).ready(function () {
-            var len = 0;
-            var maxchar = 400;
+        @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+        <script>
+            $(document).ready(function () {
+                var len = 0;
+                var maxchar = 400;
 
-            $('#my-input').keyup(function () {
-                len = this.value.length;
-                if (len > maxchar) {
-                    return false;
-                } else if (len > 0) {
-                    $("#remainingC").html("Remaining characters: " + (maxchar - len));
-                } else {
-                    $("#remainingC").html("Remaining characters: " + (maxchar));
-                }
-            })
-        });
-    </script>
+                $('#my-input').keyup(function () {
+                    len = this.value.length;
+                    if (len > maxchar) {
+                        return false;
+                    } else if (len > 0) {
+                        $("#remainingC").html("Remaining characters: " + (maxchar - len));
+                    } else {
+                        $("#remainingC").html("Remaining characters: " + (maxchar));
+                    }
+                })
+            });
+        </script>
 
-}
+    }
