@@ -90,13 +90,16 @@ namespace BookCreator.Services
         {
             var chapter = this.Context.Chapters.Find(model.Id);
 
-
             //TODO: Check better solution
             chapter.Content = model.Content;
             chapter.Title = model.Title;
             chapter.CreatedOn = model.CreatedOn;
 
+            var currentBook = this.Context.Books.First(x => x.Chapters.Contains(chapter));
+            currentBook.LastEditedOn = DateTime.UtcNow;
+
             this.Context.Chapters.Update(chapter);
+            this.Context.Books.Update(currentBook);
             this.Context.SaveChanges();
         }
     }
