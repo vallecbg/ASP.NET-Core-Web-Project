@@ -9,48 +9,73 @@
     var user = await this.UserManager.FindByNameAsync(this.User.Identity.Name);
 
 }
-    <div class="row col-md-12">
+<div class="row col-md-12">
 
-        <div class="col-md-4">
-            <div class="card w-100">
-                <img class="card-img-top" src="@Model.ImageUrl" alt="Card image cap" style="height:250px">
-                <div class="card-body ">
-                    <h5 class="card-title">Title:  @Model.Title</h5>
-                    <hr />
-                    <p class=" card-text">@Model.Summary</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    @if (Model.Author == null)
-                    {
-                        <li><a class="list-group-item">Author: @GlobalConstants.UnknownUser</a></li>
+    <div class="col-md-4">
+        <div class="card w-100">
+            <img class="card-img-top" src="@Model.ImageUrl" alt="Card image cap" style="height:250px">
+            <div class="card-body ">
+                <h5 class="card-title">Title:  @Model.Title</h5>
+                <hr />
+                <p class=" card-text">@Model.Summary</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                @if (Model.Author == null)
+                {
+                    <li><a class="list-group-item">Author: @GlobalConstants.UnknownUser</a></li>
 
-                    }
-                    else
-                    {
-                        <li><a class="list-group-item card-link" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@Model.Author">Author: @Model.Author</a></li>
+                }
+                else
+                {
+                    <li><a class="list-group-item card-link" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@Model.Author">Author: @Model.Author</a></li>
 
-                    }
-                    <li class="list-group-item">Created on: @Model.CreatedOn</li>
-                    <li class="list-group-item">Last edit on: @Model.LastEditedOn</li>
-                    <li class="list-group-item">Rating: @Model.Rating</li>
-                </ul>
-                <div class="card-body btn-group-justified">
-                    @if (isAuthor)
-                    {
-                        <div class="container d-flex justify-content-between">
+                }
+                <li class="list-group-item">Created on: @Model.CreatedOn</li>
+                <li class="list-group-item">Last edit on: @Model.LastEditedOn</li>
+                <li class="list-group-item">Rating: @Model.Rating</li>
+            </ul>
+            <div class="card-body btn-group-justified">
+                @if (isAuthor)
+                {
+                    <div class="container d-flex justify-content-between">
 
-                            <a asp-area="" asp-action="DeleteBook" asp-controller="Books" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fa fa-trash">Delete</i> </a>
-                            <a asp-area="" asp-action="AddChapter" asp-controller="Chapters" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fa fa-plus">Add Chapter</i></a>
-                        </div>
-                    }
-                </div>
+                        <a asp-area="" asp-action="DeleteBook" asp-controller="Books" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fa fa-trash">Delete</i> </a>
+                        <a asp-area="" asp-action="AddChapter" asp-controller="Chapters" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fa fa-plus">Add Chapter</i></a>
+                    </div>
+                }
             </div>
         </div>
-        <div class="col-md-6 border border-dark w-100 mb-1" style="max-height:800px;overflow-y:auto">
+    </div>
+    <div class="col-md-6 border border-dark w-100 mb-1" style="max-height:800px;overflow-y:auto">
 
-            @await Component.InvokeAsync("ChapterList", new { bookId = @Model.Id })
+        @await Component.InvokeAsync("ChapterList", new { bookId = @Model.Id })
+    </div>
+    <div class="col-md-2">
+        @await Component.InvokeAsync("CommentsList", new { bookId = @Model.Id })
+
+        <div class="card w-100 mt-1 d-flex">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body container-flex">
+                <form asp-action="AddComment" asp-controller="Comments" asp-area="" method="post">
+                    <div class="form-group">
+                        <input type="text" hidden="hidden" value="@Model.Id" name="BookId" />
+                        <input type="datetime" hidden="hidden" value="@DateTime.UtcNow" name="CommentedOn" />
+                        <input hidden="hidden" type="text" value="@user.UserName" name="CommentAuthor" />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Enter your comment" rows="4" name="message" id="my-input" maxlength="100"></textarea>
+                        <span id='remainingC'></span>
+                        @if (this.TempData.ContainsKey(GlobalConstants.Error))
+                        {
+                            <span>@TempData[GlobalConstants.Error]</span>
+                        }
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus-square">Comment</i></button>
+                </form>
+            </div>
         </div>
     </div>
+</div>
 
 @section scripts{
 

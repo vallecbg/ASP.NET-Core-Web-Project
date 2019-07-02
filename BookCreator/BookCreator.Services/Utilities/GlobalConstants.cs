@@ -71,6 +71,8 @@ namespace BookCreator.Services.Utilities
 
         public const string NotValidChapterStoryConnection = "This book with id: {0} or chapter with id: {1} don't have a connection";
 
+        public const string CommentsLength = "Comment should not be empty";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";

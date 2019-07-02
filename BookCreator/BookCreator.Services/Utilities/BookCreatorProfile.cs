@@ -1,6 +1,8 @@
 ﻿using System.Security.Policy;
 using BookCreator.ViewModels.InputModels.Chapters;
+using BookCreator.ViewModels.InputModels.Comments;
 using BookCreator.ViewModels.OutputModels.Books;
+using BookCreator.ViewModels.OutputModels.Comments;
 
 namespace BookCreator.Services.Utilities
 {
@@ -64,6 +66,15 @@ namespace BookCreator.Services.Utilities
                 .ForMember(x => x.Ratings, cfg => cfg.Ignore())
                 .ForMember(x => x.Author, cfg => cfg.MapFrom(x => x.Author))
                 .ForMember(x => x.Genre, cfg => cfg.MapFrom(x => x.Genre));
+
+            CreateMap<CommentInputModel, Comment>()
+                .ForMember(x => x.Message, cfg => cfg.MapFrom(x => x.Message))
+                .ForMember(x => x.CommentedOn, cfg => cfg.MapFrom(x => x.CommentedOn))
+                .ForMember(x => x.BookId, cfg => cfg.MapFrom(x => x.BookId))
+                .ForAllOtherMembers(x => x.Ignore());
+
+            CreateMap<Comment, CommentOutputModel>()
+                .ForMember(x => x.Author, cfg => cfg.MapFrom(x => x.User.UserName));
         }
 	}
 }

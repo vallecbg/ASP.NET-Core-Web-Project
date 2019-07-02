@@ -11,5 +11,8 @@ namespace BookCreator.Data.Configurations
         public const int TitleMaxLength = 100;
 
         public const int ChapterContentMaxLength = 3000;
+
+        public const int CommentContentMaxLength = 300;
+
     }
 }

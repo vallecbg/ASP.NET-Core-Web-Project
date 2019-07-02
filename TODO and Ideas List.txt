@@ -1,4 +1,6 @@
 *Important*
+- Add Ratings
+- Sort input models in folders
 - Books all view Genre selection not working
 - Need to improve profile view
 - Check for remember me button
@@ -11,6 +13,7 @@
 - Improve last published books view
 
 *Minor*
+- Add api support
 - It's possible to add admin panel template from bootstrap
 - Add top writer in home page slider or the book with most likes or followers using the new theme
 (now it is displaying random books)

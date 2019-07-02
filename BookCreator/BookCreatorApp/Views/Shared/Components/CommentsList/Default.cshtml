@@ -1,0 +1,58 @@
+﻿@using BookCreator.ViewModels.OutputModels.Comments
+@model IEnumerable<CommentOutputModel>
+@{
+    ViewData["Title"] = "Default";
+    var bookId = ViewData[GlobalConstants.BookId].ToString();
+}
+
+@if (!Model.Any())
+{
+
+    <div class="card-body w-100 border border-dark">
+
+        <p class="card-text">No comments for this book!</p>
+    </div>
+}
+else
+{
+    <div class="border border-dark card-text text-center text-white w-100 col-md-12 container" style="background-color: darkgreen;">Comments</div>
+
+    <div class="container w-100 col-md-12 border border-dark" style="min-height: 500px; max-height:500px;overflow-y:auto">
+        @foreach (var c in Model)
+        {
+
+            <div class="card-body w-100 border border-dark card-body mt-1">
+
+                <p class="card-text" style="word-wrap:break-word">@c.Message</p>
+
+                <ul class="list-group list-group-flush">
+                    @if (c.Author.Equals(GlobalConstants.UnknownUser))
+                    {
+                        <li class="list-group-item">Author: @GlobalConstants.UnknownUser</li>
+
+                    }
+                    else
+                    {
+                        <li><a class="list-group-item card-link" style="word-wrap: break-word" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@c.Author">From: @c.Author</a></li>
+
+                    }
+
+                    <li class="list-group-item">Posted: @c.CommentedOn.ToShortDateString()</li>
+
+                    @if (this.User.IsInRole(GlobalConstants.Admin) || this.User.IsInRole(GlobalConstants.ModelError) || this.User.Identity.Name == c.Author)
+                    {
+                        <li class="list-group-item">
+                            <a asp-area="" asp-controller="Comments" asp-action="DeleteComment"
+                               asp-all-route-data="new Dictionary<string, string>{
+                    {GlobalConstants.BookId,@bookId},
+                    { GlobalConstants.Id,@c.Id.ToString()}};"
+                               class="card-link"><i class="far fa-trash-alt">Comment</i></a>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+
+        }
+    </div>
+}
