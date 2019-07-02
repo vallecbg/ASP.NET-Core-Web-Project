@@ -25,6 +25,10 @@ namespace BookCreator.Services.Interfaces
         //TODO: I can change it to another model, because there's so much information.
         BookOutputModel GetRandomBook();
 
+        void AddRating(string bookId, double rating, string username);
+
+        bool AlreadyRated(string bookId, string username);
+
 
     }
 }

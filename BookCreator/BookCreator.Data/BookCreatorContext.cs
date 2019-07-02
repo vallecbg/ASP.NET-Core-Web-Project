@@ -13,6 +13,8 @@ namespace BookCreator.Data
         public DbSet<BookGenre> BooksGenres { get; set; }
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<UserRating> UsersRatings { get; set; }
+        public DbSet<BookRating> BooksRatings { get; set; }
 
 		public BookCreatorContext(DbContextOptions<BookCreatorContext> options)
 			: base(options)
@@ -26,7 +28,9 @@ namespace BookCreator.Data
             builder.ApplyConfiguration(new BlockedUserConfiguration());
             builder.ApplyConfiguration(new ChapterConfiguration());
             builder.ApplyConfiguration(new CommentConfiguration());
-
+            builder.ApplyConfiguration(new BookRatingConfiguration());
+            builder.ApplyConfiguration(new UserRatingConfiguration());
+                                
             base.OnModelCreating(builder);
 		}
 	}

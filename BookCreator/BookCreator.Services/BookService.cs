@@ -75,8 +75,10 @@ namespace BookCreator.Services
                 .Include(x => x.Genre)
                 .Include(x => x.Author)
                 .Include(x => x.Chapters)
+                .Include(x => x.BookRatings)
+                .ThenInclude(x => x.UserRating)
                 .FirstOrDefault(x => x.Id == id);
-
+            ;
             if (book == null)
             {
                 throw new ArgumentException(GlobalConstants.BookNotFound);
@@ -96,6 +98,48 @@ namespace BookCreator.Services
             var randomBook = allBooks.First();
 
             return randomBook;
+        }
+
+        public void AddRating(string bookId, double rating, string username)
+        {
+            var user = this.UserManager.FindByNameAsync(username).GetAwaiter().GetResult();
+            var book = this.Context.Books.Find(bookId);
+
+            bool hasAlreadyRated = AlreadyRated(book.Id, user.UserName);
+
+            if (hasAlreadyRated)
+            {
+                throw new InvalidOperationException(GlobalConstants.AlreadyRated);
+            }
+
+            var userRating = new UserRating()
+            {
+                Rating = rating,
+                UserId = user.Id
+            };
+
+            this.Context.UsersRatings.Add(userRating);
+
+            var bookRating = new BookRating()
+            {
+                Book = book,
+                RatingId = userRating.Id
+            };
+
+            this.Context.BooksRatings.Add(bookRating);
+            book.BookRatings.Add(bookRating);
+
+            this.Context.Update(book);
+            this.Context.SaveChanges();
+        }
+
+        public bool AlreadyRated(string bookId, string username)
+        {
+            var user = this.UserManager.FindByNameAsync(username).GetAwaiter().GetResult();
+
+            var rated = this.Context.BooksRatings.Any(x => x.BookId == bookId && x.UserRating.UserId == user.Id);
+
+            return rated;
         }
 
         public ICollection<BookOutputModel> CurrentBooks(string genre)

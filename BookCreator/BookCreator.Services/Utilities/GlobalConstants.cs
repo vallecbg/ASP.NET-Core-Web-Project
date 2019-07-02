@@ -73,6 +73,8 @@ namespace BookCreator.Services.Utilities
 
         public const string CommentsLength = "Comment should not be empty";
 
+        public const string AlreadyRated = "You have already rated this story";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";

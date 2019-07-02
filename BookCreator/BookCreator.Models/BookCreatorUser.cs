@@ -12,6 +12,7 @@
             this.BlockedBy = new HashSet<BlockedUser>();
             this.Chapters = new HashSet<Chapter>();
             this.Comments = new HashSet<Comment>();
+            this.UserRatings = new HashSet<UserRating>();
         }
 
         public string Name { get; set; }
@@ -25,5 +26,7 @@
         public ICollection<Chapter> Chapters { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
+
+        public ICollection<UserRating> UserRatings { get; set; }
     }
 }

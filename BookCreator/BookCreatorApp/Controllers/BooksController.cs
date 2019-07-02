@@ -63,7 +63,7 @@ namespace BookCreatorApp.Controllers
 
             await this.bookService.DeleteBook(id, username);
 
-            return this.RedirectToAction("UserBooks", "Books", new {username});
+            return this.RedirectToAction("UserBooks", "Books", new { username });
         }
 
         [HttpGet]
@@ -97,6 +97,16 @@ namespace BookCreatorApp.Controllers
             //TODO: If i use the new theme I should check for authorize
             var book = this.bookService.GetBookById(id);
             return this.View(book);
+        }
+
+        [HttpPost]
+        public IActionResult AddRating(string bookId, double rating)
+        {
+            var username = this.User.Identity.Name;
+
+            this.bookService.AddRating(bookId, rating, username);
+
+            return RedirectToAction("Details", "Books", new { id = bookId });
         }
     }
 }

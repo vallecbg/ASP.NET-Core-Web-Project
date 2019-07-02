@@ -1,5 +1,4 @@
 *Important*
-- Add Ratings
 - Sort input models in folders
 - Books all view Genre selection not working
 - Need to improve profile view

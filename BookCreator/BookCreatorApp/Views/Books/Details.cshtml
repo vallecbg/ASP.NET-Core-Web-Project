@@ -7,6 +7,7 @@
 
     var isAuthor = this.User.Identity.Name == Model.Author;
     var user = await this.UserManager.FindByNameAsync(this.User.Identity.Name);
+    bool hasAlreadyRated = this.BookService.AlreadyRated(Model.Id, this.User.Identity.Name);
 
 }
 <div class="row col-md-12">
@@ -38,12 +39,36 @@
                 @if (isAuthor)
                 {
                     <div class="container d-flex justify-content-between">
-
+                        @* TODO: Add validation *@
                         <a asp-area="" asp-action="DeleteBook" asp-controller="Books" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fa fa-trash">Delete</i> </a>
                         <a asp-area="" asp-action="AddChapter" asp-controller="Chapters" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fa fa-plus">Add Chapter</i></a>
                     </div>
                 }
             </div>
+            @if (!isAuthor && !hasAlreadyRated)
+            {
+                <hr />
+                <div class="card-body">
+                    <form asp-action="AddRating" asp-controller="Books" method="post">
+                        <div class="form-group">
+                            <select name="Rating" class="col-md-12">
+                                <option selected class="text-center" disabled="disabled">Rate The Book!</option>
+                                @for (var r = 1; r <= 10; r++)
+                                {
+                                    <option class="text-center">@r</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" value="@Model.Id" name="bookId" hidden="hidden" />
+                        </div>
+                        <div>
+                            <button type="submit">Add Rating</button>
+                        </div>
+                    </form>
+                </div>
+
+            }
         </div>
     </div>
     <div class="col-md-6 border border-dark w-100 mb-1" style="max-height:800px;overflow-y:auto">

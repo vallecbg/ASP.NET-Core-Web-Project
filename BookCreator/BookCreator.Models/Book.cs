@@ -10,6 +10,7 @@ namespace BookCreator.Models
         public Book()
         {
             this.Chapters = new HashSet<Chapter>();
+            this.BookRatings = new HashSet<BookRating>();
         }
 
         public string Id { get; set; }
@@ -33,8 +34,10 @@ namespace BookCreator.Models
 
         public ICollection<Chapter> Chapters { get; set; }
 
+        public ICollection<BookRating> BookRatings { get; set; }
+
         //TODO: Add functionality
-        public double Rating => 0.00;
+        public double Rating => this.BookRatings.Any() ? this.BookRatings.Average(x => x.UserRating.Rating) : 0;
         public int Length => this.Chapters.Sum(x => x.Length);
     }
 }

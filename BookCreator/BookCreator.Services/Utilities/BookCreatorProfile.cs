@@ -39,7 +39,8 @@ namespace BookCreator.Services.Utilities
                 .ForAllOtherMembers(x => x.Ignore());
 
             CreateMap<Book, BookDetailsOutputModel>()
-                .ForMember(x => x.Genre, cfg => cfg.MapFrom(x => x.Genre.Genre));
+                .ForMember(x => x.Genre, cfg => cfg.MapFrom(x => x.Genre.Genre))
+                .ForMember(x => x.Rating, cfg => cfg.MapFrom(x => x.Rating));
 
             CreateMap<BookCreatorUser, UserOutputViewModel>()
                 .ForMember(x => x.Id, cfg => cfg.MapFrom(x => x.Id))
@@ -62,8 +63,7 @@ namespace BookCreator.Services.Utilities
                 .ForMember(x => x.Genre, cfg => cfg.MapFrom(x => x.Genre.Genre));
 
             CreateMap<Book, BookOutputModel>()
-                //TODO: Change it
-                .ForMember(x => x.Ratings, cfg => cfg.Ignore())
+                .ForMember(x => x.Ratings, cfg => cfg.MapFrom(x => x.BookRatings))
                 .ForMember(x => x.Author, cfg => cfg.MapFrom(x => x.Author))
                 .ForMember(x => x.Genre, cfg => cfg.MapFrom(x => x.Genre));
 
