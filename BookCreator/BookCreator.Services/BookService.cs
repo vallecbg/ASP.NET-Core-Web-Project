@@ -51,6 +51,10 @@ namespace BookCreator.Services
             var book = this.Context.Books
                 .Include(x => x.Author)
                 .Include(x => x.Chapters)
+                .Include(x => x.Genre)
+                .Include(x => x.BookRatings)
+                .ThenInclude(x => x.UserRating)
+                .Include(x => x.Comments)
                 .FirstOrDefaultAsync(x => x.Id == id).Result;
 
             var user = await this.UserManager.FindByNameAsync(username);

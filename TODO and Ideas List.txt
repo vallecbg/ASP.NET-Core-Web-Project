@@ -10,6 +10,7 @@
 - Add image url and rating in Books
 - Fix books view
 - Improve last published books view
+- Fix when registering user for the name property use space
 
 *Minor*
 - Add api support
