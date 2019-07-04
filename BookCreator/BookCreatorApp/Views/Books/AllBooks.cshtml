@@ -12,7 +12,7 @@
         <form id="myForm" asp-action="AllBooks" asp-controller="Books">
             <div class="form-row align-items-center">
                 <div class="col-auto">
-                    <select class="custom-select mr-sm-2" name="type" onchange="this.form.submit">
+                    <select class="custom-select mr-sm-2" name="genre" onchange="this.form.submit">
                         <option selected>Choose...</option>
                         @foreach (var g in genres)
                         {

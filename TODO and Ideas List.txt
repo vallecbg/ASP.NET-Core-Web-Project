@@ -1,6 +1,5 @@
 *Important*
 - Add messages
-- Books all view Genre selection not working
 - Need to improve profile view
 - Check for remember me button
 - Check _ViewImports page i think i can put all usings here
