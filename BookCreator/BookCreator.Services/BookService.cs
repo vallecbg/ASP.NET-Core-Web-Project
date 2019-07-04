@@ -11,6 +11,7 @@ using BookCreator.Models;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
 using BookCreator.ViewModels.InputModels;
+using BookCreator.ViewModels.InputModels.Books;
 using BookCreator.ViewModels.OutputModels.Books;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;

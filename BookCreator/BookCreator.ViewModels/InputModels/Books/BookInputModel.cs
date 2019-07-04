@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using BookCreator.ViewModels.Utilities;
 using Microsoft.AspNetCore.Http;
 
-namespace BookCreator.ViewModels.InputModels
+namespace BookCreator.ViewModels.InputModels.Books
 {
     public class BookInputModel
     {

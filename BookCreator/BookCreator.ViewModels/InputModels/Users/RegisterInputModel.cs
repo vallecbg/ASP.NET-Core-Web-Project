@@ -1,9 +1,9 @@
-﻿namespace BookCreator.ViewModels.InputModels
-{
-	using System.ComponentModel.DataAnnotations;
-	using Utilities;
+﻿using System.ComponentModel.DataAnnotations;
+using BookCreator.ViewModels.Utilities;
 
-	public class RegisterInputModel
+namespace BookCreator.ViewModels.InputModels.Users
+{
+    public class RegisterInputModel
 	{
 		[Required]
 		[StringLength(ViewModelsConstants.UserModelNicknameMaxLength, MinimumLength = ViewModelsConstants.UserModelNicknameMinLength)]

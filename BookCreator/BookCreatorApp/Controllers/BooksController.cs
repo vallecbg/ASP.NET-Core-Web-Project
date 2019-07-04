@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
 using BookCreator.ViewModels.InputModels;
+using BookCreator.ViewModels.InputModels.Books;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

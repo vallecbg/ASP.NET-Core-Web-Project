@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using BookCreator.ViewModels.InputModels;
+using BookCreator.ViewModels.InputModels.Books;
 using BookCreator.ViewModels.OutputModels.Books;
 
 namespace BookCreator.Services.Interfaces

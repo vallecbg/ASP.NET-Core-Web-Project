@@ -1,4 +1,5 @@
-﻿using BookCreator.ViewModels.OutputModels.Books;
+﻿using BookCreator.ViewModels.InputModels.Users;
+using BookCreator.ViewModels.OutputModels.Books;
 
 namespace BookCreator.Services
 {

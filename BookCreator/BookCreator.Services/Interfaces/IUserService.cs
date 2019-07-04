@@ -1,4 +1,6 @@
-﻿namespace BookCreator.Services.Interfaces
+﻿using BookCreator.ViewModels.InputModels.Users;
+
+namespace BookCreator.Services.Interfaces
 {
 	using System.Collections.Generic;
 	using System.Threading.Tasks;

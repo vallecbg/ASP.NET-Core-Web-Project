@@ -1,4 +1,6 @@
-﻿namespace BookCreatorApp.Controllers
+﻿using BookCreator.ViewModels.InputModels.Users;
+
+namespace BookCreatorApp.Controllers
 {
 	using System.Security.Claims;
 	using System.Threading.Tasks;

@@ -1,7 +1,9 @@
 ﻿using System.Security.Policy;
+using BookCreator.ViewModels.InputModels.Books;
 using BookCreator.ViewModels.InputModels.Chapters;
 using BookCreator.ViewModels.InputModels.Comments;
 using BookCreator.ViewModels.InputModels.Messages;
+using BookCreator.ViewModels.InputModels.Users;
 using BookCreator.ViewModels.OutputModels.Books;
 using BookCreator.ViewModels.OutputModels.Comments;
 
@@ -76,14 +78,6 @@ namespace BookCreator.Services.Utilities
 
             CreateMap<Comment, CommentOutputModel>()
                 .ForMember(x => x.Author, cfg => cfg.MapFrom(x => x.User.UserName));
-
-            //CreateMap<MessageInputModel, Message>()
-            //    .ForMember(x => x.SentOn, cfg => cfg.MapFrom(x => x.SentDate))
-            //    .ForMember(x => x.SenderId, cfg => cfg.MapFrom(x => x.SenderId))
-            //    .ForMember(x => x.ReceiverId, cfg => cfg.MapFrom(x => x.Receiver))
-            //    .ForMember(x => x.Text, cfg => cfg.MapFrom(x => x.Text))
-            //    .ForMember(x => x.IsRead, cfg => cfg.Ignore())
-            //    .ForAllOtherMembers(x => x.Ignore());
         }
 	}
 }

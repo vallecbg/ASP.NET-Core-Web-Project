@@ -1,8 +1,8 @@
-﻿namespace BookCreator.ViewModels.InputModels
-{
-    using Utilities;
-    using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using BookCreator.ViewModels.Utilities;
 
+namespace BookCreator.ViewModels.InputModels.Users
+{
     public class LoginInputModel
     {
         [Required]
