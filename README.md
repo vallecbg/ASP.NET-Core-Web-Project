@@ -7,16 +7,16 @@
 
 You are a reader and like to write. Book Creator is a platform
 where you can share your work with the other people.
-Users can Add or Delete Books and Chapters in them,
-Users can Follow and Unfollow other Books,
-Users receive Notification if the Book they follow get a new Chapter,
-Users can Comment and Rate other Books,
-Users can Block and Unblock other Users,
-Users can write Messages to other Users.
-Moderators have all rights a Regular User has,
-Moderators can moderate Books Comments.
-Administrators have all rights,
-Administrators can do everything.
+- Users can Add or Delete Books and Chapters in them,
+- Users can Follow and Unfollow other Books,
+- Users receive Notification if the Book they follow get a new Chapter,
+- Users can Comment and Rate other Books,
+- Users can Block and Unblock other Users,
+- Users can write Messages to other Users.
+- Moderators have all rights a Regular User has,
+- Moderators can moderate Books Comments.
+- Administrators have all rights,
+- Administrators can do everything.
 
 ## Entities
 
@@ -62,7 +62,7 @@ Administrators can do everything.
   - Sender (User)
   - Receiver (User)
   - Text (string)
-  - Is Readed (bool)
+  - Is Read (bool)
 ### Comment
   - Id (string)
   - User (User)
