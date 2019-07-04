@@ -3,7 +3,6 @@
 - Need to improve profile view
 - Check for remember me button
 - Check _ViewImports page i think i can put all usings here
-- Remove full path of services in views
 - Fix the colors of the footer index not logged in
 - Fix when resizing not showing navbar menu
 - Fix books view

@@ -1,5 +1,4 @@
-﻿@using BookCreator.ViewModels.OutputModels.Chapters
-@model IEnumerable<ChapterOutputModel>
+﻿@model IEnumerable<ChapterOutputModel>
 @{
     bool haschapter = Model.Any();
     bool author = Model.All(x => x.Author == this.User.Identity.Name);
