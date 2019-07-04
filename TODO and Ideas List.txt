@@ -1,13 +1,10 @@
 *Important*
 - Add messages
+- Add followers and followers count in book details
 - Need to improve profile view
 - Check for remember me button
-- Check _ViewImports page i think i can put all usings here
-- Fix the colors of the footer index not logged in
 - Fix when resizing not showing navbar menu
-- Fix books view
 - Improve last published books view
-- Fix when registering user for the name property use space
 
 *Minor*
 - Add api support
@@ -19,3 +16,4 @@
 - Improve front end of the website
 - Add sms notifications
 - Maybe need to store the last random book to avoid dublicate of every reload
+- Fix the colors of the footer index not logged in

@@ -7,7 +7,7 @@ namespace BookCreator.ViewModels.InputModels.Users
     {
         [Required]
         [StringLength(ViewModelsConstants.UserModelNicknameMaxLength, MinimumLength = ViewModelsConstants.UserModelNicknameMinLength)]
-        [RegularExpression(ViewModelsConstants.RegexForValidationNicknameOrUsername)]
+        [RegularExpression(ViewModelsConstants.RegexForValidationUsername, ErrorMessage = ViewModelsConstants.ErrorMessageUsernameRegisterModel)]
         public string Username { get; set; }
 
         [Required]
