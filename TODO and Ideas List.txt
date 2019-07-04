@@ -1,4 +1,5 @@
 *Important*
+- Add messages
 - Sort input models in folders
 - Books all view Genre selection not working
 - Need to improve profile view
@@ -7,7 +8,6 @@
 - Remove full path of services in views
 - Fix the colors of the footer index not logged in
 - Fix when resizing not showing navbar menu
-- Add image url and rating in Books
 - Fix books view
 - Improve last published books view
 - Fix when registering user for the name property use space

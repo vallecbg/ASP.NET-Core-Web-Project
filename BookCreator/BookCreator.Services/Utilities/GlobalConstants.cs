@@ -75,6 +75,8 @@ namespace BookCreator.Services.Utilities
 
         public const string AlreadyRated = "You have already rated this story";
 
+        public const string EmptyMessage = "The message cannot be empty!";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";

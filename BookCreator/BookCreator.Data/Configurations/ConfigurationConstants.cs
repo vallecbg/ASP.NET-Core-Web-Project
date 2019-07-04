@@ -14,5 +14,7 @@ namespace BookCreator.Data.Configurations
 
         public const int CommentContentMaxLength = 300;
 
+        public const int MessageMaxLength = 300;
+
     }
 }

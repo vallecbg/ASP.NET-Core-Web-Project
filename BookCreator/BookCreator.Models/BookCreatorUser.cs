@@ -13,6 +13,8 @@
             this.Chapters = new HashSet<Chapter>();
             this.Comments = new HashSet<Comment>();
             this.UserRatings = new HashSet<UserRating>();
+            this.SentMessages = new HashSet<Message>();
+            this.ReceivedMessages = new HashSet<Message>();
         }
 
         public string Name { get; set; }
@@ -28,5 +30,9 @@
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<UserRating> UserRatings { get; set; }
+
+        public ICollection<Message> SentMessages { get; set; }
+
+        public ICollection<Message> ReceivedMessages { get; set; }
     }
 }
