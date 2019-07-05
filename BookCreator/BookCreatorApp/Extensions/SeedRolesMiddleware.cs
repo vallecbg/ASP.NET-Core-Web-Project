@@ -42,6 +42,7 @@
 				Name = GlobalConstants.Moderator
 			});
 
+            //TODO: Check if needed
 			await roleManager.CreateAsync(new IdentityRole
 			{
 				Name = GlobalConstants.PaidUser
@@ -54,16 +55,16 @@
 
 			var user = new BookCreatorUser
 			{
-				UserName = "admin",
+				UserName = "admintest",
 				Email = "admin@admin.com",
-				Name = "Admin"
+				Name = "The Admin"
 			};
 
 			var normalUser = new BookCreatorUser
 			{
-				UserName = "user",
+				UserName = "usertest",
 				Email = "user@user.com",
-				Name = "User"
+				Name = "The User"
 			};
 
 			string normalUserPass = "user";

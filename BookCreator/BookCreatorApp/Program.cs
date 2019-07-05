@@ -32,6 +32,9 @@
         {
             var dbContext = serviceProvider.GetRequiredService<BookCreatorContext>();
 
+            //Make sure the database is created
+            dbContext.Database.EnsureCreated();
+
             var genres = new[]
             {
                 new BookGenre()

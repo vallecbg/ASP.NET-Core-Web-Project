@@ -6,7 +6,7 @@ namespace BookCreator.ViewModels.OutputModels.Chapters
 {
     public class ChapterOutputModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Title { get; set; }
 

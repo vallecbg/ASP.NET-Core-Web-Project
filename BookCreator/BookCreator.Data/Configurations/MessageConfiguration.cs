@@ -21,6 +21,9 @@ namespace BookCreator.Data.Configurations
                 .WithMany(x => x.SentMessages)
                 .HasForeignKey(x => x.SenderId);
 
+            builder.Property(x => x.IsRead)
+                .IsRequired(true);
+
             builder.Property(x => x.Text)
                 .HasMaxLength(ConfigurationConstants.MessageMaxLength);
         }

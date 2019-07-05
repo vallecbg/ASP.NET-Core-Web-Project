@@ -34,7 +34,11 @@ namespace BookCreatorApp.Views.ViewComponents
 
         private async Task<List<ChapterOutputModel>> GetChaptersAsync(string id)
         {
-            var chapters = await this.Context.Chapters.Where(x => x.BookId == id).ProjectTo<ChapterOutputModel>(Mapper.ConfigurationProvider).ToListAsync();
+            var chapters = await this.Context.Chapters
+                .Where(x => x.BookId == id)
+                .ProjectTo<ChapterOutputModel>(Mapper.ConfigurationProvider)
+                .OrderBy(x => x.Id)
+                .ToListAsync();
 
             return chapters;
         }

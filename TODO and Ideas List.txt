@@ -1,4 +1,6 @@
 *Important*
+- Need to refactor the design of the page
+- Fix books images size
 - Add full details on user
 - Add messages
 - Add followers and followers count in book details

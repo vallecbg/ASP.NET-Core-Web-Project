@@ -8,12 +8,14 @@
     <div class="col-md-12 w-100">
         @if (Model.Any())
         {
+            var count = 1;
             foreach (var s in Model)
             {
                 <div class="col-md-12">
 
                     <div class="col-md-12 media-heading  justify-content-center">
-                        <h4 class="mt-0"> Chapter Title:@s.Title</h4>
+                        <h4 class="mt-0"> Chapter @count</h4>
+                        <h5 class="mt-0"> @s.Title</h5>
                         <h5 class="mt-0"> Added On: @s.CreatedOn</h5>
                         <hr />
                     </div>
@@ -36,6 +38,7 @@
                     }
                 </div>
                 <hr style="height: 2px" />
+                count++;
             }
         }
         else

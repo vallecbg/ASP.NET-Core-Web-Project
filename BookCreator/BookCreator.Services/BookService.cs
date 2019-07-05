@@ -100,7 +100,7 @@ namespace BookCreator.Services
                 .OrderBy(r => Guid.NewGuid())
                 .ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider)
                 .ToList();
-            var randomBook = allBooks.First();
+            var randomBook = allBooks.FirstOrDefault();
 
             return randomBook;
         }
