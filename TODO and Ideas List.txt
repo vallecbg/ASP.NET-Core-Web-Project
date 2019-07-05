@@ -1,4 +1,5 @@
 *Important*
+- Add full details on user
 - Add messages
 - Add followers and followers count in book details
 - Need to improve profile view

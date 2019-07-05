@@ -13,7 +13,7 @@ namespace BookCreator.ViewModels.InputModels.Books
         public string Title { get; set; }
 
         [DataType(DataType.MultilineText)]
-        [StringLength(ViewModelsConstants.StorySummaryLength)]
+        [StringLength(ViewModelsConstants.BookSummaryLength)]
         public string Summary { get; set; }
 
         [Required]
@@ -24,7 +24,7 @@ namespace BookCreator.ViewModels.InputModels.Books
 
         public string Author { get; set; }
 
-        [Display(Name = ViewModelsConstants.StoryImageDisplay)]
+        [Display(Name = ViewModelsConstants.BookImageDisplay)]
         [DataType(DataType.Upload)]
         public IFormFile BookCoverImage { get; set; }
     }

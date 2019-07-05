@@ -40,8 +40,8 @@ namespace BookCreator.ViewModels.Utilities
 
         public const int MessageLength = 400;
 
-        public const int StorySummaryLength = 200;
+        public const int BookSummaryLength = 200;
 
-        public const string StoryImageDisplay = "Story Image";
+        public const string BookImageDisplay = "Book Cover Image";
     }
 }
