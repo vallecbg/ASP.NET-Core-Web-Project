@@ -111,22 +111,22 @@ namespace BookCreatorApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Follow(string bookId)
+        public async Task<IActionResult> Follow(string id)
         {
             var username = this.User.Identity.Name;
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await this.bookService.Follow(username, userId, bookId);
+            await this.bookService.Follow(username, userId, id);
 
-            return RedirectToAction("Details", "Books", new { bookId });
+            return RedirectToAction("Details", "Books", new { id });
         }
 
         [HttpGet]
-        public async Task<IActionResult> UnFollow(string bookId)
+        public async Task<IActionResult> UnFollow(string id)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await this.bookService.UnFollow(userId, bookId);
+            await this.bookService.UnFollow(userId, id);
 
-            return RedirectToAction("Details", "Books", new { bookId });
+            return RedirectToAction("Details", "Books", new { id });
         }
     }
 }

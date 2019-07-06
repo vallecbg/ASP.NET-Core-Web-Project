@@ -147,15 +147,15 @@ namespace BookCreator.Services
             return rated;
         }
 
-        public async Task Follow(string username, string userId, string bookId)
+        public async Task Follow(string username, string userId, string id)
         {
             var userBook = new UserBook
             {
-                BookId = bookId,
+                BookId = id,
                 UserId = userId
             };
 
-            bool isFollowed = IsFollowing(userId, bookId);
+            bool isFollowed = IsFollowing(userId, id);
             if (isFollowed)
             {
                 throw new InvalidOperationException(string.Join(GlobalConstants.AlreadyFollowed, username));
@@ -165,13 +165,13 @@ namespace BookCreator.Services
             await this.Context.SaveChangesAsync();
         }
 
-        public async Task UnFollow(string userId, string bookId)
+        public async Task UnFollow(string userId, string id)
         {
             var userBook = this.Context.UsersBooks
-                .Where(x => x.BookId == bookId)
+                .Where(x => x.BookId == id)
                 .Select(x => new UserBook()
                 {
-                    BookId = bookId,
+                    BookId = id,
                     UserId = userId
                 })
                 .FirstOrDefault();
@@ -227,6 +227,13 @@ namespace BookCreator.Services
                 .Any(x => x.UserId == userId && x.BookId == bookId);
 
             return result;
+        }
+
+        public int FollowingCount(string bookId)
+        {
+            var count = this.Context.UsersBooks.Count(x => x.BookId.Equals(bookId));
+
+            return count;
         }
 
         private async Task<string> UploadImage(Cloudinary cloudinary, IFormFile fileform, string storyName)
