@@ -42,11 +42,11 @@
 				Name = GlobalConstants.Moderator
 			});
 
-            //TODO: Check if needed
-			await roleManager.CreateAsync(new IdentityRole
-			{
-				Name = GlobalConstants.PaidUser
-			});
+            ////TODO: Check if needed
+			//await roleManager.CreateAsync(new IdentityRole
+			//{
+			//	Name = GlobalConstants.PaidUser
+			//});
 
 			await roleManager.CreateAsync(new IdentityRole
 			{

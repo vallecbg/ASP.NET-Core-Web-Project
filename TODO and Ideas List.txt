@@ -1,5 +1,4 @@
 *Important*
-- Fix names of demo accounts
 - Need to refactor the design of the page
 - Fix books images size
 - Add full details on user
