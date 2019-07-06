@@ -77,6 +77,10 @@ namespace BookCreator.Services.Utilities
 
         public const string EmptyMessage = "The message cannot be empty!";
 
+        public const string AlreadyFollowed = "You have already followed this book!";
+
+        public const string NotFollowing = "You aren't following this book!";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";

@@ -7,6 +7,7 @@
     var isAuthor = this.User.Identity.Name == Model.Author;
     var user = await this.UserManager.FindByNameAsync(this.User.Identity.Name);
     bool hasAlreadyRated = this.BookService.AlreadyRated(Model.Id, this.User.Identity.Name);
+    bool isFollowed = this.BookService.IsFollowing(user.Id, Model.Id);
 
 }
 <div class="row col-md-12">
@@ -38,10 +39,19 @@
                 @if (isAuthor)
                 {
                     <div class="container d-flex justify-content-between">
-                        @* TODO: Add validation *@
                         <a asp-area="" asp-action="DeleteBook" asp-controller="Books" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fas fa-trash">Delete</i> </a>
                         <a asp-area="" asp-action="AddChapter" asp-controller="Chapters" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fas fa-plus">Add Chapter</i></a>
                     </div>
+                }
+                @if (isFollowed && !isAuthor)
+                {
+                    <a asp-area="" asp-action="UnFollow" asp-controller="Books" asp-route-id="@Model.Id" class="btn btn-primary">UnFollow </a>
+
+                }
+                @if (!isFollowed && !isAuthor)
+                {
+                    <a asp-action="Follow" asp-controller="Books" asp-area="" asp-route-id="@Model.Id" class="btn btn-primary">Follow</a>
+
                 }
             </div>
             @if (!isAuthor && !hasAlreadyRated)
@@ -66,7 +76,6 @@
                         </div>
                     </form>
                 </div>
-
             }
         </div>
     </div>

@@ -30,6 +30,16 @@ namespace BookCreator.Services.Interfaces
 
         bool AlreadyRated(string bookId, string username);
 
+        Task Follow(string username, string userId, string bookId);
+
+        Task UnFollow(string userId, string bookId);
+
+        bool IsFollowing(string userId, string bookId);
+
+        //ICollection<BookOutputModel> FollowedBooks(string name);
+
+        //ICollection<BookOutputModel> FollowedBooksByGenre(string username, string genre);
+
 
     }
 }

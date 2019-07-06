@@ -37,7 +37,7 @@ namespace BookCreatorApp.Views.ViewComponents
             var chapters = await this.Context.Chapters
                 .Where(x => x.BookId == id)
                 .ProjectTo<ChapterOutputModel>(Mapper.ConfigurationProvider)
-                .OrderBy(x => x.Id)
+                .OrderBy(x => x.CreatedOn)
                 .ToListAsync();
 
             return chapters;

@@ -147,6 +147,45 @@ namespace BookCreator.Services
             return rated;
         }
 
+        public async Task Follow(string username, string userId, string bookId)
+        {
+            var userBook = new UserBook
+            {
+                BookId = bookId,
+                UserId = userId
+            };
+
+            bool isFollowed = IsFollowing(userId, bookId);
+            if (isFollowed)
+            {
+                throw new InvalidOperationException(string.Join(GlobalConstants.AlreadyFollowed, username));
+            }
+
+            this.Context.UsersBooks.Add(userBook);
+            await this.Context.SaveChangesAsync();
+        }
+
+        public async Task UnFollow(string userId, string bookId)
+        {
+            var userBook = this.Context.UsersBooks
+                .Where(x => x.BookId == bookId)
+                .Select(x => new UserBook()
+                {
+                    BookId = bookId,
+                    UserId = userId
+                })
+                .FirstOrDefault();
+            if (userBook != null)
+            {
+                this.Context.UsersBooks.Remove(userBook);
+                await this.Context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new ArgumentNullException(GlobalConstants.NotFollowing);
+            }
+        }
+
         public ICollection<BookOutputModel> CurrentBooks(string genre)
         {
             if (string.IsNullOrEmpty(genre) || genre == GlobalConstants.ReturnAllBooks)
@@ -165,6 +204,7 @@ namespace BookCreator.Services
             var userBooks = this.Context.Books
                 .Include(x => x.Author)
                 .Include(x => x.Chapters)
+                .Include(x => x.Genre)
                 .Where(x => x.AuthorId == id)
                 .ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider)
                 .ToList();
@@ -179,6 +219,14 @@ namespace BookCreator.Services
                 .ToArray();
 
             return genres;
+        }
+
+        public bool IsFollowing(string userId, string bookId)
+        {
+            bool result = this.Context.UsersBooks
+                .Any(x => x.UserId == userId && x.BookId == bookId);
+
+            return result;
         }
 
         private async Task<string> UploadImage(Cloudinary cloudinary, IFormFile fileform, string storyName)

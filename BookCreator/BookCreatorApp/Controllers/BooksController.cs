@@ -109,5 +109,24 @@ namespace BookCreatorApp.Controllers
 
             return RedirectToAction("Details", "Books", new { id = bookId });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Follow(string bookId)
+        {
+            var username = this.User.Identity.Name;
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            await this.bookService.Follow(username, userId, bookId);
+
+            return RedirectToAction("Details", "Books", new { bookId });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UnFollow(string bookId)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            await this.bookService.UnFollow(userId, bookId);
+
+            return RedirectToAction("Details", "Books", new { bookId });
+        }
     }
 }

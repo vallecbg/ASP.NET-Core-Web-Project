@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190705214210_AddedUsersBooks.cs" />
+    <Compile Remove="Migrations\20190705214210_AddedUsersBooks.Designer.cs" />
+    <Compile Remove="Migrations\20190705221656_AddedUserBookClass.cs" />
+    <Compile Remove="Migrations\20190705221656_AddedUserBookClass.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.4" />

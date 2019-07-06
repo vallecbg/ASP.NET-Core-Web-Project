@@ -4,14 +4,16 @@ using BookCreator.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookCreator.Data.Migrations
 {
     [DbContext(typeof(BookCreatorContext))]
-    partial class BookCreatorContextModelSnapshot : ModelSnapshot
+    [Migration("20190705221953_AddedUsersBooks")]
+    partial class AddedUsersBooks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,6 +220,19 @@ namespace BookCreator.Data.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("BookCreator.Models.UserBook", b =>
+                {
+                    b.Property<string>("BookId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("BookId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UsersBooks");
+                });
+
             modelBuilder.Entity("BookCreator.Models.UserRating", b =>
                 {
                     b.Property<string>("Id")
@@ -416,6 +431,19 @@ namespace BookCreator.Data.Migrations
                     b.HasOne("BookCreator.Models.BookCreatorUser", "Sender")
                         .WithMany("SentMessages")
                         .HasForeignKey("SenderId");
+                });
+
+            modelBuilder.Entity("BookCreator.Models.UserBook", b =>
+                {
+                    b.HasOne("BookCreator.Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BookCreator.Models.BookCreatorUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BookCreator.Models.UserRating", b =>
