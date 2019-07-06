@@ -1,12 +1,11 @@
 *Important*
 - Need to refactor the design of the page
-- Fix books images size
 - Add full details on user
 - Add messages
 - Add followers and followers count in book details
 - Need to improve profile view
 - Check for remember me button
-- Fix when resizing not showing navbar menu
+- Fix when resizing not showing navbar menu and also not showing the black line
 - Improve last published books view
 
 *Minor*
