@@ -1,4 +1,5 @@
-﻿namespace BookCreatorApp
+﻿
+namespace BookCreatorApp
 {
 	using System;
 	using AutoMapper;
@@ -17,8 +18,11 @@
 	using BookCreator.Services.Interfaces;
 	using BookCreator.Services.Utilities;
 	using Microsoft.Extensions.Logging;
+    using Hubs;
 
-	public class Startup
+
+
+    public class Startup
 	{
 		public Startup(IConfiguration configuration)
 		{
@@ -35,6 +39,8 @@
 				options.CheckConsentNeeded = context => true;
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
+
+            services.AddSignalR();
 
 			services.AddDbContext<BookCreatorContext>(options =>
 				options.UseSqlServer(
@@ -114,7 +120,13 @@
 					 name: "default",
 					 template: "{controller=Home}/{action=Index}/{id?}");
 			});
+
 			app.UseCookiePolicy();
-		}
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chatHub");
+            });
+        }
 	}
 }

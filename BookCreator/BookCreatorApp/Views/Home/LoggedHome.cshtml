@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Title: @s.Title</h5>
                     <p class="card-text">@s.Summary</p>
-                    
+
                 </div>
                 <ul class="list-group list-group-flush">
                     @if (s.Author == null)
@@ -33,7 +33,7 @@
                 <div class="card-body">
                     <a asp-action="Details" asp-controller="Books" asp-route-id="@s.Id" class="btn btn-primary">Go to Book</a>
                 </div>
-                <hr/>
+                <hr />
             }
 
         </div>
@@ -56,7 +56,32 @@
             @* TODO: Add announcements *@
         </div>
     </div>
+    <div class="container">
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-6">&nbsp;</div>
+            <div class="col-6">
+                <input type="hidden" value="@this.User.Identity.Name" id="userInput"/>
+                Message...<input type="text" id="messageInput" />
+                <input type="button" id="sendButton" value="Send Message" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">&nbsp;</div>
+            <div class="col-6">
+                <ul id="messagesList"></ul>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
 @section scripts{
 
     @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
