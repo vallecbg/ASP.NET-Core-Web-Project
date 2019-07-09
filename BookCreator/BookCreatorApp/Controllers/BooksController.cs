@@ -128,5 +128,25 @@ namespace BookCreatorApp.Controllers
 
             return RedirectToAction("Details", "Books", new { id });
         }
+
+        [HttpGet]
+        public IActionResult FollowedBooks()
+        {
+            var name = this.User.Identity.Name;
+
+            var result = this.bookService.FollowedBooks(name);
+
+            return this.View(result);
+        }
+
+        [HttpPost]
+        public IActionResult FollowedBooks(string genre)
+        {
+            var name = this.User.Identity.Name;
+
+            var result = this.bookService.FollowedBooksByGenre(name, genre);
+
+            return this.View(result);
+        }
     }
 }

@@ -34,5 +34,7 @@
         public ICollection<Message> SentMessages { get; set; }
 
         public ICollection<Message> ReceivedMessages { get; set; }
+
+        
     }
 }

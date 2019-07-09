@@ -12,6 +12,7 @@ namespace BookCreator.Models
             this.Chapters = new HashSet<Chapter>();
             this.BookRatings = new HashSet<BookRating>();
             this.Comments = new HashSet<Comment>();
+            this.Followers = new HashSet<UserBook>();
         }
 
         public string Id { get; set; }
@@ -38,6 +39,8 @@ namespace BookCreator.Models
         public ICollection<BookRating> BookRatings { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
+
+        public ICollection<UserBook> Followers { get; set; }
 
         //TODO: Add functionality
         public double Rating => this.BookRatings.Any() ? this.BookRatings.Average(x => x.UserRating.Rating) : 0;

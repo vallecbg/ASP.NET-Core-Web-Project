@@ -1,5 +1,4 @@
 *Important*
-- Add followed books
 - Improve the chat
 - Need to refactor the design of the page
 - Add full details on user

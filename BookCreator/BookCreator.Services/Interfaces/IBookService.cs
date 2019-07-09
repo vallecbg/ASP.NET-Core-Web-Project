@@ -38,9 +38,9 @@ namespace BookCreator.Services.Interfaces
 
         int FollowingCount(string bookId);
 
-        //ICollection<BookOutputModel> FollowedBooks(string name);
+        ICollection<BookOutputModel> FollowedBooks(string name);
 
-        //ICollection<BookOutputModel> FollowedBooksByGenre(string username, string genre);
+        ICollection<BookOutputModel> FollowedBooksByGenre(string username, string genre);
 
 
     }

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BookOutputModel>
+@inject IBookService Service
+@{
+    ViewData["Title"] = "FollowedStories";
+    var genres = this.Service.Genres();
+    var nullAuthor = GlobalConstants.UnknownUser;
+}
+
+<div class="container-fluid">
+    <div class="row mt-5 col-md-3">
+        <form id="myForm" asp-action="FollowedBooks" asp-controller="Books">
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <select class="custom-select mr-sm-2" name="genre" onchange="this.form.submit">
+                        <option selected>Choose...</option>
+                        @foreach (var g in genres)
+                        {
+                            <option value="@g.GenreName">@g.GenreName</option>
+                        }
+                        <option value="All">All</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row mt-5 mb-5" style="overflow-y: auto;">
+
+        @foreach (var s in Model)
+        {
+            <div class="col-lg-4 col-md-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top w-100" src="@s.ImageUrl" style="height: 250px; width: 100px" alt="@s.Title">
+                    <div class="card-body">
+                        <h4 class="card-title d-flex justify-content-between">
+                            <small>Title: @s.Title</small>
+                            <small>Genre: @s.Genre.GenreName</small>
+                        </h4>
+                        @if (s.Author == null)
+                        {
+                            <h5>Author: @nullAuthor</h5>
+                        }
+                        else
+                        {
+                            <h5>Author: @s.Author.Username</h5>
+                        }
+                        <hr />
+                        <p class="card-text">@s.Summary</p>
+                    </div>
+                    <div class="card-footer">
+                        <a small class="text-muted card-link" asp-controller="Books" asp-action="Details" asp-route-id="@s.Id" as>Go to Book</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="mt-5">
+    </div>
+</div>
+@section scripts{
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+
+    <script>
+        $("select").change(function () {
+            $("#myForm").submit();
+        });
+    </script>
+
+}

@@ -236,6 +236,26 @@ namespace BookCreator.Services
             return count;
         }
 
+        public ICollection<BookOutputModel> FollowedBooks(string name)
+        {
+            var result = this.Context.Books
+                .Where(x => x.Followers.Any(z => z.User.UserName == name))
+                .ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider)
+                .ToList();
+
+            return result;
+        }
+
+        public ICollection<BookOutputModel> FollowedBooksByGenre(string username, string genre)
+        {
+            var result = this.Context.Books
+                .Where(x => x.Followers.Any(z => z.User.UserName == username) && x.Genre.Genre == genre)
+                .ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider)
+                .ToList();
+
+            return result;
+        }
+
         private async Task<string> UploadImage(Cloudinary cloudinary, IFormFile fileform, string storyName)
         {
             if (fileform == null)
