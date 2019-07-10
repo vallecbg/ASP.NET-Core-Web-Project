@@ -1,0 +1,55 @@
+﻿@model ChangingRoleModel
+
+<div class="row col-md-6 offset-2 mt-5">
+    <div class="text-center container d-flex justify-content-center">
+        <h3 class="text-dark">Changing User Role</h3>
+    </div>
+    <hr />
+    <div class="col-md-12 mt-5">
+        <form asp-action="EditRole" asp-controller="Admins" asp-area="Administration" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group text-center">
+                <label asp-for="Name" class="control-label text-center"></label>
+                <input asp-for="Name" class="form-control text-center" disabled="disabled" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <label asp-for="Role" class="control-label"></label>
+                <input asp-for="Role" class="form-control text-center" disabled="disabled" />
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @if (this.ViewData.ContainsKey(GlobalConstants.Error))
+                {
+                    <p class="text-danger">@ViewData[GlobalConstants.Error]</p>
+                }
+                <p class="text-center">Select New Role</p>
+                <select name="NewRole" class="col-md-12" style="height: 2em">
+                    @foreach (var r in Model.AppRoles)
+                    {
+                        if (r == Model.Role)
+                        {
+                            <option selected class="text-center">@r</option>
+                            continue;
+                        }
+                        <option class="text-center">@r</option>
+                    }
+                </select>
+            </div>
+            <hr style="height: 2px" />
+            <div class="btn-group justify-content-between d-flex container">
+                <div>
+                    <input type="submit" class="btn btn-primary btn-lg" value="Save" style="width: auto; height: auto">
+                </div>
+                <div>
+                    <a class="btn btn-lg  btn-warning" asp-action="Users" asp-controller="Admins" asp-area="Administration">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+}
+

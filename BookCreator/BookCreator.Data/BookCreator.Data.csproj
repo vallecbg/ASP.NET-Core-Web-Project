@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20190705221656_AddedUserBookClass.Designer.cs" />
     <Compile Remove="Migrations\old\20190709203431_AddedFollowingBooks.cs" />
     <Compile Remove="Migrations\old\20190709203431_AddedFollowingBooks.Designer.cs" />
+    <Compile Remove="Migrations\old\20190710172148_AddedFollowedBooksEntityInUser.cs" />
+    <Compile Remove="Migrations\old\20190710172148_AddedFollowedBooksEntityInUser.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

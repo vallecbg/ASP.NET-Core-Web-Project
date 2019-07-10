@@ -78,6 +78,13 @@ namespace BookCreator.Services.Utilities
 
             CreateMap<Comment, CommentOutputModel>()
                 .ForMember(x => x.Author, cfg => cfg.MapFrom(x => x.User.UserName));
+
+            CreateMap<BookCreatorUser, AdminUsersOutputModel>()
+                .ForMember(x => x.MessagesCount,
+                    cfg => cfg.MapFrom(x => (x.ReceivedMessages.Count + x.SentMessages.Count)))
+                .ForMember(x => x.BooksCount, cfg => cfg.MapFrom(x => x.Books.Count))
+                .ForMember(x => x.CommentsCount, cfg => cfg.MapFrom(x => x.Comments.Count))
+                .ForMember(x => x.Role, cfg => cfg.Ignore());
         }
 	}
 }

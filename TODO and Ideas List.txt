@@ -10,6 +10,7 @@
 - Improve last published books view
 
 *Minor*
+- Add particles.js in main menu
 - If i have time i can add more roles with some permissions
 - Add api support
 - It's possible to add admin panel template from bootstrap

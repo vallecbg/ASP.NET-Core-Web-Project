@@ -15,6 +15,7 @@
             this.UserRatings = new HashSet<UserRating>();
             this.SentMessages = new HashSet<Message>();
             this.ReceivedMessages = new HashSet<Message>();
+            this.FollowedBooks = new HashSet<UserBook>();
         }
 
         public string Name { get; set; }
@@ -34,6 +35,8 @@
         public ICollection<Message> SentMessages { get; set; }
 
         public ICollection<Message> ReceivedMessages { get; set; }
+
+        public ICollection<UserBook> FollowedBooks { get; set; }
 
         
     }

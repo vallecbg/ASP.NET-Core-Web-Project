@@ -1,11 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using BookCreator.ViewModels.OutputModels.Users;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookCreator.Services.Interfaces
 {
     public interface IAdminService
     {
         string AddGenre(string genre);
+
+        Task<IEnumerable<AdminUsersOutputModel>> GetAllUsers();
+
+        Task DeleteUser(string userId);
+
+        Task<IdentityResult> ChangeRole(ChangingRoleModel model);
+
+        ChangingRoleModel AdminModifyRole(string Id);
     }
 }
