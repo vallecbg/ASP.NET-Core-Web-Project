@@ -92,6 +92,8 @@ namespace BookCreator.Services.Utilities
             public const string UserBooksRoute = "/Books/UserBooks/{username}";
 
             public const string AddChapterRoute = "/Chapters/AddChapter/{bookId}";
+
+            public const string Administration = "Administration";
         }
 
         public class CloudinaryConfig

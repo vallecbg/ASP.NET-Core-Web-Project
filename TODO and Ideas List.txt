@@ -1,4 +1,5 @@
 *Important*
+- Create admin panel
 - Improve the chat
 - Need to refactor the design of the page
 - Add full details on user
@@ -9,6 +10,7 @@
 - Improve last published books view
 
 *Minor*
+- If i have time i can add more roles with some permissions
 - Add api support
 - It's possible to add admin panel template from bootstrap
 - Add top writer in home page slider or the book with most likes or followers using the new theme

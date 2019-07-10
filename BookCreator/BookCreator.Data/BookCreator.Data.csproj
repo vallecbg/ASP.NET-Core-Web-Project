@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20190705214210_AddedUsersBooks.Designer.cs" />
     <Compile Remove="Migrations\20190705221656_AddedUserBookClass.cs" />
     <Compile Remove="Migrations\20190705221656_AddedUserBookClass.Designer.cs" />
+    <Compile Remove="Migrations\old\20190709203431_AddedFollowingBooks.cs" />
+    <Compile Remove="Migrations\old\20190709203431_AddedFollowingBooks.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

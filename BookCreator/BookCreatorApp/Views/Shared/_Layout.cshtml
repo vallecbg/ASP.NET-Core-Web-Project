@@ -60,9 +60,14 @@
                         {
                             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                             var name = UserService.GetName(userId);
-                            <li><a class="nav-link" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@this.User.Identity.Name">Hello @name!</a></li>
-                            <li><a class="nav-link" asp-controller="Users" asp-action="Logout" asp-area="">Logout</a></li>
-                        }
+                            @if (this.User.IsInRole(GlobalConstants.Admin))
+                             {
+                                 @* TODO: Add the admin panel *@
+                                 <li><a class="nav-link" asp-action="Index" asp-controller="Admins" asp-area="Administration">Administration</a></li>
+                             }
+                                <li><a class="nav-link" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@this.User.Identity.Name">Hello @name!</a></li>
+                                <li><a class="nav-link" asp-controller="Users" asp-action="Logout" asp-area="">Logout</a></li>
+                            }
                     </ul>
                 </nav>
             </div>
