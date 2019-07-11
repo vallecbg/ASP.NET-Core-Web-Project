@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
@@ -62,6 +63,37 @@ namespace BookCreatorApp.Areas.Administration.Controllers
             }
 
             return RedirectToAction("Error", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult CurrentGenres()
+        {
+            var model = this.bookService.Genres();
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        public IActionResult CurrentGenres(string genreName)
+        {
+            var genres = this.bookService.Genres();
+
+            if (string.IsNullOrEmpty(genreName))
+            {
+                this.ViewData[GlobalConstants.Error] = GlobalConstants.NullName;
+                return this.View(genres);
+            }
+
+            var result = this.adminService.AddGenre(genreName);
+
+            if (result != GlobalConstants.Success)
+            {
+                string error = string.Format(GlobalConstants.AlreadyExistsInDb, genreName);
+                this.ViewData[GlobalConstants.Error] = error;
+                return this.View(genres);
+            }
+
+            return this.RedirectToAction("CurrentGenres");
         }
     }
 }

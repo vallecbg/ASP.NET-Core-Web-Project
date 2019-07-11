@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BookGenreOutputModel>
+@{
+    ViewData["Title"] = "Current Genres";
+}
+
+<div class="container d-flex mt-5 border border-dark">
+
+    <div class="row col-md-4 d-flex offset-4 btn-group-vertical justify-content-center border-dark" role="group" style="overflow-y: auto;">
+        <p class="mx-auto font-weight-bold">Current Genres</p>
+        @foreach (var b in Model)
+        {
+            <button type="button" class="btn btn-secondary btn-block" disabled="disabled">@b.GenreName</button>
+        }
+
+        <form class="form-inline mt-5" asp-area="Administration" asp-controller="Admins" asp-action="CurrentGenres" method="post">
+            <p class="card-header text-capitalize mx-auto font-weight-bold">Add new Genre</p>
+            <div class="form-group mx-auto mb-2">
+
+                <input type="text" class="form-control" id="Name" name="GenreName">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Add Genre</button>
+            @if (this.ViewData.ContainsKey(GlobalConstants.Error))
+            {
+                <p class="text-danger">@this.ViewData[GlobalConstants.Error]</p>
+            }
+        </form>
+    </div>
+</div>
+

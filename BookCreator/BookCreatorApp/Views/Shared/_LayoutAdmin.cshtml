@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>@ViewData["Title"] - BookCreatorApp Admin</title>
 
 
     <!-- Custom fonts for this template-->
@@ -65,6 +65,13 @@
                 <a class="nav-link" asp-action="Users" asp-controller="Admins" asp-area="Administration">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Users</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" asp-action="CurrentGenres" asp-controller="Admins" asp-area="Administration">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Genres</span>
                 </a>
             </li>
 
