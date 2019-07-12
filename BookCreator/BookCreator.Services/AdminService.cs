@@ -18,9 +18,12 @@ namespace BookCreator.Services
     {
         private readonly RoleManager<IdentityRole> roleManager;
 
-        public AdminService(UserManager<BookCreatorUser> userManager, BookCreatorContext context, IMapper mapper, RoleManager<IdentityRole> roleManager) : base(userManager, context, mapper)
+        private readonly IBookService bookService;
+
+        public AdminService(UserManager<BookCreatorUser> userManager, BookCreatorContext context, IMapper mapper, RoleManager<IdentityRole> roleManager, IBookService bookService) : base(userManager, context, mapper)
         {
             this.roleManager = roleManager;
+            this.bookService = bookService;
         }
 
         public string AddGenre(string genre)
@@ -77,6 +80,22 @@ namespace BookCreator.Services
             catch (Exception)
             {
                 throw new ArgumentException(GlobalConstants.ErrorOnDeleteUser);
+            }
+        }
+
+        public async Task RemoveGenre(string genreName)
+        {
+            var genre = this.Context.BooksGenres.FirstOrDefault(x => x.Genre == genreName);
+
+            try
+            {
+                await this.bookService.DeleteBooksByGivenGenre(genre.Genre);
+                this.Context.BooksGenres.Remove(genre);
+                await this.Context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException(GlobalConstants.ErrorOnDeleteGenre);
             }
         }
 

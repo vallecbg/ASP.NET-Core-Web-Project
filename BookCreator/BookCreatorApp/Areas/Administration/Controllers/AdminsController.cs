@@ -46,6 +46,14 @@ namespace BookCreatorApp.Areas.Administration.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> DeleteGenre(string genreName)
+        {
+            await this.adminService.RemoveGenre(genreName);
+
+            return this.RedirectToAction("CurrentGenres");
+        }
+
+        [HttpGet]
         public IActionResult EditRole(string id)
         {
             var model = this.adminService.AdminModifyRole(id);

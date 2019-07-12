@@ -9,7 +9,10 @@
         <p class="mx-auto font-weight-bold">Current Genres</p>
         @foreach (var b in Model)
         {
-            <button type="button" class="btn btn-secondary btn-block" disabled="disabled">@b.GenreName</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary btn-block" disabled="disabled">@b.GenreName<a asp-action="DeleteGenre" asp-controller="Admins" asp-area="Administration" asp-route-genreName="@b.GenreName"><button class="btn btn-danger" style="border-radius: 0 !important;"><i class="fas fa-trash"></i></button></a></button>
+            </div>
+
         }
 
         <form class="form-inline mt-5" asp-area="Administration" asp-controller="Admins" asp-action="CurrentGenres" method="post">

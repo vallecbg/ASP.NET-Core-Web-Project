@@ -28,6 +28,22 @@ namespace BookCreator.Services
         {
         }
 
+
+        public async Task DeleteBooksByGivenGenre(string genre)
+        {
+            var book = this.Context.Books
+                .Include(x => x.Author)
+                .Include(x => x.Chapters)
+                .Include(x => x.Genre)
+                .Include(x => x.BookRatings)
+                .ThenInclude(x => x.UserRating)
+                .Include(x => x.Comments)
+                .Where(x => x.Genre.Genre == genre).ToList();
+
+            this.Context.Books.RemoveRange(book);
+            await this.Context.SaveChangesAsync();
+        }
+
         public async Task<string> CreateBook(BookInputModel inputModel)
         {
             var cloudinaryAccount = SetCloudinary();

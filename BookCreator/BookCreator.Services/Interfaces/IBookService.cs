@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using BookCreator.Models;
 using BookCreator.ViewModels.InputModels;
 using BookCreator.ViewModels.InputModels.Books;
 using BookCreator.ViewModels.OutputModels.Books;
@@ -17,6 +18,8 @@ namespace BookCreator.Services.Interfaces
         ICollection<BookGenreOutputModel> Genres();
 
         Task DeleteBook(string id, string username);
+
+        Task DeleteBooksByGivenGenre(string genre);
 
         Task<string> CreateBook(BookInputModel inputModel);
 

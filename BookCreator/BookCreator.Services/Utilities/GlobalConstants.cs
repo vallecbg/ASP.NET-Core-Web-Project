@@ -80,6 +80,8 @@ namespace BookCreator.Services.Utilities
         public const string AlreadyFollowed = "You have already followed this book!";
 
         public const string NotFollowing = "You aren't following this book!";
+        
+        public const string ErrorOnDeleteGenre = "An error happened during the deletion of this genre!";
 
         public class RouteConstants
 		{

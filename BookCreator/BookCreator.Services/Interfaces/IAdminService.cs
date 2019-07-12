@@ -12,6 +12,8 @@ namespace BookCreator.Services.Interfaces
     {
         string AddGenre(string genre);
 
+        Task RemoveGenre(string genreName);
+
         Task<IEnumerable<AdminUsersOutputModel>> GetAllUsers();
 
         Task DeleteUser(string userId);
