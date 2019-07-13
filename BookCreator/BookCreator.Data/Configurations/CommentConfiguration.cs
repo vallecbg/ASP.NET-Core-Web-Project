@@ -20,7 +20,12 @@ namespace BookCreator.Data.Configurations
             builder.HasOne(x => x.User)
                 .WithMany(x => x.Comments)
                 .HasForeignKey(x => x.UserId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(x => x.Book)
+                .WithMany(x => x.Comments)
+                .HasForeignKey(x => x.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

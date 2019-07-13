@@ -4,14 +4,16 @@ using BookCreator.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookCreator.Data.Migrations
 {
     [DbContext(typeof(BookCreatorContext))]
-    partial class BookCreatorContextModelSnapshot : ModelSnapshot
+    [Migration("20190713231130_ChangedCommentOnDelete")]
+    partial class ChangedCommentOnDelete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,9 +145,8 @@ namespace BookCreator.Data.Migrations
 
             modelBuilder.Entity("BookCreator.Models.Chapter", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AuthorId");
 
@@ -417,7 +418,7 @@ namespace BookCreator.Data.Migrations
                     b.HasOne("BookCreator.Models.BookCreatorUser", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BookCreator.Models.Message", b =>
@@ -434,12 +435,12 @@ namespace BookCreator.Data.Migrations
             modelBuilder.Entity("BookCreator.Models.UserBook", b =>
                 {
                     b.HasOne("BookCreator.Models.Book", "Book")
-                        .WithMany()
+                        .WithMany("Followers")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BookCreator.Models.BookCreatorUser", "User")
-                        .WithMany()
+                        .WithMany("FollowedBooks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

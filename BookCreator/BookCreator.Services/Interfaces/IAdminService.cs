@@ -16,6 +16,8 @@ namespace BookCreator.Services.Interfaces
 
         Task<IEnumerable<AdminUsersOutputModel>> GetAllUsers();
 
+        IEnumerable<AdminBooksOutputModel> GetAllBooks();
+
         Task DeleteUser(string userId);
 
         Task<IdentityResult> ChangeRole(ChangingRoleModel model);

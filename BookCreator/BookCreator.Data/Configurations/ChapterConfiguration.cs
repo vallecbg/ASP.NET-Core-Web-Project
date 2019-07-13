@@ -26,6 +26,11 @@ namespace BookCreator.Data.Configurations
                 .HasForeignKey(x => x.AuthorId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.HasOne(x => x.Book)
+                .WithMany(x => x.Chapters)
+                .HasForeignKey(x => x.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.Property(x => x.CreatedOn)
                 .IsRequired();
 

@@ -31,7 +31,7 @@ namespace BookCreator.Services
 
         public async Task DeleteBooksByGivenGenre(string genre)
         {
-            var book = this.Context.Books
+            var books = this.Context.Books
                 .Include(x => x.Author)
                 .Include(x => x.Chapters)
                 .Include(x => x.Genre)
@@ -40,7 +40,9 @@ namespace BookCreator.Services
                 .Include(x => x.Comments)
                 .Where(x => x.Genre.Genre == genre).ToList();
 
-            this.Context.Books.RemoveRange(book);
+            
+
+            this.Context.Books.RemoveRange(books);
             await this.Context.SaveChangesAsync();
         }
 

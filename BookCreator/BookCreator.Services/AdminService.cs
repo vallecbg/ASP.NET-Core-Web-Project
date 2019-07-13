@@ -8,6 +8,7 @@ using BookCreator.Data;
 using BookCreator.Models;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
+using BookCreator.ViewModels.OutputModels.Books;
 using BookCreator.ViewModels.OutputModels.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -55,7 +56,7 @@ namespace BookCreator.Services
                 .Include(x => x.FollowedBooks)
                 .ToList();
 
-            var modelUsers = Mapper.Map<List<AdminUsersOutputModel>>(users);
+            var modelUsers = Mapper.Map<IList<AdminUsersOutputModel>>(users);
 
             for (int i = 0; i < users.Count; i++)
             {
@@ -65,6 +66,23 @@ namespace BookCreator.Services
             }
 
             return modelUsers;
+        }
+
+        public IEnumerable<AdminBooksOutputModel> GetAllBooks()
+        {
+            var books = this.Context.Books
+                .Include(x => x.BookRatings)
+                .ThenInclude(x => x.UserRating)
+                .Include(x => x.Chapters)
+                .Include(x => x.Comments)
+                .Include(x => x.Followers)
+                .Include(x => x.Genre)
+                .Include(x => x.Author)
+                .ToList();
+
+            var modelBooks = this.Mapper.Map<IList<AdminBooksOutputModel>>(books);
+
+            return modelBooks;
         }
 
         public async Task DeleteUser(string userId)
