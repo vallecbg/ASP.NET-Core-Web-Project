@@ -103,5 +103,13 @@ namespace BookCreatorApp.Areas.Administration.Controllers
 
             return this.RedirectToAction("CurrentGenres");
         }
+
+        [HttpGet]
+        public IActionResult CurrentBooks()
+        {
+            var model = this.adminService.GetAllBooks();
+
+            return this.View(model);
+        }
     }
 }

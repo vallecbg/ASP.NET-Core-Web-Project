@@ -1,0 +1,70 @@
+﻿@model IEnumerable<AdminBooksOutputModel>
+@{
+    ViewData["Title"] = "Books";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Books</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Genre</th>
+                        <th>Rating</th>
+                        <th>Comments</th>
+                        <th>Followers</th>
+                        <th>Chapters</th>
+                        <th>Ratings</th>
+                        <th>Created</th>
+                        <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                        <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Genre</th>
+                        <th>Rating</th>
+                        <th>Comments</th>
+                        <th>Followers</th>
+                        <th>Chapters</th>
+                        <th>Ratings</th>
+                        <th>Created</th>
+                        <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                        <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var book in Model)
+                    {
+                        <tr>
+                            <td>@book.Title</td>
+                            <td>@book.Author</td>
+                            <td>@book.Genre</td>
+                            <td>@book.Rating</td>
+                            <td>@book.Comments</td>
+                            <td>@book.Followers</td>
+                            <td>@book.TotalChapters</td>
+                            <td>@book.TotalRatings</td>
+                            <td>@book.CreationDate</td>
+                            <td>
+                                <a asp-action="EditRole" asp-controller="Admins" asp-area="Administration" asp-route-id="@book.Id" class="btn btn-info">Change Role</a>
+                            </td>
+                            <td>
+                                <a asp-action="DeleteUser" asp-controller="Admins" asp-area="Administration" asp-route-id="@book.Id" class="btn btn-info">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

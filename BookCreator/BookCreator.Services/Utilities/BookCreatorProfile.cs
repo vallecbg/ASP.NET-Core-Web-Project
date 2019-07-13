@@ -85,6 +85,15 @@ namespace BookCreator.Services.Utilities
                 .ForMember(x => x.BooksCount, cfg => cfg.MapFrom(x => x.Books.Count))
                 .ForMember(x => x.CommentsCount, cfg => cfg.MapFrom(x => x.Comments.Count))
                 .ForMember(x => x.Role, cfg => cfg.Ignore());
+
+            CreateMap<Book, AdminBooksOutputModel>()
+                .ForMember(x => x.Genre, cfg => cfg.MapFrom(x => x.Genre.Genre))
+                .ForMember(x => x.Author, cfg => cfg.MapFrom(x => x.Author.UserName))
+                .ForMember(x => x.Comments, cfg => cfg.MapFrom(x => x.Comments.Count))
+                .ForMember(x => x.TotalRatings, cfg => cfg.MapFrom(x => x.BookRatings.Count))
+                .ForMember(x => x.TotalChapters, cfg => cfg.MapFrom(x => x.Chapters.Count))
+                .ForMember(x => x.CreationDate, cfg => cfg.MapFrom(x => x.CreatedOn))
+                .ForMember(x => x.Followers, cfg => cfg.MapFrom(x => x.Followers.Count));
         }
 	}
 }
