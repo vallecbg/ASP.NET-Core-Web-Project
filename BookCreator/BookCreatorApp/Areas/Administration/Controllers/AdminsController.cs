@@ -111,5 +111,15 @@ namespace BookCreatorApp.Areas.Administration.Controllers
 
             return this.View(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteBook(string id)
+        {
+            var username = this.User.Identity.Name;
+
+            await this.bookService.DeleteBook(id, username);
+
+            return RedirectToAction("CurrentBooks", "Admins");
+        }
     }
 }

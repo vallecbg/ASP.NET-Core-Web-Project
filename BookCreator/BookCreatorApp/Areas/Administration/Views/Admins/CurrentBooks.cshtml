@@ -54,10 +54,10 @@
                             <td>@book.TotalRatings</td>
                             <td>@book.CreationDate</td>
                             <td>
-                                <a asp-action="EditRole" asp-controller="Admins" asp-area="Administration" asp-route-id="@book.Id" class="btn btn-info">Change Role</a>
+                                <a asp-action="Details" asp-controller="Books" asp-area="" asp-route-id="@book.Id" class="btn btn-info">Details</a>
                             </td>
                             <td>
-                                <a asp-action="DeleteUser" asp-controller="Admins" asp-area="Administration" asp-route-id="@book.Id" class="btn btn-info">Delete</a>
+                                <a asp-action="DeleteBook" asp-controller="Admins" asp-area="Administration" asp-route-id="@book.Id" class="btn btn-info">Delete</a>
                             </td>
                         </tr>
                     }
