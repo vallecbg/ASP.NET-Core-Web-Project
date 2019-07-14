@@ -1,4 +1,5 @@
 ﻿using BookCreator.ViewModels.InputModels.Users;
+using BookCreator.ViewModels.OutputModels.Announcements;
 using BookCreator.ViewModels.OutputModels.Books;
 
 namespace BookCreator.Services
@@ -151,6 +152,12 @@ namespace BookCreator.Services
                     .OrderByDescending(x => x.CreatedOn)
                     .Take(2)
                     .ProjectTo<BookHomeOutputModel>(Mapper.ConfigurationProvider)
+                    .ToList(),
+                LatestAnnouncements = this.Context.Announcements
+                    .Include(x => x.Author)
+                    .OrderByDescending(x => x.PublishedOn)
+                    .Take(2)
+                    .ProjectTo<AnnouncementOutputModel>(Mapper.ConfigurationProvider)
                     .ToList()
             };
 

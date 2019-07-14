@@ -4,7 +4,7 @@
 
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     var model = UserService.GetHomeViewDetails();
-
+    var isThereAnAnnouncement = model.LatestAnnouncements.Any();
 }
 
 <div class="loggedHome container d-flex justify-content-around col-md-12 col-sm-6 card-group" style="margin-top:50px;">
@@ -54,7 +54,23 @@
         <div class="col-md-12  border border-dark" style="overflow: auto; margin-bottom: 20px;max-height:500px">
             <div class=" card-header text-center text-dark" style="overflow:auto">Announcements</div>
 
-            @* TODO: Add announcements *@
+            @if (isThereAnAnnouncement)
+            {
+                foreach (var announcement in model.LatestAnnouncements)
+                {
+                    <div class="card-body w-100">
+                        <h5 class="card-title">@announcement.Author</h5>
+                        <h6 class="card-subtitle text-muted">@announcement.PublishedOn</h6>
+                        <hr />
+                        <p class="card-text" style="word-wrap: break-word">@announcement.Content</p>
+                        <hr style="height: 2px" />
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-info">No current announcements</p>
+            }
         </div>
     </div>
     <div class="container">
