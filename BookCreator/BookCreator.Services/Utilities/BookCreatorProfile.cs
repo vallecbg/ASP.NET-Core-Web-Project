@@ -1,9 +1,11 @@
 ﻿using System.Security.Policy;
+using BookCreator.ViewModels.InputModels.Announcements;
 using BookCreator.ViewModels.InputModels.Books;
 using BookCreator.ViewModels.InputModels.Chapters;
 using BookCreator.ViewModels.InputModels.Comments;
 using BookCreator.ViewModels.InputModels.Messages;
 using BookCreator.ViewModels.InputModels.Users;
+using BookCreator.ViewModels.OutputModels.Announcements;
 using BookCreator.ViewModels.OutputModels.Books;
 using BookCreator.ViewModels.OutputModels.Comments;
 
@@ -94,6 +96,14 @@ namespace BookCreator.Services.Utilities
                 .ForMember(x => x.TotalChapters, cfg => cfg.MapFrom(x => x.Chapters.Count))
                 .ForMember(x => x.CreationDate, cfg => cfg.MapFrom(x => x.CreatedOn))
                 .ForMember(x => x.Followers, cfg => cfg.MapFrom(x => x.Followers.Count));
+
+            CreateMap<AnnouncementInputModel, Announcement>()
+                .ForMember(opt => opt.Content, cfg => cfg.MapFrom(x => x.Content))
+                .ForMember(opt => opt.Author, cfg => cfg.Ignore())
+                .ForMember(x => x.PublishedOn, opt => opt.MapFrom(o => DateTime.UtcNow));
+
+            CreateMap<Announcement, AnnouncementOutputModel>()
+                .ForMember(x => x.PublishedOn, cfg => cfg.MapFrom(x => x.PublishedOn.ToString("dd/MM/yyyy")));
         }
 	}
 }

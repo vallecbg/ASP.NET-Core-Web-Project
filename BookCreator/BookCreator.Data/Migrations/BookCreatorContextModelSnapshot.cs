@@ -19,6 +19,26 @@ namespace BookCreator.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("BookCreator.Models.Announcement", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AuthorId");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(500);
+
+                    b.Property<DateTime>("PublishedOn");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Announcements");
+                });
+
             modelBuilder.Entity("BookCreator.Models.BlockedUser", b =>
                 {
                     b.Property<string>("BookCreatorUserId");
@@ -356,6 +376,14 @@ namespace BookCreator.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("BookCreator.Models.Announcement", b =>
+                {
+                    b.HasOne("BookCreator.Models.BookCreatorUser", "Author")
+                        .WithMany("Announcements")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("BookCreator.Models.BlockedUser", b =>
                 {
                     b.HasOne("BookCreator.Models.BookCreatorUser", "BlockedBookCreatorUser")
@@ -404,14 +432,16 @@ namespace BookCreator.Data.Migrations
 
                     b.HasOne("BookCreator.Models.Book", "Book")
                         .WithMany("Chapters")
-                        .HasForeignKey("BookId");
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BookCreator.Models.Comment", b =>
                 {
                     b.HasOne("BookCreator.Models.Book", "Book")
                         .WithMany("Comments")
-                        .HasForeignKey("BookId");
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BookCreator.Models.BookCreatorUser", "User")
                         .WithMany("Comments")

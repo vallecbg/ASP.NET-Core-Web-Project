@@ -17,6 +17,7 @@ namespace BookCreator.Data
         public DbSet<BookRating> BooksRatings { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<UserBook> UsersBooks { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
 
 		public BookCreatorContext(DbContextOptions<BookCreatorContext> options)
 			: base(options)
@@ -34,6 +35,7 @@ namespace BookCreator.Data
             builder.ApplyConfiguration(new UserRatingConfiguration());
             builder.ApplyConfiguration(new MessageConfiguration());
             builder.ApplyConfiguration(new UserBookConfiguration());
+            builder.ApplyConfiguration(new AnnouncementConfiguration());
                                 
                                 
             base.OnModelCreating(builder);

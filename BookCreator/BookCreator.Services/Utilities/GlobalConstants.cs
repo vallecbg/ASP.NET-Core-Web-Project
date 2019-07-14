@@ -83,6 +83,8 @@ namespace BookCreator.Services.Utilities
         
         public const string ErrorOnDeleteGenre = "An error happened during the deletion of this genre!";
 
+        public const string TooShortAnnouncement = "Your announcement has to be at least 5 characters long";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";
@@ -96,6 +98,7 @@ namespace BookCreator.Services.Utilities
             public const string AddChapterRoute = "/Chapters/AddChapter/{bookId}";
 
             public const string Administration = "Administration";
+
         }
 
         public class CloudinaryConfig

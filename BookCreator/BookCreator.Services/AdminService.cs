@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using BookCreator.Data;
 using BookCreator.Models;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
+using BookCreator.ViewModels.InputModels.Announcements;
+using BookCreator.ViewModels.OutputModels.Announcements;
 using BookCreator.ViewModels.OutputModels.Books;
 using BookCreator.ViewModels.OutputModels.Users;
 using Microsoft.AspNetCore.Identity;
@@ -140,6 +143,45 @@ namespace BookCreator.Services
 
             model.Role = this.UserManager.GetRolesAsync(user).Result.FirstOrDefault() ?? GlobalConstants.DefaultRole;
 
+            return model;
+        }
+
+        public void AddAnnouncement(AnnouncementInputModel inputModel)
+        {
+            var user = this.UserManager.FindByNameAsync(inputModel.Author).Result;
+
+            var announcement = Mapper.Map<Announcement>(inputModel);
+            announcement.Author = user;
+
+
+            this.Context.Announcements.Add(announcement);
+            this.Context.SaveChanges();
+        }
+
+        public void DeleteAnnouncement(string id)
+        {
+            var announcement = this.Context.Announcements.Find(id);
+
+            this.Context.Remove(announcement);
+            this.Context.SaveChanges();
+        }
+
+        public void DeleteAllAnnouncements()
+        {
+            var allAnnouncements = this.Context.Announcements;
+
+            this.Context.RemoveRange(allAnnouncements);
+            this.Context.SaveChanges();
+        }
+
+        public AllAnnouncementsModel AllAnnouncements()
+        {
+            var result = this.Context.Announcements.ProjectTo<AnnouncementOutputModel>(Mapper.ConfigurationProvider).ToArray();
+            var model = new AllAnnouncementsModel
+            {
+                Announcements = result,
+                Announcement = new AnnouncementInputModel()
+            };
             return model;
         }
 

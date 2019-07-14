@@ -5,6 +5,7 @@ using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
+using BookCreator.ViewModels.InputModels.Announcements;
 using BookCreator.ViewModels.OutputModels.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -120,6 +121,43 @@ namespace BookCreatorApp.Areas.Administration.Controllers
             await this.bookService.DeleteBook(id, username);
 
             return RedirectToAction("CurrentBooks", "Admins");
+        }
+
+        [HttpGet]
+        public IActionResult AllAnnouncements()
+        {
+            var model = this.adminService.AllAnnouncements();
+
+            return this.View(model);
+        }
+
+        [HttpGet]
+        public IActionResult DeleteAnnouncement(string id)
+        {
+            this.adminService.DeleteAnnouncement(id);
+
+            return RedirectToAction("AllAnnouncements");
+        }
+
+        [HttpGet]
+        public IActionResult DeleteAllAnnouncements()
+        {
+            this.adminService.DeleteAllAnnouncements();
+
+            return RedirectToAction("AllAnnouncements");
+        }
+
+        [HttpPost]
+        public IActionResult AllAnnouncements(AnnouncementInputModel inputModel)
+        {
+            if (ModelState.IsValid)
+            {
+                this.adminService.AddAnnouncement(inputModel);
+                return RedirectToAction(nameof(AllAnnouncements));
+            }
+
+            this.ViewData[GlobalConstants.Error] = GlobalConstants.TooShortAnnouncement;
+            return RedirectToAction(nameof(AllAnnouncements));
         }
     }
 }

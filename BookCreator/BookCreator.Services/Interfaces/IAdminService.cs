@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using BookCreator.ViewModels.InputModels.Announcements;
+using BookCreator.ViewModels.OutputModels.Announcements;
 using BookCreator.ViewModels.OutputModels.Books;
 using BookCreator.ViewModels.OutputModels.Users;
 using Microsoft.AspNetCore.Identity;
@@ -23,5 +25,13 @@ namespace BookCreator.Services.Interfaces
         Task<IdentityResult> ChangeRole(ChangingRoleModel model);
 
         ChangingRoleModel AdminModifyRole(string Id);
+
+        void AddAnnouncement(AnnouncementInputModel inputModel);
+
+        void DeleteAnnouncement(string id);
+
+        void DeleteAllAnnouncements();
+
+        AllAnnouncementsModel AllAnnouncements();
     }
 }

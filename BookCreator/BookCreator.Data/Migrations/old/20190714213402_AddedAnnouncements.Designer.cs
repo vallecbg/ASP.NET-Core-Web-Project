@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookCreator.Data.Migrations
 {
     [DbContext(typeof(BookCreatorContext))]
-    [Migration("20190702130436_CreatedComments")]
-    partial class CreatedComments
+    [Migration("20190714213402_AddedAnnouncements")]
+    partial class AddedAnnouncements
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,26 @@ namespace BookCreator.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("BookCreator.Models.Announcement", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AuthorId");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(500);
+
+                    b.Property<DateTime>("PublishedOn");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Announcements");
+                });
 
             modelBuilder.Entity("BookCreator.Models.BlockedUser", b =>
                 {
@@ -130,6 +150,19 @@ namespace BookCreator.Data.Migrations
                     b.ToTable("BooksGenres");
                 });
 
+            modelBuilder.Entity("BookCreator.Models.BookRating", b =>
+                {
+                    b.Property<string>("BookId");
+
+                    b.Property<string>("RatingId");
+
+                    b.HasKey("BookId", "RatingId");
+
+                    b.HasIndex("RatingId");
+
+                    b.ToTable("BooksRatings");
+                });
+
             modelBuilder.Entity("BookCreator.Models.Chapter", b =>
                 {
                     b.Property<string>("Id")
@@ -179,6 +212,60 @@ namespace BookCreator.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("BookCreator.Models.Message", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("IsRead");
+
+                    b.Property<string>("ReceiverId");
+
+                    b.Property<string>("SenderId");
+
+                    b.Property<DateTime>("SentOn");
+
+                    b.Property<string>("Text")
+                        .HasMaxLength(300);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("BookCreator.Models.UserBook", b =>
+                {
+                    b.Property<string>("BookId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("BookId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UsersBooks");
+                });
+
+            modelBuilder.Entity("BookCreator.Models.UserRating", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<double>("Rating");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UsersRatings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -291,6 +378,14 @@ namespace BookCreator.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("BookCreator.Models.Announcement", b =>
+                {
+                    b.HasOne("BookCreator.Models.BookCreatorUser", "Author")
+                        .WithMany("Announcements")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("BookCreator.Models.BlockedUser", b =>
                 {
                     b.HasOne("BookCreator.Models.BookCreatorUser", "BlockedBookCreatorUser")
@@ -317,26 +412,73 @@ namespace BookCreator.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+            modelBuilder.Entity("BookCreator.Models.BookRating", b =>
+                {
+                    b.HasOne("BookCreator.Models.Book", "Book")
+                        .WithMany("BookRatings")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BookCreator.Models.UserRating", "UserRating")
+                        .WithMany("BookRatings")
+                        .HasForeignKey("RatingId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("BookCreator.Models.Chapter", b =>
                 {
                     b.HasOne("BookCreator.Models.BookCreatorUser", "Author")
                         .WithMany("Chapters")
                         .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BookCreator.Models.Book", "Book")
                         .WithMany("Chapters")
-                        .HasForeignKey("BookId");
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BookCreator.Models.Comment", b =>
                 {
                     b.HasOne("BookCreator.Models.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId");
+                        .WithMany("Comments")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BookCreator.Models.BookCreatorUser", "User")
                         .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BookCreator.Models.Message", b =>
+                {
+                    b.HasOne("BookCreator.Models.BookCreatorUser", "Receiver")
+                        .WithMany("ReceivedMessages")
+                        .HasForeignKey("ReceiverId");
+
+                    b.HasOne("BookCreator.Models.BookCreatorUser", "Sender")
+                        .WithMany("SentMessages")
+                        .HasForeignKey("SenderId");
+                });
+
+            modelBuilder.Entity("BookCreator.Models.UserBook", b =>
+                {
+                    b.HasOne("BookCreator.Models.Book", "Book")
+                        .WithMany("Followers")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BookCreator.Models.BookCreatorUser", "User")
+                        .WithMany("FollowedBooks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BookCreator.Models.UserRating", b =>
+                {
+                    b.HasOne("BookCreator.Models.BookCreatorUser", "User")
+                        .WithMany("UserRatings")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.SetNull);
                 });

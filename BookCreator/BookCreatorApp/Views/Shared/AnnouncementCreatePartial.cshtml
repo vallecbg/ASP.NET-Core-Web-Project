@@ -1,0 +1,33 @@
+﻿@model BookCreator.ViewModels.InputModels.Announcements.AnnouncementInputModel
+
+<div class="justify-content-center col-md-4">
+    <h5 class="text-center">Publish Announcement</h5>
+
+    <div class="col-md-12">
+        <form asp-controller="Admins" asp-action="AllAnnouncements" asp-area="Administration" style="border: 1px solid black" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Author" type="hidden" class="form-control text-center" value="@User.Identity.Name" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <label class="control-label text-center">Announcement</label>
+                <textarea asp-for="Content" class="form-control" rows="4">
+                </textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+
+                <a class="btn btn-link align-content-end" asp-area="Administration" asp-controller="Admins" asp-action="DeleteAllAnnouncements">DeleteAll</a>
+
+                <input type="submit" value="Create" style="align-content: center" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+}
