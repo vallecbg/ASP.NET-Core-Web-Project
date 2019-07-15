@@ -31,7 +31,7 @@
                     <li class="list-group-item">Published: @s.CreatedOn.ToShortDateString()</li>
                 </ul>
                 <div class="card-body">
-                    <a asp-action="Details" asp-controller="Books" asp-route-id="@s.Id" class="btn btn-primary">Go to Book</a>
+                    <a asp-action="Details" asp-controller="Books" asp-route-id="@s.Id" class="btn btn-info">Go to Book</a>
                 </div>
                 <hr />
             }
@@ -39,8 +39,8 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="col-md-12 col-sm-12 border border-dark" style="min-height: 20em; min-width: 10em">
-            <div class=" card-header text-center text-dark"> Options</div>
+        <div class="col-md-12 col-sm-12 card border border-dark" style="min-height: 20em; min-width: 10em">
+            <div class="card-header text-center text-dark"> Options</div>
             <div class="card-body">
                 <a class="btn btn-info btn-block" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@this.User.Identity.Name">My profile</a>
                 <a asp-action="UserBooks" id="MyBooks" asp-controller="Books" asp-route-username="@this.User.Identity.Name" class="btn btn-info btn-block">My Books</a>
@@ -51,7 +51,7 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="col-md-12  border border-dark" style="overflow: auto; margin-bottom: 20px;max-height:500px">
+        <div class="col-md-12 card border border-dark" style="overflow: auto; margin-bottom: 20px;max-height:500px">
             <div class=" card-header text-center text-dark" style="overflow:auto">Announcements</div>
 
             @if (isThereAnAnnouncement)
@@ -73,7 +73,7 @@
             }
         </div>
     </div>
-    <div class="container">
+    <div class="container row">
         <div class="row">&nbsp;</div>
         <div class="row">
             <div class="col-6">&nbsp;</div>
