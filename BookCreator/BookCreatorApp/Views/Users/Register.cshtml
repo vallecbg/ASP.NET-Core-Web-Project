@@ -11,37 +11,37 @@
         <hr class="h2 bg-BookCreator" />
         @if (error != null)
         {
-            <p class="text-danger">@error</p>
+            <p class="text-light">@error</p>
         }
         <form class="register mx-auto" asp-controller="Users" asp-action="Register" method="post">
             @if (error != null)
             {
-                <p class="text-danger">@error</p>
+                <p class="text-light">@error</p>
             }
             <div class="form-group text-center">
                 <label asp-for="Name" class="text-center"></label>
                 <input asp-for="Name" class="form-control" placeholder="Full Name..." />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <span asp-validation-for="Name" class="text-light"></span>
             </div>
             <div class="form-group text-center">
                 <label asp-for="Username" class="text-center"></label>
                 <input asp-for="Username" class="form-control" placeholder="Username..." />
-                <span asp-validation-for="Username" class="text-danger"></span>
+                <span asp-validation-for="Username" class="text-light"></span>
             </div>
             <div class="form-group text-center">
                 <label asp-for="Email" class="text-center"></label>
                 <input asp-for="Email" class="form-control" placeholder="Email..." />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <span asp-validation-for="Email" class="text-light"></span>
             </div>
             <div class="form-group text-center">
                 <label asp-for="Password" class="text-center"></label>
                 <input asp-for="Password" class="form-control" placeholder="Password..." />
-                <span asp-validation-for="Password" class="text-danger"></span>
+                <span asp-validation-for="Password" class="text-light"></span>
             </div>
             <div class="form-group text-center">
                 <label asp-for="ConfirmPassword" class="text-center"></label>
                 <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password..." />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                <span asp-validation-for="ConfirmPassword" class="text-light"></span>
             </div>
 
             <hr class="h2 bg-BookCreator" />
