@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using BookCreator.ViewModels.InputModels.Messages;
+using BookCreator.ViewModels.OutputModels.Messages;
 
 namespace BookCreator.Services.Interfaces
 {
@@ -12,5 +13,7 @@ namespace BookCreator.Services.Interfaces
 
         //TODO: Need to get the method from the users i think and paste it there
         //bool CanSendMessage(string senderName, string receiverName);
+
+        ICollection<MessageOutputModel> GetAllMessagesForUser(string userId);
     }
 }

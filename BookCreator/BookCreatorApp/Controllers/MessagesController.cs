@@ -13,7 +13,7 @@ namespace BookCreatorApp.Controllers
     [Authorize]
     public class MessagesController : Controller
     {
-        private IMessageService messageService;
+        private readonly IMessageService messageService;
 
         public MessagesController(IMessageService messageService)
         {
@@ -32,6 +32,14 @@ namespace BookCreatorApp.Controllers
             this.messageService.SendMessage(inputModel);
 
             return RedirectToAction("Profile", "Users", new { username = inputModel.ReceiverName });
+        }
+
+        [HttpGet]
+        public IActionResult UserMessages(string userId)
+        {
+            var messages = this.messageService.GetAllMessagesForUser(userId);
+
+            return this.View(messages);
         }
     }
 }

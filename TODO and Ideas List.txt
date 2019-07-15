@@ -1,4 +1,6 @@
 *Important*
+- Need to create Error Page
+- Check controllers for authorize
 - Create admin panel
 - Improve the chat
 - Need to refactor the design of the page

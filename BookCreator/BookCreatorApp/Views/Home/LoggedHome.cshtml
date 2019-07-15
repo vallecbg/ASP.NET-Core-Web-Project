@@ -47,6 +47,7 @@
                 <a asp-action="FollowedBooks" asp-controller="Books" asp-route-username="@this.User.Identity.Name" class="btn btn-info btn-block">Followed Books</a>
                 <a asp-action="BlockedUsers" asp-controller="Users" asp-route-id="@this.User.Identity.Name" class="btn btn-info btn-block">Blocked Users</a>
                 <a asp-action="AllBooks" asp-controller="Books" class="btn btn-info btn-block">All Books</a>
+                <a asp-action="UserMessages" asp-controller="Messages" asp-route-userId="@userId" class="btn btn-info btn-block">My Messages</a>
             </div>
         </div>
     </div>

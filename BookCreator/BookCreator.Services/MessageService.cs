@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -7,7 +8,9 @@ using BookCreator.Data;
 using BookCreator.Models;
 using BookCreator.Services.Interfaces;
 using BookCreator.ViewModels.InputModels.Messages;
+using BookCreator.ViewModels.OutputModels.Messages;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookCreator.Services
 {
@@ -33,6 +36,18 @@ namespace BookCreator.Services
 
             this.Context.Messages.Add(message);
             this.Context.SaveChanges();
+        }
+
+        public ICollection<MessageOutputModel> GetAllMessagesForUser(string userId)
+        {
+            var messages = this.Context.Messages
+                .Include(x => x.Receiver)
+                .Include(x => x.Sender)
+                .Where(x => x.SenderId == userId || x.ReceiverId == userId);
+
+            var messagesModel = this.Mapper.Map<IList<MessageOutputModel>>(messages);
+
+            return messagesModel;
         }
     }
 }
