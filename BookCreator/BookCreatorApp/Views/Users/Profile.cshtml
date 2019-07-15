@@ -13,7 +13,7 @@
 }
 
 <div class="row container col-md-12 mt-5 mb-5 ml-1">
-    <div class="col-md-8 " style="overflow-y: auto; min-height: 300px; max-height: 700px;">
+    <div class="col-md-8 card" style="overflow-y: auto; min-height: 300px; max-height: 700px;">
         <h3 class="text-center">@Model.Username's books</h3>
         <hr />
         @if (Model.Books.Any())
@@ -26,7 +26,7 @@
                         <div class="media-body">
                             <h3 class="mt-0"> Book Title:@book.Title</h3>
 
-                            <a asp-action="Details" asp-controller="Books" asp-route-id="@book.Id" asp-area="" class="btn btn-link">Go to Book</a>
+                            <a asp-action="Details" asp-controller="Books" asp-route-id="@book.Id" asp-area="" class="btn btn-info">Go to Book</a>
                             <hr />
                             <h5>Summary:</h5>
                             <p>
@@ -44,17 +44,17 @@
             <hr />
         }
     </div>
-        <div class=" col-md-4">
+    <div class=" col-md-4">
 
-            <div class="panel panel-info w-100 border border-dark">
-                <div class="panel-heading w-100 d-flex  justify-content-center">
-                    <h3 class="text-capitalize">User Details</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class=" col-md-12 col-lg-12">
-                            <table class="table  border border-dark" style="background-color:deepskyblue">
-                                <tbody>
+        <div class="panel panel-info card w-100 border border-dark">
+            <div class="panel-heading w-100 d-flex  justify-content-center">
+                <h3 class="text-capitalize">User Details</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class=" col-md-12 col-lg-12">
+                        <table class="table  border border-dark" style="background-color:deepskyblue">
+                            <tbody>
                                 <tr>
                                     <td>Name:</td>
                                     <td>@Model.Name</td>
@@ -67,74 +67,80 @@
                                     <td>Email:</td>
                                     <td>@Model.Email</td>
                                 </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
-                    @if (!sameUser)
-                    {
-                        if (isBlocked)
-                        {
-                            <a class="btn btn-block btn-danger" asp-action="BlockUser" asp-controller="Users" asp-route-username="@Model.Username">Block User</a>
-                        }
-                        else
-                        {
-                            <a class="btn btn-block btn-danger" asp-action="BlockedUsers" asp-controller="Users">Unblock User</a>
-                        }
-                    }
                 </div>
-            </div>
-            @if (!sameUser)
-            {
-                if (isBlocked || hasRole)
+                @if (!sameUser)
                 {
-                    <div class=" panel panel-info w-100 mt-2 border border-dark">
-                        <h5 class="card-header">Leave a Message:</h5>
-                        <div class="card-body">
-                            <form asp-action="SendMessage" asp-controller="Messages" asp-area="" method="post">
-                                <div class="form-group">
-                                    <input type="text" hidden="hidden" value="@this.User.Identity.Name" name="senderName"/>
-                                    <input type="datetime" hidden="hidden" value="@DateTime.UtcNow" name="sendDate"/>
-                                    <input hidden="hidden" type="text" value="@Model.Username" name="receiverName"/>
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" placeholder="Leave a message" rows="4" name="message" id="my-input" maxlength="400"></textarea>
-                                    <span id='remainingC'></span>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Send message</button>
-                                @if (error != null)
-                                {
-                                    <div>
-                                        <span class="text-danger">@error</span>
-                                    </div>
-                                }
-                            </form>
-                        </div>
-                    </div>
-                }
-            }
-        </div>
-    </div>
-
-    @section scripts{
-
-        @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
-        <script>
-            $(document).ready(function () {
-                var len = 0;
-                var maxchar = 400;
-
-                $('#my-input').keyup(function () {
-                    len = this.value.length;
-                    if (len > maxchar) {
-                        return false;
-                    } else if (len > 0) {
-                        $("#remainingC").html("Remaining characters: " + (maxchar - len));
-                    } else {
-                        $("#remainingC").html("Remaining characters: " + (maxchar));
+                    if (!isBlocked)
+                    {
+                        <a class="btn btn-block btn-danger" asp-action="BlockUserFromProfile" asp-controller="Users" asp-route-username="@Model.Username">Block User</a>
                     }
-                })
-            });
-        </script>
+                    else
+                    {
+                        <a class="btn btn-block btn-danger" asp-action="UnblockUserFromProfile" asp-controller="Users" asp-route-id="@Model.Id" asp-route-username="@Model.Username">Unblock User</a>
+                    }
+                }
+            </div>
+        </div>
+        @if (!sameUser)
+        {
+            if (!isBlocked)
+            {
+                <div class="card panel panel-info w-100 mt-2 border border-dark">
+                    <h5 class="card-header">Leave a Message:</h5>
+                    <div class="card-body">
+                        <form asp-action="SendMessage" asp-controller="Messages" asp-area="" method="post">
+                            <div class="form-group">
+                                <input type="text" hidden="hidden" value="@this.User.Identity.Name" name="senderName" />
+                                <input type="datetime" hidden="hidden" value="@DateTime.UtcNow" name="sendDate" />
+                                <input hidden="hidden" type="text" value="@Model.Username" name="receiverName" />
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Leave a message" rows="4" name="message" id="my-input" maxlength="400"></textarea>
+                                <span id='remainingC'></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send message</button>
+                            @if (error != null)
+                            {
+                                <div>
+                                    <span class="text-danger">@error</span>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="card panel panel-info w-100 mt-2 border border-dark">
+                    <h5 class="card-header">This user is blocked and you cannot send messages!</h5>
+                </div>
+            }
+        }
+    </div>
+</div>
 
-    }
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+    <script>
+        $(document).ready(function () {
+            var len = 0;
+            var maxchar = 400;
+
+            $('#my-input').keyup(function () {
+                len = this.value.length;
+                if (len > maxchar) {
+                    return false;
+                } else if (len > 0) {
+                    $("#remainingC").html("Remaining characters: " + (maxchar - len));
+                } else {
+                    $("#remainingC").html("Remaining characters: " + (maxchar));
+                }
+            })
+        });
+    </script>
+
+}

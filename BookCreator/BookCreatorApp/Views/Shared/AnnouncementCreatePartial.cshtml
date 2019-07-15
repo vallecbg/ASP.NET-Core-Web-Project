@@ -1,6 +1,6 @@
 ﻿@model BookCreator.ViewModels.InputModels.Announcements.AnnouncementInputModel
 
-<div class="justify-content-center col-md-4">
+<div class="justify-content-center col-md-12 mt-3">
     <h5 class="text-center">Publish Announcement</h5>
 
     <div class="col-md-12">
@@ -18,7 +18,7 @@
             </div>
             <div class="form-group col-md-4">
 
-                <a class="btn btn-link align-content-end" asp-area="Administration" asp-controller="Admins" asp-action="DeleteAllAnnouncements">DeleteAll</a>
+                <a class="btn btn-danger align-content-end" asp-area="Administration" asp-controller="Admins" asp-action="DeleteAllAnnouncements">Delete All Announcements</a>
 
                 <input type="submit" value="Create" style="align-content: center" class="btn btn-info" />
             </div>

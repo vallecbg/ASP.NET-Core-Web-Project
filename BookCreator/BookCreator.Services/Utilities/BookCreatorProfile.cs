@@ -103,7 +103,7 @@ namespace BookCreator.Services.Utilities
                 .ForMember(x => x.PublishedOn, opt => opt.MapFrom(o => DateTime.UtcNow));
 
             CreateMap<Announcement, AnnouncementOutputModel>()
-                .ForMember(x => x.PublishedOn, cfg => cfg.MapFrom(x => x.PublishedOn.ToString("dd/MM/yyyy")));
+                .ForMember(x => x.PublishedOn, cfg => cfg.MapFrom(x => x.PublishedOn.ToString("dd/MM/yyyy HH:mm:ss")));
         }
 	}
 }

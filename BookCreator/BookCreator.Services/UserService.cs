@@ -169,15 +169,15 @@ namespace BookCreator.Services
             var user1 = this.UserManager.FindByNameAsync(user1Name).GetAwaiter().GetResult();
             var user2 = this.UserManager.FindByNameAsync(user2Name).GetAwaiter().GetResult();
 
-            var notBlocked =
+            var blocked =
                 this.Context.BlockedUsers.Any(x => x.BlockedUserId == user2.Id && x.BookCreatorUserId == user1.Id);
 
-            if (!notBlocked)
+            if (!blocked)
             {
-                return true;
+                return false;
             }
 
-            return false;
+            return true;
         }
     }
 }

@@ -3,39 +3,51 @@
     ViewData["Title"] = "AllAnnouncements";
 }
 
-<div class="row container d-flex col-md-12 mt-5 ml-1">
-    <div class=" col-md-8">
-        <div class="row justify-content-center">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">All Announcements</h6>
+        </div>
+        @await Html.PartialAsync("AnnouncementCreatePartial", Model.Announcement)
 
-            @foreach (var a in Model.Announcements)
-            {
-
-                <div class=" col-md-3 bottom-left border-dark border-left border-right border-bottom border-top my-1 mx-1">
-
-                    <div class="card-header">
-                        Author: @a.Author
-                    </div>
-                    <div class="card-body">
-
-                        <p class="card-text" style="word-wrap: break-word">@a.Content</p>
-                    </div>
-                    <div class="text-center">
-                        <a asp-controller="Admins" asp-action="DeleteAnnouncement" asp-area="Administration" asp-route-id="@a.Id" class="btn btn-primary">Delete</a>
-                    </div>
-
-                    <div class="card-footer text-muted">
-                        Published: @a.PublishedOn
-                    </div>
-                </div>
-
-            }
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Author</th>
+                            <th>Content</th>
+                            <th>PublishedOn</th>
+                            <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Author</th>
+                            <th>Content</th>
+                            <th>PublishedOn</th>
+                            <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var announcement in Model.Announcements)
+                        {
+                            <tr>
+                                <td>@announcement.Author</td>
+                                <td>@announcement.Content</td>
+                                <td>@announcement.PublishedOn</td>
+                                <td>
+                                    <a asp-action="DeleteAnnouncement" asp-controller="Admins" asp-area="Administration" asp-route-id="@announcement.Id" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    @await Html.PartialAsync("AnnouncementCreatePartial", Model.Announcement)
-</div>
 
-@section scripts{
+@*@section scripts{
 
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
-}
+}*@

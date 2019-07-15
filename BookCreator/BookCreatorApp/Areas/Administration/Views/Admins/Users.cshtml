@@ -38,20 +38,20 @@
                 <tbody>
                     @foreach (var user in Model)
                     {
-                        <tr>
-                            <td>@user.Name</td>
-                            <td>@user.Username</td>
-                            <td>@user.Role</td>
-                            <td>@user.BooksCount</td>
-                            <td>@user.MessagesCount</td>
-                            <td>@user.CommentsCount</td>
-                            <td>
-                                <a asp-action="EditRole" asp-controller="Admins" asp-area="Administration" asp-route-id="@user.Id" class="btn btn-info">Change Role</a>
-                            </td>
-                            <td>
-                                <a asp-action="DeleteUser" asp-controller="Admins" asp-area="Administration" asp-route-id="@user.Id" class="btn btn-info">Delete</a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@user.Username</td>
+                        <td>@user.Role</td>
+                        <td>@user.BooksCount</td>
+                        <td>@user.MessagesCount</td>
+                        <td>@user.CommentsCount</td>
+                        <td>
+                            <a asp-action="EditRole" asp-controller="Admins" asp-area="Administration" asp-route-id="@user.Id" class="btn btn-info">Change Role</a>
+                        </td>
+                        <td>
+                            <a asp-action="DeleteUser" asp-controller="Admins" asp-area="Administration" asp-route-id="@user.Id" class="btn btn-info">Delete</a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

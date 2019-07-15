@@ -117,10 +117,20 @@ namespace BookCreatorApp.Controllers
 
 			await this.UserService.BlockUser(currentUser, username);
 
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("BlockedUsers", "Users");
 		}
 
-		[HttpGet]
+        [HttpGet]
+        public async Task<IActionResult> BlockUserFromProfile(string username)
+        {
+            var currentUser = this.User.Identity.Name;
+
+            await this.UserService.BlockUser(currentUser, username);
+
+            return RedirectToAction("Profile", "Users", new{username});
+        }
+
+        [HttpGet]
 		public IActionResult BlockedUsers()
 		{
 			string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -138,5 +148,15 @@ namespace BookCreatorApp.Controllers
 
 			return RedirectToAction("BlockedUsers", "Users");
 		}
-	}
+
+        [HttpGet]
+        public IActionResult UnblockUserFromProfile(string id, string username)
+        {
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            this.UserService.UnblockUser(userId, id);
+
+            return RedirectToAction("Profile", "Users", new { username });
+        }
+    }
 }
