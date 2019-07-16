@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
@@ -48,6 +49,22 @@ namespace BookCreatorApp.Controllers
             };
 
             return this.View(userMessagesModel);
+        }
+
+        [HttpGet]
+        public IActionResult SeenMessage(string messageId)
+        {
+            this.messageService.MarkMessageAsSeen(messageId);
+
+            return this.RedirectToAction("UserMessages", "Messages", new{userId = User.FindFirstValue(ClaimTypes.NameIdentifier)});
+        }
+
+        [HttpGet]
+        public IActionResult DeleteMessage(string messageId)
+        {
+            this.messageService.DeleteMessage(messageId);
+
+            return this.RedirectToAction("UserMessages", "Messages", new { userId = User.FindFirstValue(ClaimTypes.NameIdentifier) });
         }
     }
 }

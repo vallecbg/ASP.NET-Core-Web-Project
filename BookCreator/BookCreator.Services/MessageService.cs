@@ -38,18 +38,6 @@ namespace BookCreator.Services
             this.Context.SaveChanges();
         }
 
-        public ICollection<MessageOutputModel> GetAllMessagesForUser(string userId)
-        {
-            var messages = this.Context.Messages
-                .Include(x => x.Receiver)
-                .Include(x => x.Sender)
-                .Where(x => x.SenderId == userId || x.ReceiverId == userId);
-
-            var messagesModel = this.Mapper.Map<IList<MessageOutputModel>>(messages);
-
-            return messagesModel;
-        }
-
         public ICollection<MessageOutputModel> GetSentMessages(string userId)
         {
             var messages = this.Context.Messages
@@ -72,6 +60,24 @@ namespace BookCreator.Services
             var messagesModel = this.Mapper.Map<IList<MessageOutputModel>>(messages);
 
             return messagesModel;
+        }
+
+        public void MarkMessageAsSeen(string messageId)
+        {
+            var message = this.Context.Messages.Find(messageId);
+
+            message.IsRead = true;
+
+            this.Context.Messages.Update(message);
+            this.Context.SaveChanges();
+        }
+
+        public void DeleteMessage(string messageId)
+        {
+            var message = this.Context.Messages.Find(messageId);
+
+            this.Context.Messages.Remove(message);
+            this.Context.SaveChanges();
         }
     }
 }

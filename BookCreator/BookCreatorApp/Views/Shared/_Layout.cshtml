@@ -38,6 +38,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    <!-- Stylesheet for the Messages Page -->
+    <link href="~/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -61,13 +63,13 @@
                             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                             var name = UserService.GetName(userId);
                             @if (this.User.IsInRole(GlobalConstants.Admin))
-                             {
-                                 @* TODO: Add the admin panel *@
-                                 <li><a class="nav-link" asp-action="Index" asp-controller="Admins" asp-area="Administration">Administration</a></li>
-                             }
-                                <li><a class="nav-link" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@this.User.Identity.Name">Hello @name!</a></li>
-                                <li><a class="nav-link" asp-controller="Users" asp-action="Logout" asp-area="">Logout</a></li>
+                            {
+                                @* TODO: Add the admin panel *@
+                                <li><a class="nav-link" asp-action="Index" asp-controller="Admins" asp-area="Administration">Administration</a></li>
                             }
+                            <li><a class="nav-link" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@this.User.Identity.Name">Hello @name!</a></li>
+                            <li><a class="nav-link" asp-controller="Users" asp-action="Logout" asp-area="">Logout</a></li>
+                        }
                     </ul>
                 </nav>
             </div>
@@ -105,6 +107,11 @@
             </div>
         </div>
     </footer>
+    <!-- Messages Page level plugins -->
+    <script src="~/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/demo/datatables-demo.js"></script>
+
 </body>
 @RenderSection("scripts", required: false)
 </html>
