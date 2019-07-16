@@ -49,5 +49,29 @@ namespace BookCreator.Services
 
             return messagesModel;
         }
+
+        public ICollection<MessageOutputModel> GetSentMessages(string userId)
+        {
+            var messages = this.Context.Messages
+                .Include(x => x.Receiver)
+                .Include(x => x.Sender)
+                .Where(x => x.SenderId == userId);
+
+            var messagesModel = this.Mapper.Map<IList<MessageOutputModel>>(messages);
+
+            return messagesModel;
+        }
+
+        public ICollection<MessageOutputModel> GetReceivedMessages(string userId)
+        {
+            var messages = this.Context.Messages
+                .Include(x => x.Receiver)
+                .Include(x => x.Sender)
+                .Where(x => x.ReceiverId == userId);
+
+            var messagesModel = this.Mapper.Map<IList<MessageOutputModel>>(messages);
+
+            return messagesModel;
+        }
     }
 }

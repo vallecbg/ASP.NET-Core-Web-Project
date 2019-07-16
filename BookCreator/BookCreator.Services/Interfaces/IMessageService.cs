@@ -15,5 +15,9 @@ namespace BookCreator.Services.Interfaces
         //bool CanSendMessage(string senderName, string receiverName);
 
         ICollection<MessageOutputModel> GetAllMessagesForUser(string userId);
+
+        ICollection<MessageOutputModel> GetSentMessages(string userId);
+
+        ICollection<MessageOutputModel> GetReceivedMessages(string userId);
     }
 }

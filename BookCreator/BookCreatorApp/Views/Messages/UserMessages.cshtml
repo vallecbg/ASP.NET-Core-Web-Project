@@ -1,0 +1,65 @@
+﻿@model UserMessagesOutputModel
+@inject IMessageService MessageService
+@{
+    ViewData["Title"] = "UserMessages";
+}
+
+<div class=" container d-flex col-md-12 d-block mt-5 mb-5" style="max-height: 700px;overflow-y:auto">
+    <section id="tabs" class="w-100">
+        <div class="container w-100">
+            <h6 class="section-title h1">User Messages</h6>
+            <div class="row d-flex">
+                <div class="col-md-12 ">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-new-messages-tab" data-toggle="tab" href="#nav-sent-messages" role="tab" aria-controls="nav-sent-messages" aria-selected="true">Sent Messages</a>
+                            <a class="nav-item nav-link" id="nav-old-messages-tab" data-toggle="tab" href="#nav-old-messages" role="tab" aria-controls="nav-old-messages" aria-selected="false">Old Messages</a>
+                            <a class="nav-item nav-link" id="nav-notifications-tab" data-toggle="tab" href="#nav-notifications" role="tab" aria-controls="nav-notifications" aria-selected="false">Notifications</a>
+                            <a class="nav-item nav-link" id="nav-comments-tab" data-toggle="tab" href="#nav-comments" role="tab" aria-controls="nav-comments" aria-selected="false">Comments</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content mt-5 text-dark" style="background-color:#007b5e;" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-sent-messages" role="tabpanel" aria-labelledby="nav-sent-messages-tab">
+                            @await Html.PartialAsync("SentMessagesPartial", Model.SentMessages)
+                        </div>
+                        <div class="tab-pane fade" id="nav-old-messages" role="tabpanel" aria-labelledby="nav-old-messages-tab">
+                            @*@await Html.PartialAsync("OldMessagesPartial", Model.OldMessages)*@
+                        </div>
+                        <div class="tab-pane fade" id="nav-notifications" role="tabpanel" aria-labelledby="nav-notifications-tab">
+                            @*@await Html.PartialAsync("NotificationsInfohubPartial", Model.Notifications)*@
+                        </div>
+                        <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
+                            @*@await Html.PartialAsync("CommentsInfohubPartial", Model.UserComments)*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section scripts{
+
+    @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
+
+    <script>
+        $(document).ready(function () {
+            $('#dataFromDb1').DataTable({ responsive: true });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#dataFromDb2').DataTable({ responsive: true });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#dataFromDb3').DataTable({ responsive: true });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#dataFromDb4').DataTable({ responsive: true });
+        });
+    </script>
+}

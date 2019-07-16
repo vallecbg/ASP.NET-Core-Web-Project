@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
 using BookCreator.ViewModels.InputModels.Messages;
+using BookCreator.ViewModels.OutputModels.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,9 +38,16 @@ namespace BookCreatorApp.Controllers
         [HttpGet]
         public IActionResult UserMessages(string userId)
         {
-            var messages = this.messageService.GetAllMessagesForUser(userId);
+            var sentMessages = this.messageService.GetSentMessages(userId);
+            var receivedMessages = this.messageService.GetReceivedMessages(userId);
 
-            return this.View(messages);
+            var userMessagesModel = new UserMessagesOutputModel
+            {
+                SentMessages = sentMessages,
+                ReceivedMessages = receivedMessages
+            };
+
+            return this.View(userMessagesModel);
         }
     }
 }
