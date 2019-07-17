@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using BookCreator.ViewModels.InputModels.Messages;
+using BookCreator.ViewModels.OutputModels.Comments;
 using BookCreator.ViewModels.OutputModels.Messages;
 
 namespace BookCreator.Services.Interfaces

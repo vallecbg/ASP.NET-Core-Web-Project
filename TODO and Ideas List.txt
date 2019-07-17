@@ -1,4 +1,5 @@
 *Important*
+- Improve the layout in admin panel
 - Need to create Error Page
 - Check controllers for authorize
 - Add site view counter

@@ -1,0 +1,42 @@
+﻿@model ICollection<CommentPanelOutputModel>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Book</th>
+                        <th>Author</th>
+                        <th>Message</th>
+                        <th>CommentedOn</th>
+                        <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Book</th>
+                        <th>Author</th>
+                        <th>Message</th>
+                        <th>CommentedOn</th>
+                        <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var comment in Model)
+                    {
+                        <tr>
+                            <td>@comment.Book</td>
+                            <td>@comment.Author</td>
+                            <td>@comment.Message</td>
+                            <td>@comment.CommentedOn</td>
+                            <td>
+                                <a asp-action="DeleteComment" asp-controller="Messages" asp-route-id="@comment.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -5,13 +5,13 @@ section {
 
     section .section-title {
         text-align: center;
-        color: #007b5e;
+        /*color: #007b5e;*/
         margin-bottom: 50px;
         text-transform: uppercase;
     }
 
 #tabs {
-    background: #007b5e;
+    /*background: #007b5e;*/
     color: #eee;
 }
 
@@ -37,7 +37,7 @@ section {
     }
 
 table.dataTable tbody tr {
-    background-color: #007b5e !important;
+    /*background-color: #007b5e !important;*/
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {

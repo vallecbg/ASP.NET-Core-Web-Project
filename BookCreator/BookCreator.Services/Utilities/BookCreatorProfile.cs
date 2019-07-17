@@ -104,6 +104,10 @@ namespace BookCreator.Services.Utilities
 
             CreateMap<Announcement, AnnouncementOutputModel>()
                 .ForMember(x => x.PublishedOn, cfg => cfg.MapFrom(x => x.PublishedOn.ToString("dd/MM/yyyy HH:mm:ss")));
+
+            CreateMap<Comment, CommentPanelOutputModel>()
+                .ForMember(x => x.Author, cfg => cfg.MapFrom(x => x.User.UserName))
+                .ForMember(x => x.Book, cfg => cfg.MapFrom(x => x.Book.Title));
         }
 	}
 }

@@ -16,10 +16,12 @@ namespace BookCreatorApp.Controllers
     public class MessagesController : Controller
     {
         private readonly IMessageService messageService;
+        private readonly ICommentService commentService;
 
-        public MessagesController(IMessageService messageService)
+        public MessagesController(IMessageService messageService, ICommentService commentService)
         {
             this.messageService = messageService;
+            this.commentService = commentService;
         }
 
         [HttpPost]
@@ -41,11 +43,13 @@ namespace BookCreatorApp.Controllers
         {
             var sentMessages = this.messageService.GetSentMessages(userId);
             var receivedMessages = this.messageService.GetReceivedMessages(userId);
+            var comments = this.commentService.GetComments(userId);
 
             var userMessagesModel = new UserMessagesOutputModel
             {
                 SentMessages = sentMessages,
-                ReceivedMessages = receivedMessages
+                ReceivedMessages = receivedMessages,
+                Comments = comments
             };
 
             return this.View(userMessagesModel);
@@ -63,6 +67,14 @@ namespace BookCreatorApp.Controllers
         public IActionResult DeleteMessage(string messageId)
         {
             this.messageService.DeleteMessage(messageId);
+
+            return this.RedirectToAction("UserMessages", "Messages", new { userId = User.FindFirstValue(ClaimTypes.NameIdentifier) });
+        }
+
+        [HttpGet]
+        public IActionResult DeleteComment(string id)
+        {
+            this.commentService.DeleteComment(id);
 
             return this.RedirectToAction("UserMessages", "Messages", new { userId = User.FindFirstValue(ClaimTypes.NameIdentifier) });
         }

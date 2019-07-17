@@ -3,7 +3,7 @@
 <div class="card shadow mb-4">
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Sender</th>
@@ -27,24 +27,25 @@
                 <tbody>
                     @foreach (var message in Model)
                     {
-                    <tr>
-                        <td>@message.Sender</td>
-                        <td>@message.Receiver</td>
-                        <td>@message.SentOn</td>
-                        <td>@message.Text</td>
-                        @if (!message.IsRead)
-                        {
-                            <td>No</td>
-                        }
-                        else
-                        {
-                            <td>Yes</td>
-                        }
-                        <td>
-                            <a asp-action="DeleteMessage" asp-controller="Messages" asp-route-messageId="@message.Id" class="btn btn-danger">Delete</a>
-                        </td>
-
-                    </tr>
+                        <tr>
+                            <td>@message.Sender</td>
+                            <td>@message.Receiver</td>
+                            <td>@message.SentOn</td>
+                            <td>@message.Text</td>
+                            @if (!message.IsRead)
+                            {
+                                <td>
+                                    <a asp-action="SeenMessage" asp-controller="Messages" asp-route-messageId="@message.Id" class="btn btn-info">Mark as seen</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>Yes</td>
+                            }
+                            <td>
+                                <a asp-action="DeleteMessage" asp-controller="Messages" asp-route-messageId="@message.Id" class="btn btn-secondary">Archive</a>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
