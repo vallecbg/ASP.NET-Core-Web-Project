@@ -19,8 +19,10 @@ namespace BookCreator.Services
     public class ChapterService : BaseService, IChapterService
     {
         //TODO: Add notification here
-        public ChapterService(UserManager<BookCreatorUser> userManager, BookCreatorContext context, IMapper mapper) : base(userManager, context, mapper)
+        private readonly INotificationService notificationService;
+        public ChapterService(UserManager<BookCreatorUser> userManager, BookCreatorContext context, IMapper mapper, INotificationService notificationService) : base(userManager, context, mapper)
         {
+            this.notificationService = notificationService;
         }
 
         public void DeleteChapter(string bookId, string chapterId, string username)
@@ -71,6 +73,8 @@ namespace BookCreator.Services
             this.Context.SaveChanges();
 
             //TODO: Add notification for new chapter created!
+
+            this.notificationService.AddNotification(book.Id, currentUser.UserName, book.Title);
 
             return book.Id;
         }

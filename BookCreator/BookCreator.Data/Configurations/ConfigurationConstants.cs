@@ -18,5 +18,7 @@ namespace BookCreator.Data.Configurations
 
         public const int AnnouncementLength = 500;
 
+        public const int NotificationMaxLength = 200;
+
     }
 }

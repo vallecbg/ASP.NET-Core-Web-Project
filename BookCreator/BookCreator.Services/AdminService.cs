@@ -199,9 +199,11 @@ namespace BookCreator.Services
                 .Where(x => x.BlockedUserId == userId || x.BookCreatorUserId == userId);
             var messages = this.Context.Messages
                 .Where(x => x.ReceiverId == userId || x.SenderId == userId);
+            var notifications = this.Context.Notifications.Where(x => x.UserId == userId);
 
             this.Context.BlockedUsers.RemoveRange(blockedUsers);
             this.Context.Messages.RemoveRange(messages);
+            this.Context.Notifications.RemoveRange(notifications);
 
             await this.Context.SaveChangesAsync();
         }

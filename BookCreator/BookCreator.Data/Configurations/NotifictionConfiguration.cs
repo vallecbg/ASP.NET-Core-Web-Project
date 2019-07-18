@@ -11,7 +11,17 @@ namespace BookCreator.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Notification> builder)
         {
-            
+            builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Seen)
+                .IsRequired(true);
+
+            builder.Property(x => x.Message)
+                .IsRequired(true)
+                .HasMaxLength(ConfigurationConstants.NotificationMaxLength);
+
+            builder.Property(x => x.UpdatedBookId)
+                .IsRequired(true);
         }
     }
 }

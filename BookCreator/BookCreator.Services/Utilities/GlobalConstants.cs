@@ -85,6 +85,8 @@ namespace BookCreator.Services.Utilities
 
         public const string TooShortAnnouncement = "Your announcement has to be at least 5 characters long";
 
+        public const string NotificationMessageNewChapter = "The {0} Book you are following just added new Chapter";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";

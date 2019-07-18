@@ -8,6 +8,8 @@ namespace BookCreator.Models
     {
         public string Id { get; set; }
 
+        public string UpdatedBookId { get; set; }
+
         public bool Seen { get; set; }
 
         public string Message { get; set; }
