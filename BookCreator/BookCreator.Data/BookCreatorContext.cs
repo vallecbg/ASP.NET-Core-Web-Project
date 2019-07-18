@@ -18,6 +18,7 @@ namespace BookCreator.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<UserBook> UsersBooks { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
 		public BookCreatorContext(DbContextOptions<BookCreatorContext> options)
 			: base(options)
@@ -36,6 +37,7 @@ namespace BookCreator.Data
             builder.ApplyConfiguration(new MessageConfiguration());
             builder.ApplyConfiguration(new UserBookConfiguration());
             builder.ApplyConfiguration(new AnnouncementConfiguration());
+            builder.ApplyConfiguration(new NotifictionConfiguration());
                                 
                                 
             base.OnModelCreating(builder);
