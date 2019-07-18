@@ -9,7 +9,7 @@
     <div class="row mt-5 col-md-3">
         @if (author)
         {
-            <a class="btn btn-dark" asp-action="CreateBook" asp-controller="Books">Add Book</a>
+            <a class="btn btn-info" asp-action="CreateBook" asp-controller="Books">Add Book</a>
         }
     </div>
     <div class="row mt-5 mb-5" style="overflow-y: auto;">
@@ -18,7 +18,7 @@
         {
             <div class="col-lg-4 col-md-4 mb-4">
                 <div class="card h-100">
-                    <img class="card-img-top w-100" src="@s.ImageUrl" alt="@s.Title" style="height: 450px;">
+                    <img class="card-img-top w-100" src="@s.ImageUrl" alt="@s.Title" style="height: auto;">
                     <div class="card-body">
                         <h4 class="card-title d-flex justify-content-between">
                             <small>Title: @s.Title</small>

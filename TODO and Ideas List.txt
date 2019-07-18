@@ -14,6 +14,7 @@
 - Improve last published books view
 
 *Minor*
+- Maybe I can add edit on book
 - Add particles.js in main menu
 - If i have time i can add more roles with some permissions
 - Add api support

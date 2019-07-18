@@ -46,7 +46,7 @@ namespace BookCreatorApp.Controllers
                 return this.View(inputModel);
             }
 
-            if (!wrongType)
+            if (!wrongType && imageNotNull)
             {
                 this.ViewData[GlobalConstants.Error] = GlobalConstants.WrongFileType;
                 return this.View(inputModel);

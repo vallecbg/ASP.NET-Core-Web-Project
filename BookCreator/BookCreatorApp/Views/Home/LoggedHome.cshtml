@@ -43,6 +43,7 @@
             <div class="card-header text-center text-dark">My Menu</div>
             <div class="card-body">
                 <a class="btn btn-info btn-block" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@this.User.Identity.Name">My profile</a>
+                <a asp-action="CreateBook" asp-controller="Books" class="btn btn-info btn-block">Create Book</a>
                 <a asp-action="UserBooks" id="MyBooks" asp-controller="Books" asp-route-username="@this.User.Identity.Name" class="btn btn-info btn-block">My Books</a>
                 <a asp-action="FollowedBooks" asp-controller="Books" asp-route-username="@this.User.Identity.Name" class="btn btn-info btn-block">Followed Books</a>
                 <a asp-action="BlockedUsers" asp-controller="Users" asp-route-id="@this.User.Identity.Name" class="btn btn-info btn-block">Blocked Users</a>
