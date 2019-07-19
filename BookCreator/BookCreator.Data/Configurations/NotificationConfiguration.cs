@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BookCreator.Data.Configurations
 {
-    public class NotifictionConfiguration : IEntityTypeConfiguration<Notification>
+    public class NotificationConfiguration : IEntityTypeConfiguration<Notification>
     {
         public void Configure(EntityTypeBuilder<Notification> builder)
         {
@@ -22,6 +22,11 @@ namespace BookCreator.Data.Configurations
 
             builder.Property(x => x.UpdatedBookId)
                 .IsRequired(true);
+
+            builder.HasOne(x => x.User)
+                .WithMany(x => x.Notifications)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

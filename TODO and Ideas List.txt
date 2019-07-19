@@ -1,5 +1,7 @@
 *Important*
 - Improve the layout in admin panel
+- Maybe I can add aria in redirecttoroute
+- Check if I can reduce viewimports usings
 - Need to create Error Page
 - Check controllers for authorize
 - Add site view counter
@@ -15,6 +17,7 @@
 
 *Minor*
 - Maybe I can add edit on book
+- Add votes on the comment and using ML.Net check comments
 - Add particles.js in main menu
 - If i have time i can add more roles with some permissions
 - Add api support

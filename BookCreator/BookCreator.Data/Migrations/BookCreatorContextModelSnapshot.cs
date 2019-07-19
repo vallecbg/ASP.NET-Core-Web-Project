@@ -237,6 +237,29 @@ namespace BookCreator.Data.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("BookCreator.Models.Notification", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(200);
+
+                    b.Property<bool>("Seen");
+
+                    b.Property<string>("UpdatedBookId")
+                        .IsRequired();
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("BookCreator.Models.UserBook", b =>
                 {
                     b.Property<string>("BookId");
@@ -458,6 +481,13 @@ namespace BookCreator.Data.Migrations
                     b.HasOne("BookCreator.Models.BookCreatorUser", "Sender")
                         .WithMany("SentMessages")
                         .HasForeignKey("SenderId");
+                });
+
+            modelBuilder.Entity("BookCreator.Models.Notification", b =>
+                {
+                    b.HasOne("BookCreator.Models.BookCreatorUser", "User")
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("BookCreator.Models.UserBook", b =>

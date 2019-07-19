@@ -67,6 +67,7 @@ namespace BookCreatorApp
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<INotificationService, NotificationService>();
 
 			services.AddAutoMapper(x => x.AddProfile<BookCreatorProfile>());
 

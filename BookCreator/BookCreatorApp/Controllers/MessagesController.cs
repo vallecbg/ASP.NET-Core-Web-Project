@@ -17,11 +17,13 @@ namespace BookCreatorApp.Controllers
     {
         private readonly IMessageService messageService;
         private readonly ICommentService commentService;
+        private readonly INotificationService notificationService;
 
-        public MessagesController(IMessageService messageService, ICommentService commentService)
+        public MessagesController(IMessageService messageService, ICommentService commentService, INotificationService notificationService)
         {
             this.messageService = messageService;
             this.commentService = commentService;
+            this.notificationService = notificationService;
         }
 
         [HttpPost]
@@ -44,12 +46,14 @@ namespace BookCreatorApp.Controllers
             var sentMessages = this.messageService.GetSentMessages(userId);
             var receivedMessages = this.messageService.GetReceivedMessages(userId);
             var comments = this.commentService.GetComments(userId);
+            var notifications = this.notificationService.GetNotifications(userId);
 
             var userMessagesModel = new UserMessagesOutputModel
             {
                 SentMessages = sentMessages,
                 ReceivedMessages = receivedMessages,
-                Comments = comments
+                Comments = comments,
+                Notifications = notifications
             };
 
             return this.View(userMessagesModel);

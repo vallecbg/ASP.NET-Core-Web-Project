@@ -37,7 +37,7 @@ namespace BookCreator.Data
             builder.ApplyConfiguration(new MessageConfiguration());
             builder.ApplyConfiguration(new UserBookConfiguration());
             builder.ApplyConfiguration(new AnnouncementConfiguration());
-            builder.ApplyConfiguration(new NotifictionConfiguration());
+            builder.ApplyConfiguration(new NotificationConfiguration());
                                 
                                 
             base.OnModelCreating(builder);

@@ -1,7 +1,10 @@
 ﻿@model UserMessagesOutputModel
 @inject IMessageService MessageService
+@inject INotificationService NotificationService
 @{
-    ViewData["Title"] = "UserMessages";
+    ViewData["Title"] = "Control Panel";
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var notificationsCount = NotificationService.GetNotificationsCount(userId);
 }
 
 <div class="container d-flex col-md-12 d-block mt-5 mb-5" style="max-height: 700px;overflow-y:auto">
@@ -14,7 +17,13 @@
                         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-new-messages-tab" data-toggle="tab" href="#nav-sent-messages" role="tab" aria-controls="nav-sent-messages" aria-selected="true">Sent Messages</a>
                             <a class="nav-item nav-link" id="nav-received-messages-tab" data-toggle="tab" href="#nav-received-messages" role="tab" aria-controls="nav-received-messages" aria-selected="false">Received Messages</a>
-                            <a class="nav-item nav-link" id="nav-notifications-tab" data-toggle="tab" href="#nav-notifications" role="tab" aria-controls="nav-notifications" aria-selected="false">Notifications</a>
+                            <a class="nav-item nav-link" id="nav-notifications-tab" data-toggle="tab" href="#nav-notifications" role="tab" aria-controls="nav-notifications" aria-selected="false">
+                                Notifications
+                                @if (notificationsCount > 0)
+                                {
+                                    <span class="badge badge-danger">@notificationsCount</span>
+                                }
+                            </a>
                             <a class="nav-item nav-link" id="nav-comments-tab" data-toggle="tab" href="#nav-comments" role="tab" aria-controls="nav-comments" aria-selected="false">Comments</a>
                         </div>
                     </nav>
@@ -26,7 +35,7 @@
                             @await Html.PartialAsync("ReceivedMessagesPartial", Model.ReceivedMessages)
                         </div>
                         <div class="tab-pane fade" id="nav-notifications" role="tabpanel" aria-labelledby="nav-notifications-tab">
-                            @*@await Html.PartialAsync("NotificationsInfohubPartial", Model.Notifications)*@
+                            @await Html.PartialAsync("NotificationsPartial", Model.Notifications)
                         </div>
                         <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
                             @await Html.PartialAsync("CommentsPartial", Model.Comments)

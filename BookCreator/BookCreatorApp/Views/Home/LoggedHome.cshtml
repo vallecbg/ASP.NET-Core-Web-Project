@@ -1,10 +1,12 @@
 ﻿@inject IUserService  UserService
+@inject INotificationService NotificationService
 @{
     ViewData["Title"] = "LoggedHome";
 
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     var model = UserService.GetHomeViewDetails();
     var isThereAnAnnouncement = model.LatestAnnouncements.Any();
+    var notificationsCount = NotificationService.GetNotificationsCount(userId);
 }
 
 <div class="loggedHome container d-flex justify-content-around col-md-12 col-sm-6 card-group" style="margin-top:50px;">
@@ -48,7 +50,13 @@
                 <a asp-action="FollowedBooks" asp-controller="Books" asp-route-username="@this.User.Identity.Name" class="btn btn-info btn-block">Followed Books</a>
                 <a asp-action="BlockedUsers" asp-controller="Users" asp-route-id="@this.User.Identity.Name" class="btn btn-info btn-block">Blocked Users</a>
                 <a asp-action="AllBooks" asp-controller="Books" class="btn btn-info btn-block">All Books</a>
-                <a asp-action="UserMessages" asp-controller="Messages" asp-route-userId="@userId" class="btn btn-info btn-block">My Messages</a>
+                <a asp-action="UserMessages" asp-controller="Messages" asp-route-userId="@userId" class="btn btn-info btn-block">
+                    Control Panel
+                    @if (notificationsCount > 0)
+                    {
+                        <span class="badge badge-danger">@notificationsCount</span>
+                    }
+                </a>
             </div>
         </div>
     </div>

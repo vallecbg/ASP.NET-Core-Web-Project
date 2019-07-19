@@ -1,0 +1,51 @@
+﻿@model ICollection<NotificationOutputModel>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Message</th>
+                        <th>Username</th>
+                        <th>Seen</th>
+                        <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Message</th>
+                        <th>Username</th>
+                        <th>Seen</th>
+                        <th class="sorting_asc_disabled sorting_desc_disabled"></th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var notification in Model)
+                    {
+                        <tr>
+                            <td>@notification.Message</td>
+                            <td>@notification.Username</td>
+                            @if (!notification.Seen)
+                            {
+                                <td>
+                                    <a asp-action="SeenNotification" asp-controller="Notifications" asp-route-id="@notification.Id" class="btn btn-info">Mark as seen</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>Yes</td>
+                                
+                            }
+                            <td>
+                                <a asp-action="DeleteNotification" asp-controller="Notifications" asp-route-id="@notification.Id" class="btn btn-secondary">Archive</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

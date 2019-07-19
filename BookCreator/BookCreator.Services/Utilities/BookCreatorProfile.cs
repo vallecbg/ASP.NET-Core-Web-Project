@@ -8,6 +8,7 @@ using BookCreator.ViewModels.InputModels.Users;
 using BookCreator.ViewModels.OutputModels.Announcements;
 using BookCreator.ViewModels.OutputModels.Books;
 using BookCreator.ViewModels.OutputModels.Comments;
+using BookCreator.ViewModels.OutputModels.Notifications;
 
 namespace BookCreator.Services.Utilities
 {
@@ -108,6 +109,9 @@ namespace BookCreator.Services.Utilities
             CreateMap<Comment, CommentPanelOutputModel>()
                 .ForMember(x => x.Author, cfg => cfg.MapFrom(x => x.User.UserName))
                 .ForMember(x => x.Book, cfg => cfg.MapFrom(x => x.Book.Title));
+
+            CreateMap<Notification, NotificationOutputModel>()
+                .ForMember(x => x.Username, cfg => cfg.MapFrom(x => x.User.UserName));
         }
 	}
 }
