@@ -16,11 +16,10 @@
                 </textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-12">
+                <input type="submit" value="Create Announcement" style="align-content: center" class="btn btn-info" />
 
-                <a class="btn btn-danger align-content-end" asp-area="Administration" asp-controller="Admins" asp-action="DeleteAllAnnouncements">Delete All Announcements</a>
-
-                <input type="submit" value="Create" style="align-content: center" class="btn btn-info" />
+                <a class="btn btn-danger float-right" asp-area="Administration" asp-controller="Admins" asp-action="DeleteAllAnnouncements">Delete All Announcements</a>
             </div>
         </form>
     </div>
