@@ -1,5 +1,4 @@
 *Important*
-- Need to continue tomorrow with visualising the top 3 books with most chapters or sth like that
 - Improve the layout in admin panel
 - Maybe I can add aria in redirecttoroute
 - Check if I can reduce viewimports usings

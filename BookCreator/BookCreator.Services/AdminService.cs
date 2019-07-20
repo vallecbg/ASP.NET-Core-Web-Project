@@ -76,6 +76,32 @@ namespace BookCreator.Services
             return commentsReport;
         }
 
+        public Dictionary<string, int> GetTop3BooksWithMostChapters()
+        {
+            var books = this.Context.Books
+                .Include(x => x.Chapters)
+                .Include(x => x.Author)
+                .Include(x => x.Genre)
+                .OrderByDescending(x => x.Chapters.Count)
+                .Take(3)
+                .ToList();
+            var booksModel = new Dictionary<string, int>();
+            foreach (var book in books)
+            {
+                if (!booksModel.ContainsKey(book.Title))
+                {
+                    booksModel.Add(book.Title, 0);
+                }
+
+                foreach (var chapter in book.Chapters)
+                {
+                    booksModel[book.Title]++;
+                }
+            }
+
+            return booksModel;
+        }
+
         private Dictionary<string, int> LoadCommentsReportWithDates()
         {
             var commentsReport = new Dictionary<string, int>();

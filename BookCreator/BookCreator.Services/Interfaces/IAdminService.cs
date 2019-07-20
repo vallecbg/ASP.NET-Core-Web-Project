@@ -43,5 +43,7 @@ namespace BookCreator.Services.Interfaces
         int GetAnnouncementsCount();
 
         Dictionary<string, int> GetCommentsForAWeek();
+
+        Dictionary<string, int> GetTop3BooksWithMostChapters();
     }
 }
