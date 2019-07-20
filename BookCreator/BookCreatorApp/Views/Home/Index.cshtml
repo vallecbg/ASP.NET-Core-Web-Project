@@ -16,7 +16,7 @@
                 <p class="text-white pt-20 pb-20">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp <br> or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
                 </p>
-                <a href="#" class="primary-btn text-uppercase">Go to book</a>
+                <a asp-action="Login" asp-controller="Users" class="primary-btn text-uppercase">Sign in</a>
             </div>
         }
         else
@@ -29,7 +29,7 @@
                 <p class="text-white pt-20 pb-20">
                     @randomBook.Summary
                 </p>
-                <a asp-action="Details" asp-controller="Books" asp-route-id="@randomBook.Id" class="primary-btn text-uppercase">Go to book</a>
+                <a asp-action="Login" asp-controller="Users" class="primary-btn text-uppercase">Sign in</a>
             </div>
         }
         <div class="col-lg-5 banner-right">
