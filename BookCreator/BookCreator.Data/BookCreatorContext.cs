@@ -19,6 +19,7 @@ namespace BookCreator.Data
         public DbSet<UserBook> UsersBooks { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<DbLog> Logs { get; set; }
 
 		public BookCreatorContext(DbContextOptions<BookCreatorContext> options)
 			: base(options)

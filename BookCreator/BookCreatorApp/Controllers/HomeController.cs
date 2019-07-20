@@ -15,7 +15,7 @@
 
 		[AllowAnonymous]
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        [Route("Error")]
+        [Route("Home/Error")]
 		public IActionResult Error()
 		{
 			return View();

@@ -60,8 +60,9 @@ namespace BookCreatorApp
 				.AddDefaultTokenProviders();
 
 			services.AddScoped<CustomActionFilterAttribute>();
+            services.AddScoped<LogExceptionActionFilter>();
 
-			services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IBookService, BookService>();
             services.AddScoped<IChapterService, ChapterService>();
             services.AddScoped<ICommentService, CommentService>();
