@@ -30,6 +30,67 @@ namespace BookCreator.Services
             this.bookService = bookService;
         }
 
+        public int GetUsersCount()
+        {
+            var count = this.Context.Users.Count();
+
+            return count;
+        }
+
+        public int GetGenresCount()
+        {
+            var count = this.Context.BooksGenres.Count();
+
+            return count;
+        }
+
+        public int GetBooksCount()
+        {
+            var count = this.Context.Books.Count();
+
+            return count;
+        }
+
+        public int GetAnnouncementsCount()
+        {
+            var count = this.Context.Announcements.Count();
+
+            return count;
+        }
+
+        public Dictionary<string, int> GetCommentsForAWeek()
+        {
+            var comments = this.Context.Comments
+                //.OrderBy(x => ((int)x.CommentedOn.DayOfWeek + 6) % 7)
+                .Where(x => (x.CommentedOn.Day - DateTime.Now.Day) <= 7);
+            var commentsReport = LoadCommentsReportWithDates();
+            foreach (var comment in comments)
+            {
+                var currentDate = comment.CommentedOn.ToString("dddd");
+                if (commentsReport.ContainsKey(currentDate))
+                {
+                    commentsReport[currentDate]++;
+                }
+            }
+
+            return commentsReport;
+        }
+
+        private Dictionary<string, int> LoadCommentsReportWithDates()
+        {
+            var commentsReport = new Dictionary<string, int>();
+
+            commentsReport.Add("Monday", 0);
+            commentsReport.Add("Tuesday", 0);
+            commentsReport.Add("Wednesday", 0);
+            commentsReport.Add("Thursday", 0);
+            commentsReport.Add("Friday", 0);
+            commentsReport.Add("Saturday", 0);
+            commentsReport.Add("Sunday", 0);
+
+            return commentsReport;
+        }
+
         public string AddGenre(string genre)
         {
             bool genreExists = this.Context.BooksGenres.Any(x => x.Genre == genre);

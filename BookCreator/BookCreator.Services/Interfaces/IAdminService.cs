@@ -33,5 +33,15 @@ namespace BookCreator.Services.Interfaces
         void DeleteAllAnnouncements();
 
         AllAnnouncementsModel AllAnnouncements();
+
+        int GetUsersCount();
+
+        int GetGenresCount();
+
+        int GetBooksCount();
+
+        int GetAnnouncementsCount();
+
+        Dictionary<string, int> GetCommentsForAWeek();
     }
 }

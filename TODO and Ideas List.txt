@@ -1,4 +1,5 @@
 *Important*
+- Need to continue tomorrow with visualising the top 3 books with most chapters or sth like that
 - Improve the layout in admin panel
 - Maybe I can add aria in redirecttoroute
 - Check if I can reduce viewimports usings
@@ -16,6 +17,7 @@
 - Improve last published books view
 
 *Minor*
+- If I have time i can generate reports from admin panel in json format
 - Maybe I can add edit on book
 - Add votes on the comment and using ML.Net check comments
 - Add particles.js in main menu
