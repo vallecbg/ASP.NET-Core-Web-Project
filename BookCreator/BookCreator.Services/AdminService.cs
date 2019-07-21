@@ -62,6 +62,7 @@ namespace BookCreator.Services
         {
             var comments = this.Context.Comments
                 //.OrderBy(x => ((int)x.CommentedOn.DayOfWeek + 6) % 7)
+                //TODO: Check < 7 or <= 7
                 .Where(x => (x.CommentedOn.Day - DateTime.Now.Day) <= 7);
             var commentsReport = LoadCommentsReportWithDates();
             foreach (var comment in comments)

@@ -10,7 +10,7 @@
 }
 
 <div class="loggedHome container d-flex justify-content-around col-md-12 col-sm-6 card-group" style="margin-top:50px;">
-    <div class="col-md-4" style="overflow: auto; margin-bottom: 20px;max-height:500px">
+    <div class="col-md-4 mb-5">
         <div class="col-md-12 card border border-dark">
             <div class="card-header text-center text-dark container-fluid">Last Published Books</div>
             @foreach (var s in model.LatestBooks)
@@ -83,25 +83,48 @@
             }
         </div>
     </div>
-    <div class="container row">
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <div class="col-6">&nbsp;</div>
-            <div class="col-6">
-                <input type="hidden" value="@this.User.Identity.Name" id="userInput"/>
-                Message...<input type="text" id="messageInput" />
-                <input type="button" id="sendButton" value="Send Message" />
+    @*<div class="container row">
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-6">&nbsp;</div>
+                <div class="col-6">
+                    <input type="hidden" value="@this.User.Identity.Name" id="userInput"/>
+                    Message...<input type="text" id="messageInput" />
+                    <input type="button" id="sendButton" value="Send Message" />
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <hr />
+            <div class="row">
+                <div class="col-12">
+                    <hr />
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6">&nbsp;</div>
-            <div class="col-6">
-                <ul id="messagesList"></ul>
+            <div class="row">
+                <div class="col-6">&nbsp;</div>
+                <div class="col-6">
+                    <ul id="messagesList"></ul>
+                </div>
+            </div>
+        </div>*@
+    <div class="container">
+        <h3 class="text-center text-light">Chat Room</h3>
+        <div class="messaging">
+            <div class="inbox_msg card col-md-12">
+                <div class="mesgs">
+                    <div class="msg_history">
+                        <div class="received_msg">
+                            <div class="received_withd_msg">
+                                <p id="messagesList"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="type_msg">
+                        <div class="input_msg_write">
+                            <input type="hidden" value="@this.User.Identity.Name" id="userInput" />
+                            <input type="text" id="messageInput" class="write_msg" placeholder="Type a message" />
+                            <button class="msg_send_btn" id="sendButton" type="button">Send <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

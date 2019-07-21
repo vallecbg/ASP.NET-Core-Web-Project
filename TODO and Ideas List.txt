@@ -1,11 +1,5 @@
 *Important*
-- Improve the layout in admin panel
-- Maybe I can add aria in redirecttoroute
-- Check if I can reduce viewimports usings
 - Need to create Error Page
-- Check controllers for authorize
-- Add site view counter
-- Create admin panel
 - Improve the chat
 - Need to refactor the design of the page
 - Add full details on user
@@ -32,3 +26,6 @@
 - Add sms notifications
 - Maybe need to store the last random book to avoid dublicate of every reload
 - Fix the colors of the footer index not logged in
+- Maybe I can add aria in redirecttoroute
+- Check if I can reduce viewimports usings
+- Add site view counter
