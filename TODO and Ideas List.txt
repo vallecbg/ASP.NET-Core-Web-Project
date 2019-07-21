@@ -1,10 +1,5 @@
 *Important*
 - Need to create Error Page
-- Improve the chat
-- Need to refactor the design of the page
-- Add full details on user
-- Add messages
-- Need to improve profile view
 - Check for remember me button
 - Fix when resizing not showing navbar menu and also not showing the black line
 - Improve last published books view
@@ -17,15 +12,7 @@
 - Add particles.js in main menu
 - If i have time i can add more roles with some permissions
 - Add api support
-- It's possible to add admin panel template from bootstrap
-- Add top writer in home page slider or the book with most likes or followers using the new theme
-(now it is displaying random books)
-- It's possible to add chat using signalr
 - Add menu languages
-- Improve front end of the website
 - Add sms notifications
 - Maybe need to store the last random book to avoid dublicate of every reload
-- Fix the colors of the footer index not logged in
-- Maybe I can add aria in redirecttoroute
-- Check if I can reduce viewimports usings
 - Add site view counter
