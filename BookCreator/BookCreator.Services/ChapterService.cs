@@ -59,9 +59,9 @@ namespace BookCreator.Services
             this.Context.SaveChangesAsync().GetAwaiter().GetResult();
         }
 
-        public async Task<string> AddChapter(ChapterInputModel model)
+        public void AddChapter(ChapterInputModel model)
         {
-            var currentUser = await this.UserManager.FindByNameAsync(model.Author);
+            var currentUser = this.UserManager.FindByNameAsync(model.Author).GetAwaiter().GetResult();
             var chapter = Mapper.Map<Chapter>(model);
             //TODO: check better solution
             chapter.AuthorId = currentUser.Id;
@@ -75,8 +75,6 @@ namespace BookCreator.Services
             //TODO: Add notification for new chapter created!
 
             this.notificationService.AddNotification(book.Id, currentUser.UserName, book.Title);
-
-            return book.Id;
         }
 
         public ChapterEditModel GetChapterToEdit(string id)

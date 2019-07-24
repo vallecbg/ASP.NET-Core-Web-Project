@@ -12,7 +12,7 @@ namespace BookCreator.Services.Interfaces
         //TODO: Delete, Add, Edit
         void DeleteChapter(string bookId, string chapterId, string username);
 
-        Task<string> AddChapter(ChapterInputModel model);
+        void AddChapter(ChapterInputModel model);
 
         ChapterEditModel GetChapterToEdit(string id);
 

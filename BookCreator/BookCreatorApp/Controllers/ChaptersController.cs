@@ -30,7 +30,7 @@ namespace BookCreatorApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddChapter(ChapterInputModel model)
+        public IActionResult AddChapter(ChapterInputModel model)
         {
             if (!ModelState.IsValid)
 			{
@@ -39,9 +39,9 @@ namespace BookCreatorApp.Controllers
 				return this.View(model);
 			}
 
-            var bookId = await this.chapterService.AddChapter(model);
+            this.chapterService.AddChapter(model);
 
-            return RedirectToAction("Details", "Books", new {id = bookId});
+            return RedirectToAction("Details", "Books", new {id = model.BookId});
         }
 
         [HttpGet]

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
 using BookCreator.ViewModels.InputModels.Books;
@@ -8,10 +6,10 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NUnit.Framework;
 using Moq;
+using NUnit.Framework;
 
-namespace BookCreator.Tests.BooksController
+namespace BookCreator.Tests.Controllers.BooksController
 {
     [TestFixture]
     public class BooksControllerTests
