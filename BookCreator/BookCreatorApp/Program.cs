@@ -20,6 +20,7 @@
 				var serverProvider = scope.ServiceProvider;
 
                 SeedBookGenresIfDbEmpty(serverProvider).GetAwaiter().GetResult();
+                //SeedBooksIfDbEmpty(serverProvider).GetAwaiter().GetResult();
             }
 			host.Run();
 		}
@@ -62,5 +63,29 @@
                 await dbContext.SaveChangesAsync();
             }
         }
+
+        //private static async Task SeedBooksIfDbEmpty(IServiceProvider serviceProvider)
+        //{
+        //    var dbContext = serviceProvider.GetRequiredService<BookCreatorContext>();
+
+        //    //Make sure the database is created
+        //    dbContext.Database.EnsureCreated();
+
+        //    var books = new[]
+        //    {
+        //        new Book()
+        //        {
+        //            Id = "1",
+        //            BookGenreId = 
+        //        }
+        //    };
+
+        //    var noGenres = dbContext.BooksGenres.Any();
+        //    if (!noGenres)
+        //    {
+        //        await dbContext.BooksGenres.AddRangeAsync(genres);
+        //        await dbContext.SaveChangesAsync();
+        //    }
+        //}
     }
 }

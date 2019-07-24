@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.AspNetCore.Authorization;
 using NUnit.Framework;
 
-namespace BookCreator.Tests.Controllers.Comments
+namespace BookCreator.Tests.Controllers.CommentsController
 {
     [TestFixture]
     public class CommentsControllerTests

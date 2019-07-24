@@ -116,6 +116,11 @@ namespace BookCreatorApp.Areas.Administration.Controllers
         [HttpGet]
         public async Task<IActionResult> DeleteBook(string id)
         {
+            if (!this.User.IsInRole(GlobalConstants.Admin) && !this.User.IsInRole(GlobalConstants.Moderator))
+            {
+                return RedirectToAction("Error", "Home", "");
+            }
+
             var username = this.User.Identity.Name;
 
             await this.bookService.DeleteBook(id, username);
