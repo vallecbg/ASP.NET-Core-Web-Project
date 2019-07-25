@@ -19,7 +19,7 @@ namespace BookCreator.Services.Interfaces
 
 		void Logout();
 
-		UserOutputViewModel GetUser(string nickName);
+		UserOutputViewModel GetUser(string username);
 
 		Task BlockUser(string currentUser, string name);
 

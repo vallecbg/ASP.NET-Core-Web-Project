@@ -49,10 +49,9 @@ namespace BookCreator.Services
 
 		public async Task<SignInResult> RegisterUser(RegisterInputModel registerModel)
 		{
-			bool uniqueNickname = this.Context.Users.All(x => x.Name != registerModel.Name);
 			bool uniqueUsername = this.Context.Users.All(x => x.UserName != registerModel.Username);
 
-			if (!uniqueNickname || !uniqueUsername)
+			if (!uniqueUsername)
 			{
 				return SignInResult.Failed;
 			}

@@ -2,6 +2,7 @@
 - Improve comments view
 - Check when have dublicate user in register showing 2 errors
 - Need to create Error Page
+- Check all TODO's in visual studio
 - Check for remember me button
 - Fix when resizing not showing navbar menu and also not showing the black line
 - Improve last published books view

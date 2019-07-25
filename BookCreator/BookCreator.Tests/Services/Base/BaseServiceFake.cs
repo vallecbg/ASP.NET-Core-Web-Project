@@ -52,7 +52,7 @@ namespace BookCreator.Tests.Services.Base
             services.AddDbContext<BookCreatorContext>(
                 cfg => cfg.UseInMemoryDatabase(Guid.NewGuid().ToString()));
 
-            //TODO: Don't forget to add services
+            //TODO: Think about removing the services from here
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IChapterService, ChapterService>();
