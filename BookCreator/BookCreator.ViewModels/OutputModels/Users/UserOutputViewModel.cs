@@ -1,5 +1,7 @@
 ﻿using BookCreator.Models;
 using BookCreator.ViewModels.OutputModels.Books;
+using BookCreator.ViewModels.OutputModels.Messages;
+using BookCreator.ViewModels.OutputModels.Notifications;
 
 namespace BookCreator.ViewModels.OutputModels.Users
 {
@@ -10,6 +12,9 @@ namespace BookCreator.ViewModels.OutputModels.Users
         public UserOutputViewModel()
         {
             this.Books = new HashSet<BookOutputModel>();
+            this.FollowedBooks = new HashSet<BookOutputModel>();
+            this.Messages = new HashSet<MessageOutputModel>();
+            this.Notifications = new HashSet<NotificationOutputModel>();
         }
 
 		public string Id { get; set; }
@@ -26,6 +31,18 @@ namespace BookCreator.ViewModels.OutputModels.Users
 
 		public string Email { get; set; }
 
+        public int BooksCount { get; set; }
+
+        public int CommentsCount { get; set; }
+
+        public int MessagesCount { get; set; }
+
         public ICollection<BookOutputModel> Books { get; set; }
+
+        public ICollection<MessageOutputModel> Messages { get; set; }
+
+        public ICollection<NotificationOutputModel> Notifications { get; set; }
+
+        public ICollection<BookOutputModel> FollowedBooks { get; set; }
     }
 }
