@@ -683,5 +683,180 @@ namespace BookCreator.Tests.Services.Book_Service
                 .And.Subject.As<IEnumerable<BookOutputModel>>().SelectMany(x => x.Followers.Select(c => c.User.UserName))
                 .Should().OnlyContain(x => x == user.UserName);
         }
+
+        [Test]
+        public void FollowedBooksByGenre_Return_Success()
+        {
+            var user = new BookCreatorUser()
+            {
+                Id = "123",
+                Name = "Nagatomo Gazaki",
+                UserName = "user"
+            };
+
+            userManager.CreateAsync(user).GetAwaiter();
+            this.Context.SaveChanges();
+
+            var books = new[]
+            {
+                new Book()
+                {
+                    Id = "1",
+                    Title = "title1",
+                    CreatedOn = DateTime.UtcNow,
+                    Summary = "summary",
+                    ImageUrl = GlobalConstants.NoImageAvailableUrl,
+                    Genre = new BookGenre()
+                    {
+                        Id = "1",
+                        Genre = "Horror"
+                    },
+                    AuthorId = "111",
+                    Followers = new List<UserBook>()
+                    {
+                        new UserBook()
+                        {
+                            BookId = "1",
+                            User = user
+                        }
+                    }
+                },
+                new Book()
+                {
+                    Id = "2",
+                    Title = "title2",
+                    CreatedOn = DateTime.UtcNow,
+                    Summary = "summary",
+                    ImageUrl = GlobalConstants.NoImageAvailableUrl,
+                    Genre = new BookGenre()
+                    {
+                        Id = "2",
+                        Genre = "Comedy"
+                    },
+                    AuthorId = "222",
+                    Followers = new List<UserBook>()
+                    {
+                        new UserBook()
+                        {
+                            BookId = "2",
+                            User = user
+                        }
+                    }
+                },
+                new Book()
+                {
+                    Id = "3",
+                    Title = "title3",
+                    CreatedOn = DateTime.UtcNow,
+                    Summary = "summary",
+                    ImageUrl = GlobalConstants.NoImageAvailableUrl,
+                    Genre = new BookGenre()
+                    {
+                        Id = "3",
+                        Genre = "Horror"
+                    },
+                    AuthorId = "333",
+                },
+            };
+
+            this.Context.Books.AddRange(books);
+            this.Context.SaveChanges();
+
+            var genre = "Horror";
+
+            var result = bookService.FollowedBooksByGenre(user.UserName, genre);
+
+            result.Should().ContainSingle()
+                .And.Subject.As<IEnumerable<BookOutputModel>>()
+                .SelectMany(x => x.Followers.Select(c => c.User.UserName))
+                .Should().OnlyContain(x => x == user.UserName);
+        }
+
+        [Test]
+        public void FollowedBooksByGenre_Return_Success_And_All_Genres()
+        {
+            var user = new BookCreatorUser()
+            {
+                Id = "123",
+                Name = "Nagatomo Gazaki",
+                UserName = "user"
+            };
+
+            userManager.CreateAsync(user).GetAwaiter();
+            this.Context.SaveChanges();
+
+            var books = new[]
+            {
+                new Book()
+                {
+                    Id = "1",
+                    Title = "title1",
+                    CreatedOn = DateTime.UtcNow,
+                    Summary = "summary",
+                    ImageUrl = GlobalConstants.NoImageAvailableUrl,
+                    Genre = new BookGenre()
+                    {
+                        Id = "1",
+                        Genre = "Horror"
+                    },
+                    AuthorId = "111",
+                    Followers = new List<UserBook>()
+                    {
+                        new UserBook()
+                        {
+                            BookId = "1",
+                            User = user
+                        }
+                    }
+                },
+                new Book()
+                {
+                    Id = "2",
+                    Title = "title2",
+                    CreatedOn = DateTime.UtcNow,
+                    Summary = "summary",
+                    ImageUrl = GlobalConstants.NoImageAvailableUrl,
+                    Genre = new BookGenre()
+                    {
+                        Id = "2",
+                        Genre = "Comedy"
+                    },
+                    AuthorId = "222",
+                    Followers = new List<UserBook>()
+                    {
+                        new UserBook()
+                        {
+                            BookId = "2",
+                            User = user
+                        }
+                    }
+                },
+                new Book()
+                {
+                    Id = "3",
+                    Title = "title3",
+                    CreatedOn = DateTime.UtcNow,
+                    Summary = "summary",
+                    ImageUrl = GlobalConstants.NoImageAvailableUrl,
+                    Genre = new BookGenre()
+                    {
+                        Id = "3",
+                        Genre = "Horror"
+                    },
+                    AuthorId = "333",
+                },
+            };
+
+            this.Context.Books.AddRange(books);
+            this.Context.SaveChanges();
+
+            var genre = GlobalConstants.ReturnAllBooks;
+            var result = bookService.FollowedBooksByGenre(user.UserName, genre);
+
+            result.Should().NotBeEmpty().And.HaveCount(books.Length - 1)
+                .And.Subject.As<IEnumerable<BookOutputModel>>()
+                .SelectMany(x => x.Followers.Select(c => c.User.UserName))
+                .Should().OnlyContain(x => x == user.UserName);
+        }
     }
 }

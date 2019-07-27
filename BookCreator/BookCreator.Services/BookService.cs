@@ -271,10 +271,21 @@ namespace BookCreator.Services
 
         public ICollection<BookOutputModel> FollowedBooksByGenre(string username, string genre)
         {
-            var result = this.Context.Books
-                .Where(x => x.Followers.Any(z => z.User.UserName == username) && x.Genre.Genre == genre)
-                .ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider)
-                .ToList();
+            //var result = this.Context.Books
+            //    .Where(x => x.Followers.Any(z => z.User.UserName == username) && x.Genre.Genre == genre)
+            //    .ProjectTo<BookOutputModel>(Mapper.ConfigurationProvider)
+            //    .ToList();
+
+            //return result;
+
+            var books = this.FollowedBooks(username);
+
+            if (genre == GlobalConstants.ReturnAllBooks)
+            {
+                return books;
+            }
+
+            var result = books.Where(x => x.Genre.GenreName == genre).ToList();
 
             return result;
         }
