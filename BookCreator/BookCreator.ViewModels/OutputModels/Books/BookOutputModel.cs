@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BookCreator.Models;
+using BookCreator.ViewModels.OutputModels.Chapters;
+using BookCreator.ViewModels.OutputModels.Comments;
 using BookCreator.ViewModels.OutputModels.Users;
 
 namespace BookCreator.ViewModels.OutputModels.Books
@@ -11,6 +14,9 @@ namespace BookCreator.ViewModels.OutputModels.Books
         public BookOutputModel()
         {
             this.Ratings = new HashSet<double>();
+            this.Comments = new List<CommentOutputModel>();
+            this.Followers = new List<UserBook>();
+            this.Chapters = new List<ChapterOutputModel>();
         }
 
         public string Id { get; set; }
@@ -25,12 +31,18 @@ namespace BookCreator.ViewModels.OutputModels.Books
 
         public DateTime LastEditedOn { get; set; }
 
-        public double Rating => 0;//this.Ratings.Any() ? this.Ratings.Average() : 0;
+        public double Rating => this.Ratings.Any() ? this.Ratings.Average() : 0;
 
         public ICollection<double> Ratings { get; set; }
 
         public BookGenreOutputModel Genre { get; set; }
 
         public UserOutputBookModel Author { get; set; }
+
+        public ICollection<CommentOutputModel> Comments { get; set; }
+
+        public ICollection<UserBook> Followers { get; set; }
+
+        public ICollection<ChapterOutputModel> Chapters { get; set; }
     }
 }

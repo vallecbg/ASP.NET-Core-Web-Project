@@ -1,4 +1,6 @@
 *Important*
+- Inspect the graphs in admin index
+- Improve chat room view
 - Improve comments view
 - Check when have dublicate user in register showing 2 errors
 - Need to create Error Page

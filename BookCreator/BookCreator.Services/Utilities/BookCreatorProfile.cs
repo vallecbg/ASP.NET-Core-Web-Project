@@ -73,7 +73,15 @@ namespace BookCreator.Services.Utilities
             CreateMap<Book, BookOutputModel>()
                 .ForMember(x => x.Ratings, cfg => cfg.MapFrom(x => x.BookRatings))
                 .ForMember(x => x.Author, cfg => cfg.MapFrom(x => x.Author))
-                .ForMember(x => x.Genre, cfg => cfg.MapFrom(x => x.Genre));
+                .ForMember(x => x.Genre, cfg => cfg.MapFrom(x => x.Genre))
+                .ForMember(x => x.Followers, cfg => cfg.MapFrom(x => x.Followers))
+                .ForMember(x => x.Comments, cfg => cfg.MapFrom(x => x.Comments))
+                .ForMember(x => x.Chapters, cfg => cfg.MapFrom(x => x.Chapters));
+
+            CreateMap<BookCreatorUser, UserOutputBookModel>()
+                .ForMember(x => x.Id, cfg => cfg.MapFrom(x => x.Id))
+                .ForMember(x => x.Name, cfg => cfg.MapFrom(x => x.Name))
+                .ForMember(x => x.Username, cfg => cfg.MapFrom(x => x.UserName));
 
             CreateMap<CommentInputModel, Comment>()
                 .ForMember(x => x.Message, cfg => cfg.MapFrom(x => x.Message))

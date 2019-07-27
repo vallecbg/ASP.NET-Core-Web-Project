@@ -82,7 +82,7 @@ namespace BookCreator.Services
             var user = await this.UserManager.FindByNameAsync(username);
             var roles = await this.UserManager.GetRolesAsync(user);
 
-            bool hasRights = roles.Any(x => x == GlobalConstants.Admin || x == GlobalConstants.ModelError);
+            bool hasRights = roles.Any(x => x == GlobalConstants.Admin);
             bool isAuthor = user.UserName == book?.Author.UserName;
 
             if (!hasRights && !isAuthor)
@@ -126,7 +126,7 @@ namespace BookCreator.Services
             return randomBook;
         }
 
-        public void AddRating(string bookId, double rating, string username)
+        public string AddRating(string bookId, double rating, string username)
         {
             var user = this.UserManager.FindByNameAsync(username).GetAwaiter().GetResult();
             var book = this.Context.Books.Find(bookId);
@@ -157,6 +157,8 @@ namespace BookCreator.Services
 
             this.Context.Update(book);
             this.Context.SaveChanges();
+
+            return bookRating.RatingId;
         }
 
         public bool AlreadyRated(string bookId, string username)
