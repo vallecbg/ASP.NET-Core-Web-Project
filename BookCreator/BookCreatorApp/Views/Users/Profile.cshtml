@@ -7,9 +7,7 @@
     var user = this.userManager.FindByNameAsync(this.User.Identity.Name).GetAwaiter().GetResult();
     var hasRole = this.userManager.GetRolesAsync(user).GetAwaiter().GetResult().Any(x => x == GlobalConstants.Admin);
     bool sameUser = this.User.Identity.Name.Equals(@Model.Username);
-    //TODO: Add to message service
     bool isBlocked = this.UserService.IsBlocked(this.User.Identity.Name, Model.Username);
-
 }
 
 <div class="row container col-md-12 mt-5 mb-5 ml-1">
@@ -55,18 +53,18 @@
                     <div class=" col-md-12 col-lg-12">
                         <table class="table  border border-dark" style="background-color:deepskyblue">
                             <tbody>
-                                <tr>
-                                    <td>Name:</td>
-                                    <td>@Model.Name</td>
-                                </tr>
-                                <tr>
-                                    <td>Username:</td>
-                                    <td>@Model.Username</td>
-                                </tr>
-                                <tr>
-                                    <td>Email:</td>
-                                    <td>@Model.Email</td>
-                                </tr>
+                            <tr>
+                                <td>Name:</td>
+                                <td>@Model.Name</td>
+                            </tr>
+                            <tr>
+                                <td>Username:</td>
+                                <td>@Model.Username</td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td>@Model.Email</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -84,6 +82,7 @@
                 }
             </div>
         </div>
+
         @if (!sameUser)
         {
             if (!isBlocked)

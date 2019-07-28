@@ -26,6 +26,122 @@ namespace BookCreator.Tests.Services.Book_Service
         protected RoleManager<IdentityRole> roleManager => this.Provider.GetRequiredService<RoleManager<IdentityRole>>();
 
         [Test]
+        public void GetRandomBook_Should_Success()
+        {
+            var books = new[]
+            {
+                new Book()
+                {
+                    Id = "1",
+                    Title = "title1",
+                    CreatedOn = DateTime.UtcNow,
+                    Summary = null,
+                    ImageUrl = null,
+                    Genre = new BookGenre()
+                    {
+                        Genre = "Horror"
+                    },
+                    AuthorId = "111"
+                },
+                new Book()
+                {
+                    Id = "2",
+                    Title = "title2",
+                    CreatedOn = DateTime.UtcNow.AddHours(6),
+                    Summary = null,
+                    ImageUrl = null,
+                    Genre = new BookGenre()
+                    {
+                        Genre = "Fantasy"
+                    },
+                    AuthorId = "222"
+                },
+                new Book()
+                {
+                    Id = "3",
+                    Title = "title3",
+                    CreatedOn = DateTime.UtcNow.AddDays(3),
+                    Summary = null,
+                    ImageUrl = null,
+                    Genre = new BookGenre()
+                    {
+                        Genre = "Horror"
+                    },
+                    AuthorId = "333"
+                },
+            };
+            this.Context.Books.AddRange(books);
+            this.Context.SaveChanges();
+
+            var result = this.bookService.GetRandomBook();
+
+            result.Should().NotBeNull();
+        }
+
+        [Test]
+        public void UserBooks_Should_Return_User_Books_By_Given_Id()
+        {
+            var user = new BookCreatorUser()
+            {
+                Id = "123",
+                Name = "Papuncho Kunchev",
+                UserName = "kun4o"
+            };
+            this.userManager.CreateAsync(user).GetAwaiter();
+
+            var books = new[]
+            {
+                new Book()
+                {
+                    Id = "1",
+                    Title = "title1",
+                    CreatedOn = DateTime.UtcNow,
+                    Summary = null,
+                    ImageUrl = null,
+                    Genre = new BookGenre()
+                    {
+                        Genre = "Horror"
+                    },
+                    AuthorId = user.Id
+                },
+                new Book()
+                {
+                    Id = "2",
+                    Title = "title2",
+                    CreatedOn = DateTime.UtcNow.AddHours(6),
+                    Summary = null,
+                    ImageUrl = null,
+                    Genre = new BookGenre()
+                    {
+                        Genre = "Fantasy"
+                    },
+                    AuthorId = user.Id
+                },
+                new Book()
+                {
+                    Id = "3",
+                    Title = "title3",
+                    CreatedOn = DateTime.UtcNow.AddDays(3),
+                    Summary = null,
+                    ImageUrl = null,
+                    Genre = new BookGenre()
+                    {
+                        Genre = "Horror"
+                    },
+                    AuthorId = "333"
+                },
+            };
+
+            this.Context.Books.AddRange(books);
+            this.Context.SaveChanges();
+
+            var result = this.bookService.UserBooks(user.Id);
+
+            result.Should().NotBeEmpty()
+                .And.HaveCount(books.Length - 1);
+        }
+
+        [Test]
         public void CurrentBooks_With_No_Genre_Should_Return_All_Books()
         {
             var books = new[]
@@ -255,6 +371,39 @@ namespace BookCreator.Tests.Services.Book_Service
         }
 
         [Test]
+        public void FollowingCount_Should_Return_Correct()
+        {
+            var book = new Book()
+            {
+                Id = "1",
+                Author = null,
+                Summary = "summary",
+                Title = "title"
+            };
+
+            var user = new BookCreatorUser()
+            {
+                Id = "123",
+                Name = "Papuncho Kunchev",
+                UserName = "kun4o"
+            };
+
+            this.Context.Books.Add(book);
+            this.userManager.CreateAsync(user).GetAwaiter();
+            this.Context.SaveChanges();
+
+            var bookId = book.Id;
+            var userId = user.Id;
+            var username = user.UserName;
+
+            bookService.Follow(username, userId, bookId).GetAwaiter().GetResult();
+
+            var result = this.bookService.FollowingCount(book.Id);
+
+            result.Should().BeGreaterThan(0);
+        }
+
+        [Test]
         public async Task Follow_Throw_Error_Duplicate_Entity()
         {
             var book = new Book()
@@ -481,6 +630,48 @@ namespace BookCreator.Tests.Services.Book_Service
             this.Context.SaveChanges();
 
             bookService.DeleteBook(book.Id, admin.UserName);
+
+            var result = this.Context.Books.FirstOrDefault();
+
+            result.Should().BeNull();
+        }
+
+        [Test]
+        public void DeleteBook_By_Given_Genre_Success()
+        {
+            var horrorGenre = new BookGenre()
+            {
+                Genre = "Horror"
+            };
+            this.Context.BooksGenres.Add(horrorGenre);
+            this.Context.SaveChanges();
+            var books = new[]
+            {
+                new Book()
+                {
+                    Id = "1",
+                    Title = "title1",
+                    CreatedOn = DateTime.UtcNow,
+                    Summary = "summary",
+                    ImageUrl = GlobalConstants.NoImageAvailableUrl,
+                    Genre = horrorGenre,
+                    AuthorId = "111",
+                },
+                new Book()
+                {
+                    Id = "3",
+                    Title = "title3",
+                    CreatedOn = DateTime.UtcNow,
+                    Summary = "summary",
+                    ImageUrl = GlobalConstants.NoImageAvailableUrl,
+                    Genre = horrorGenre,
+                    AuthorId = "333",
+                },
+            };
+            this.Context.Books.AddRange(books);
+            this.Context.SaveChanges();
+
+            this.bookService.DeleteBooksByGivenGenre(horrorGenre.Genre);
 
             var result = this.Context.Books.FirstOrDefault();
 

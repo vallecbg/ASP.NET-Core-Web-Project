@@ -638,5 +638,49 @@ namespace BookCreator.Tests.Services.User_Service
 
             model.Should().NotBeNull().And.Subject.Should().Equals(outputModel);
         }
+
+        [Test]
+        public void GetName_Should_Return_Correct_Name()
+        {
+            var user = new BookCreatorUser()
+            {
+                UserName = "goshko1",
+                Name = "Ivan Goshkov1",
+                Email = "vankat1@abv.bg"
+            };
+
+            this.userManager.CreateAsync(user).GetAwaiter();
+            this.Context.SaveChanges();
+
+            var result = this.userService.GetName(user.Id);
+
+            result.Should().NotBeNull()
+                .And.Subject.Should().Equals(user.Name);
+        }
+
+        [Test]
+        public void IsBlocked_Should_Return_Correct_Result()
+        {
+            var user1 = new BookCreatorUser()
+            {
+                UserName = "goshko1",
+                Name = "Ivan Goshkov1",
+                Email = "vankat1@abv.bg"
+            };
+            var user2 = new BookCreatorUser()
+            {
+                UserName = "ivan12",
+                Name = "Ivan Ivanov",
+                Email = "vankat1@abv.bg"
+            };
+
+            this.userManager.CreateAsync(user1).GetAwaiter();
+            this.userManager.CreateAsync(user2).GetAwaiter();
+            this.Context.SaveChanges();
+
+            //this.userService.BlockUser(user2, user1.UserName).GetAwaiter().GetResult();
+            
+
+        }
     }
 }

@@ -12,7 +12,6 @@ namespace BookCreator.Services
 	using AutoMapper;
 	using System.Linq;
 	using System.Threading.Tasks;
-	using ViewModels.InputModels;
 	using ViewModels.OutputModels;
 	using System.Collections.Generic;
 	using Microsoft.AspNetCore.Identity;
@@ -85,6 +84,10 @@ namespace BookCreator.Services
 			var user = this.Context.Users
                 .Include(x => x.Books)
                 .ThenInclude(x => x.Genre)
+                .Include(x => x.Notifications)
+                .Include(x => x.Comments)
+                .Include(x => x.ReceivedMessages)
+                .Include(x => x.SentMessages)
 				.FirstOrDefault(x => x.UserName == username);
 
 			var result = Mapper.Map<UserOutputViewModel>(user);

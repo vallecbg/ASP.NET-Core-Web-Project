@@ -87,15 +87,9 @@ namespace BookCreatorApp.Controllers
         [Route(GlobalConstants.RouteConstants.UserProfileRoute)]
         public IActionResult Profile(string username, bool seeProfile = false)
         {
-            bool fullAccess = this.User.Identity.Name == username || this.User.IsInRole(GlobalConstants.Admin);
+            //bool sameProfile = this.User.Identity.Name == username;
 
             var user = this.UserService.GetUser(username);
-
-            //TODO: Create the view and check the access
-            //if (fullAccess && !seeProfile)
-            //{
-            //    return this.View("UserDetails", user);
-            //}
 
             return this.View(user);
         }

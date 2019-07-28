@@ -54,8 +54,7 @@ namespace BookCreator.Services.Utilities
                 .ForMember(x => x.BlockedUsers, cfg => cfg.MapFrom(x => x.BlockedUsers.Count))
                 .ForMember(x => x.BlockedBy, cfg => cfg.MapFrom(x => x.BlockedBy.Count))
                 .ForMember(x => x.Books, cfg => cfg.MapFrom(x => x.Books))
-                .ForMember(x => x.Notifications, cfg => cfg.MapFrom(x => x.Notifications))
-                .ForAllOtherMembers(x => x.Ignore());
+                .ForMember(x => x.Notifications, cfg => cfg.MapFrom(x => x.Notifications));
 
             CreateMap<ChapterInputModel, Chapter>()
                 .ForMember(x => x.BookId, cfg => cfg.MapFrom(x => x.BookId))
