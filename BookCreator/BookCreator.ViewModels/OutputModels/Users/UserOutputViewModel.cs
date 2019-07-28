@@ -12,7 +12,7 @@ namespace BookCreator.ViewModels.OutputModels.Users
         public UserOutputViewModel()
         {
             this.Books = new HashSet<BookOutputModel>();
-            this.FollowedBooks = new HashSet<BookOutputModel>();
+            this.FollowedBooks = new HashSet<UserBook>();
             this.Messages = new HashSet<MessageOutputModel>();
             this.Notifications = new HashSet<NotificationOutputModel>();
         }
@@ -43,6 +43,6 @@ namespace BookCreator.ViewModels.OutputModels.Users
 
         public ICollection<NotificationOutputModel> Notifications { get; set; }
 
-        public ICollection<BookOutputModel> FollowedBooks { get; set; }
+        public ICollection<UserBook> FollowedBooks { get; set; }
     }
 }

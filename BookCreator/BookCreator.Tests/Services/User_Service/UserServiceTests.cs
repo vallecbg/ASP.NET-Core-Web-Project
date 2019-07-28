@@ -611,7 +611,7 @@ namespace BookCreator.Tests.Services.User_Service
                 .ToList();
             var followedBooks = this.Context.UsersBooks
                 .Where(x => x.UserId == user1.Id)
-                .ProjectTo<BookOutputModel>()
+                .ProjectTo<UserBook>()
                 .ToList();
             var userBooks = this.Context.Books
                 .Where(x => x.AuthorId == user1.Id)
@@ -678,9 +678,11 @@ namespace BookCreator.Tests.Services.User_Service
             this.userManager.CreateAsync(user2).GetAwaiter();
             this.Context.SaveChanges();
 
-            //this.userService.BlockUser(user2, user1.UserName).GetAwaiter().GetResult();
-            
+            this.userService.BlockUser(user1.UserName, user2.UserName).GetAwaiter().GetResult();
 
+            var result = this.userService.IsBlocked(user1.UserName, user2.UserName);
+
+            result.Should().BeTrue();
         }
     }
 }

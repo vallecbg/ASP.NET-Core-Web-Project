@@ -88,6 +88,7 @@ namespace BookCreator.Services
                 .Include(x => x.Comments)
                 .Include(x => x.ReceivedMessages)
                 .Include(x => x.SentMessages)
+                .Include(x => x.FollowedBooks)
 				.FirstOrDefault(x => x.UserName == username);
 
 			var result = Mapper.Map<UserOutputViewModel>(user);
