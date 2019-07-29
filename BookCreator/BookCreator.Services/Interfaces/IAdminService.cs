@@ -26,7 +26,7 @@ namespace BookCreator.Services.Interfaces
 
         ChangingRoleModel AdminModifyRole(string Id);
 
-        void AddAnnouncement(AnnouncementInputModel inputModel);
+        string AddAnnouncement(AnnouncementInputModel inputModel);
 
         void DeleteAnnouncement(string id);
 

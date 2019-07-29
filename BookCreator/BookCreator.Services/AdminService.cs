@@ -234,7 +234,7 @@ namespace BookCreator.Services
             return model;
         }
 
-        public void AddAnnouncement(AnnouncementInputModel inputModel)
+        public string AddAnnouncement(AnnouncementInputModel inputModel)
         {
             var user = this.UserManager.FindByNameAsync(inputModel.Author).Result;
 
@@ -244,6 +244,8 @@ namespace BookCreator.Services
 
             this.Context.Announcements.Add(announcement);
             this.Context.SaveChanges();
+
+            return announcement.Id;
         }
 
         public void DeleteAnnouncement(string id)
