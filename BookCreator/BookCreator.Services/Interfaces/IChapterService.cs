@@ -9,10 +9,9 @@ namespace BookCreator.Services.Interfaces
 {
     public interface IChapterService
     {
-        //TODO: Delete, Add, Edit
         void DeleteChapter(string bookId, string chapterId, string username);
 
-        void AddChapter(ChapterInputModel model);
+        string AddChapter(ChapterInputModel model);
 
         ChapterEditModel GetChapterToEdit(string id);
 
