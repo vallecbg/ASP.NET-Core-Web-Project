@@ -1,5 +1,4 @@
 *Important*
-- Continue with admin service tests
 - Inspect the graphs in admin index
 - Improve chat room view
 - Improve comments view
