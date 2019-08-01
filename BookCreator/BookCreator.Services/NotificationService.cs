@@ -47,6 +47,24 @@ namespace BookCreator.Services
             this.Context.SaveChanges();
         }
 
+        public void AddNotificationForNewMessage(string receiverId, string senderUsername)
+        {
+            var user = this.Context.Users.Find(receiverId);
+
+            var notification = new Notification()
+            {
+                UserId = user.Id,
+                Message = string.Format(GlobalConstants.NotificationMessageNewMessage, senderUsername),
+                Seen = false,
+                UpdatedBookId = "1",
+            };
+
+            user.Notifications.Add(notification);
+            this.Context.Notifications.Add(notification);
+            this.Context.Users.Update(user);
+            this.Context.SaveChanges();
+        }
+
         public void SeenNotification(string id)
         {
             var notification = this.Context.Notifications.Find(id);

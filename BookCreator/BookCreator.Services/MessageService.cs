@@ -16,8 +16,12 @@ namespace BookCreator.Services
 {
     public class MessageService : BaseService, IMessageService
     {
-        public MessageService(UserManager<BookCreatorUser> userManager, BookCreatorContext context, IMapper mapper) : base(userManager, context, mapper)
+        private readonly INotificationService notificationService;
+
+        public MessageService(UserManager<BookCreatorUser> userManager, BookCreatorContext context, IMapper mapper, INotificationService notificationService) 
+            : base(userManager, context, mapper)
         {
+            this.notificationService = notificationService;
         }
 
         public void SendMessage(MessageInputModel inputModel)
@@ -36,6 +40,8 @@ namespace BookCreator.Services
 
             this.Context.Messages.Add(message);
             this.Context.SaveChanges();
+
+            this.notificationService.AddNotificationForNewMessage(receiver.Id, sender.UserName);
         }
 
         public ICollection<MessageOutputModel> GetSentMessages(string userId)

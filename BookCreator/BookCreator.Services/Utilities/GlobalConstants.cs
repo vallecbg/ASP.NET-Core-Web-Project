@@ -87,6 +87,8 @@ namespace BookCreator.Services.Utilities
 
         public const string NotificationMessageNewChapter = "The {0} Book you are following just added new Chapter";
 
+        public const string NotificationMessageNewMessage = "You have got a new message from {0}";
+
         public class RouteConstants
 		{
 			public const string UserProfileRoute = "/Users/Profile/{username}";

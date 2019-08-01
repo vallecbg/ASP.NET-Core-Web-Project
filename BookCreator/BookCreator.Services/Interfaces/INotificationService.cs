@@ -9,6 +9,8 @@ namespace BookCreator.Services.Interfaces
     {
         void AddNotification(string bookId, string username, string bookTitle);
 
+        void AddNotificationForNewMessage(string receiverId, string senderUsername);
+
         void SeenNotification(string id);
 
         ICollection<NotificationOutputModel> GetNotifications(string userId);
