@@ -234,5 +234,31 @@ namespace BookCreator.Tests.Services.Notification_Service
             result.Should().NotBeNull()
                 .And.Equals(expectedResult);
         }
+
+        [Test]
+        public void AddNotificationForNewMessage_Should_Success()
+        {
+            var sender = new BookCreatorUser()
+            {
+                UserName = "gosho",
+                Name = "Gosho Goshev"
+            };
+            var receiver = new BookCreatorUser()
+            {
+                UserName = "ivan",
+                Name = "gdfgdf gdfgfd"
+            };
+
+
+            userManager.CreateAsync(sender).GetAwaiter();
+            userManager.CreateAsync(receiver).GetAwaiter();
+            this.Context.SaveChanges();
+
+            this.notificationService.AddNotificationForNewMessage(receiver.Id, sender.UserName);
+
+            var result = this.Context.Notifications.ToList();
+
+            result.Should().NotBeEmpty().And.HaveCount(1);
+        }
     }
 }
