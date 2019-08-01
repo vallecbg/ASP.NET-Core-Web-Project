@@ -9,10 +9,10 @@
     <div class="col-md-6">
         <h2 class="d-flex justify-content-center text-dark">@ViewData["Title"]</h2>
         <hr class="h2 bg-BookCreator" />
-        @if (error != null)
+        @*@if (error != null)
         {
             <p class="text-light">@error</p>
-        }
+        }*@
         <form class="register mx-auto" asp-controller="Users" asp-action="Register" method="post">
             @if (error != null)
             {
