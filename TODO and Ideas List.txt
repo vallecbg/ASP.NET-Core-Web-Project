@@ -4,8 +4,6 @@
 - Need to create Error Page
 - Check all TODO's in visual studio
 - Check for remember me button
-- Fix when resizing not showing navbar menu and also not showing the black line
-- Improve last published books view
 - If I have time I can add notifications and messages in admin panel
 
 *Minor*
