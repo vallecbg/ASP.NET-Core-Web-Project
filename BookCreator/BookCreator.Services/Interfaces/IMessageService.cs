@@ -10,7 +10,7 @@ namespace BookCreator.Services.Interfaces
 {
     public interface IMessageService
     {
-        void SendMessage(MessageInputModel inputModel);
+        string SendMessage(MessageInputModel inputModel);
 
         //TODO: Need to get the method from the users i think and paste it there
         //bool CanSendMessage(string senderName, string receiverName);

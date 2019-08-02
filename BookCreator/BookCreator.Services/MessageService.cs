@@ -24,7 +24,7 @@ namespace BookCreator.Services
             this.notificationService = notificationService;
         }
 
-        public void SendMessage(MessageInputModel inputModel)
+        public string SendMessage(MessageInputModel inputModel)
         {
             var sender =  this.UserManager.FindByNameAsync(inputModel.SenderName).GetAwaiter().GetResult();
             var receiver =  this.UserManager.FindByNameAsync(inputModel.ReceiverName).GetAwaiter().GetResult();
@@ -42,6 +42,8 @@ namespace BookCreator.Services
             this.Context.SaveChanges();
 
             this.notificationService.AddNotificationForNewMessage(receiver.Id, sender.UserName);
+
+            return message.Id;
         }
 
         public ICollection<MessageOutputModel> GetSentMessages(string userId)
