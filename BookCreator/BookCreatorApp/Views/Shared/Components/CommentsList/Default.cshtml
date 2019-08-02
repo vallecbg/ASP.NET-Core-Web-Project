@@ -1,57 +1,51 @@
-﻿@model IEnumerable<CommentOutputModel>
+﻿@using BookCreatorApp.Extensions
+@model IEnumerable<CommentOutputModel>
 @{
     ViewData["Title"] = "Default";
     var bookId = ViewData[GlobalConstants.BookId].ToString();
 }
+<link rel="stylesheet" type="text/css" href="/css/comments.css" />
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-gb.js"></script>
+<script type="text/javascript" charset="utf8" src="~/js/jquery.timeago.js"></script>
+
 
 @if (!Model.Any())
 {
 
-    <div class="card-body w-100 border border-dark">
+    <div class="card-body bg-white container border rounded">
 
         <p class="card-text">No comments for this book!</p>
     </div>
 }
 else
 {
-    <div class="border border-dark card-text text-center text-white w-100 col-md-12 container" style="background-color: darkgreen;">Comments</div>
-
-    <div class="container w-100 col-md-12 border border-dark" style="min-height: 500px; max-height:500px;overflow-y:auto">
-        @foreach (var c in Model)
+    <div class="container card">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Comments</h3>
+            </div><!-- /col-sm-12 -->
+        </div><!-- /row -->
+        @foreach (var comment in Model)
         {
+            <div class="row mb-4">
+                <div class="col-sm-1">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://png.pngtree.com/svg/20161021/de74bae88b.svg" style="height: 70px">
+                    </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
 
-            <div class="card-body w-100 border border-dark card-body mt-1">
-
-                <p class="card-text" style="word-wrap:break-word">@c.Message</p>
-
-                <ul class="list-group list-group-flush">
-                    @if (c.Author.Equals(GlobalConstants.UnknownUser))
-                    {
-                        <li class="list-group-item">Author: @GlobalConstants.UnknownUser</li>
-
-                    }
-                    else
-                    {
-                        <li><a class="list-group-item card-link" style="word-wrap: break-word" asp-action="Profile" asp-controller="Users" asp-area="" asp-route-username="@c.Author">From: @c.Author</a></li>
-
-                    }
-
-                    <li class="list-group-item">Posted: @c.CommentedOn.ToShortDateString()</li>
-
-                    @if (this.User.IsInRole(GlobalConstants.Admin) || this.User.IsInRole(GlobalConstants.ModelError) || this.User.Identity.Name == c.Author)
-                    {
-                        <li class="list-group-item">
-                            <a asp-area="" asp-controller="Comments" asp-action="DeleteComment"
-                               asp-all-route-data="new Dictionary<string, string>{
-                    {GlobalConstants.BookId,@bookId},
-                    { GlobalConstants.Id,@c.Id.ToString()}};"
-                               class="card-link"><i class="far fa-trash-alt">Comment</i></a>
-                        </li>
-
-                    }
-                </ul>
-            </div>
-
-        }
-    </div>
+                <div class="col">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>@comment.Author</strong> <span class="text-muted">@HelpingMethods.TimeAgo(comment.CommentedOn)</span>
+                        </div>
+                        <div class="panel-body">
+                            @comment.Message
+                        </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
+            </div><!-- row -->
+            <!-- /row -->
+        }<!-- foreach -->
+    </div><!-- /container -->
 }
