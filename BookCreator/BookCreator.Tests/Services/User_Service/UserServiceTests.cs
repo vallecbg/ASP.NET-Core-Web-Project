@@ -715,5 +715,36 @@ namespace BookCreator.Tests.Services.User_Service
         {
             this.userService.Logout();
         }
+
+        [Test]
+        public void GetAllChatroomMessages_Should_Return_Success()
+        {
+            var chatRoomMessages = new[]
+            {
+                new ChatRoomMessage()
+                {
+                    Id = "1",
+                    Username = "gosho",
+                    Content = "asdasdas",
+                    PublishedOn = DateTime.UtcNow
+                },
+                new ChatRoomMessage()
+                {
+                    Id = "2",
+                    Username = "ivan",
+                    Content = "asdas",
+                    PublishedOn = DateTime.UtcNow
+                }
+
+            };
+
+            this.Context.ChatRoomMessages.AddRange(chatRoomMessages);
+            this.Context.SaveChanges();
+
+            var result = this.Context.ChatRoomMessages.ToList();
+
+            result.Should().NotBeEmpty()
+                .And.HaveCount(2);
+        }
     }
 }
