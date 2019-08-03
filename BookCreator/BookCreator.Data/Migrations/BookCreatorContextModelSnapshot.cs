@@ -188,6 +188,22 @@ namespace BookCreator.Data.Migrations
                     b.ToTable("Chapters");
                 });
 
+            modelBuilder.Entity("BookCreator.Models.ChatRoomMessage", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("PublishedOn");
+
+                    b.Property<string>("Username");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChatRoomMessages");
+                });
+
             modelBuilder.Entity("BookCreator.Models.Comment", b =>
                 {
                     b.Property<string>("Id")

@@ -1,4 +1,5 @@
 ﻿using BookCreator.ViewModels.InputModels.Users;
+using BookCreator.ViewModels.OutputModels.ChatroomMessages;
 
 namespace BookCreator.Services.Interfaces
 {
@@ -31,5 +32,7 @@ namespace BookCreator.Services.Interfaces
 
         //TODO: Need to place it in Message Service to check is it possible to send message
         bool IsBlocked(string user1Name, string user2Name);
+
+        IEnumerable<ChatroomMessageOutputModel> GetAllChatroomMessages();
     }
 }

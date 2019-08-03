@@ -1,6 +1,6 @@
 *Important*
+- Add test for the chat room
 - Improve chat room view
-- Improve comments view
 - Need to create Error Page
 - Check all TODO's in visual studio
 - Check for remember me button

@@ -1,6 +1,7 @@
 ﻿using BookCreator.ViewModels.InputModels.Users;
 using BookCreator.ViewModels.OutputModels.Announcements;
 using BookCreator.ViewModels.OutputModels.Books;
+using BookCreator.ViewModels.OutputModels.ChatroomMessages;
 
 namespace BookCreator.Services
 {
@@ -181,6 +182,15 @@ namespace BookCreator.Services
             }
 
             return true;
+        }
+
+        public IEnumerable<ChatroomMessageOutputModel> GetAllChatroomMessages()
+        {
+            var allMessages = this.Context.ChatRoomMessages.ToList();
+
+            var result = Mapper.Map<IList<ChatroomMessageOutputModel>>(allMessages);
+
+            return result;
         }
     }
 }
