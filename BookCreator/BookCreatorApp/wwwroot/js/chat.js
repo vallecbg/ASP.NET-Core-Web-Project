@@ -10,8 +10,8 @@ connection.on("ReceiveMessage", function (user, message) {
     var currDate = new Date();
     var hours = addZero(currDate.getHours());
     var minutes = addZero(currDate.getMinutes());
-    var encodedMsg = user + ": " + msg + " | " + hours + ":" + minutes;
-    var li = document.createElement("li");
+    var encodedMsg = user + " : " + msg + " | " + hours + ":" + minutes;
+    var li = document.createElement("p");
     li.textContent = encodedMsg;
     document.getElementById("messagesList").appendChild(li);
 });
@@ -35,5 +35,7 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     connection.invoke("SendMessage", user, message).catch(function (err) {
         return console.error(err.toString());
     });
+    var element = document.getElementById("received_withd_msg");
+    element.scrollTop = element.scrollHeight;
     event.preventDefault();
 });

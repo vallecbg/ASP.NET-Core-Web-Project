@@ -17,6 +17,11 @@ namespace BookCreatorApp.Hubs
         }
         public async Task SendMessage(string user, string message)
         {
+            if (string.IsNullOrWhiteSpace(user) || string.IsNullOrWhiteSpace(message))
+            {
+                return;
+            }
+
             var chatroomMessage = new ChatRoomMessage
             {
                 Username = user,

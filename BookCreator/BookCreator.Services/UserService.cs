@@ -186,7 +186,9 @@ namespace BookCreator.Services
 
         public IEnumerable<ChatroomMessageOutputModel> GetAllChatroomMessages()
         {
-            var allMessages = this.Context.ChatRoomMessages.ToList();
+            var allMessages = this.Context.ChatRoomMessages
+                .OrderBy(x => x.PublishedOn)
+                .ToList();
 
             var result = Mapper.Map<IList<ChatroomMessageOutputModel>>(allMessages);
 

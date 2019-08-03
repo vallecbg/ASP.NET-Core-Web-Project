@@ -116,9 +116,9 @@
                             <div class="received_withd_msg">
                                 @foreach (var message in chatroomMessages)
                                 {
-                                    <p>@message.Username said @message.Content | @message.PublishedOn.ToString("t")</p>
+                                    <p>@message.Username : @message.Content | @message.PublishedOn.ToString("t")</p>
                                 }
-                                <p id="messagesList" runat="server"></p>
+                                <div id="messagesList"></div>
                             </div>
                         </div>
                     </div>
