@@ -95,7 +95,6 @@ namespace BookCreatorApp.Controllers
         [HttpGet]
         public IActionResult Details(string id)
         {
-            //TODO: If i use the new theme I should check for authorize
             var book = this.bookService.GetBookById(id);
             return this.View(book);
         }

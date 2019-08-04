@@ -12,11 +12,6 @@ namespace BookCreator.Services.Interfaces
     {
         string SendMessage(MessageInputModel inputModel);
 
-        //TODO: Need to get the method from the users i think and paste it there
-        //bool CanSendMessage(string senderName, string receiverName);
-
-        //ICollection<MessageOutputModel> GetAllMessagesForUser(string userId);
-
         ICollection<MessageOutputModel> GetSentMessages(string userId);
 
         ICollection<MessageOutputModel> GetReceivedMessages(string userId);

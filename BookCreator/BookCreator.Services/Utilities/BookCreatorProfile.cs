@@ -123,7 +123,6 @@ namespace BookCreator.Services.Utilities
             CreateMap<Notification, NotificationOutputModel>()
                 .ForMember(x => x.Username, cfg => cfg.MapFrom(x => x.User.UserName));
 
-            //TODO: Not sure
             CreateMap<UserBook, UserBook>();
         }
 	}

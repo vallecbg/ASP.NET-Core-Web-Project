@@ -18,7 +18,6 @@ namespace BookCreator.Services
 {
     public class ChapterService : BaseService, IChapterService
     {
-        //TODO: Add notification here
         private readonly INotificationService notificationService;
         public ChapterService(UserManager<BookCreatorUser> userManager, BookCreatorContext context, IMapper mapper, INotificationService notificationService) : base(userManager, context, mapper)
         {
@@ -63,7 +62,6 @@ namespace BookCreator.Services
         {
             var currentUser = this.UserManager.FindByNameAsync(model.Author).GetAwaiter().GetResult();
             var chapter = Mapper.Map<Chapter>(model);
-            //TODO: check better solution
             chapter.AuthorId = currentUser.Id;
 
             var book = this.Context.Books.Find(model.BookId);
@@ -72,8 +70,6 @@ namespace BookCreator.Services
             this.Context.Books.Update(book);
             this.Context.Chapters.Add(chapter);
             this.Context.SaveChanges();
-
-            //TODO: Add notification for new chapter created!
 
             this.notificationService.AddNotification(book.Id, currentUser.UserName, book.Title);
 
@@ -95,7 +91,6 @@ namespace BookCreator.Services
         {
             var chapter = this.Context.Chapters.Find(model.Id);
 
-            //TODO: Check better solution
             chapter.Content = model.Content;
             chapter.Title = model.Title;
             chapter.CreatedOn = model.CreatedOn;

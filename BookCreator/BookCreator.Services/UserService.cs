@@ -81,7 +81,6 @@ namespace BookCreator.Services
 
 		public UserOutputViewModel GetUser(string username)
 		{
-            //TODO: Don't forget to include
 			var user = this.Context.Users
                 .Include(x => x.Books)
                 .ThenInclude(x => x.Genre)

@@ -65,7 +65,6 @@ namespace BookCreator.Services
 
         public async Task DeleteBook(string id, string username)
         {
-            //TODO: Don't forget to add the include
             var book = this.Context.Books
                 .Include(x => x.Author)
                 .Include(x => x.Chapters)
@@ -92,7 +91,6 @@ namespace BookCreator.Services
 
         public BookDetailsOutputModel GetBookById(string id)
         {
-            //TODO: Don't forget to add the include
             var book = this.Context.Books
                 .Include(x => x.Genre)
                 .Include(x => x.Author)
@@ -219,7 +217,6 @@ namespace BookCreator.Services
 
         public ICollection<BookOutputModel> UserBooks(string id)
         {
-            //TODO: Don't forget to add the include
             var userBooks = this.Context.Books
                 .Include(x => x.Author)
                 .Include(x => x.Chapters)

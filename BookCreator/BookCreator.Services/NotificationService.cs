@@ -37,7 +37,6 @@ namespace BookCreator.Services
                     UpdatedBookId = bookId
                 };
 
-                //TODO: not sure check for better solution
                 notifications.Add(notification);
                 user.Notifications.Add(notification);
             }
