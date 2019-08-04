@@ -31,12 +31,13 @@
                             <td>@comment.Message</td>
                             <td>@comment.CommentedOn</td>
                             <td>
-                                <a asp-action="DeleteComment" asp-controller="Messages" asp-route-id="@comment.Id" class="btn btn-danger">Delete</a>
+                                <a asp-action="DeleteCommentInControlPanel" asp-controller="Messages" asp-route-id="@comment.Id" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
+            <a asp-action="DeleteAllComments" asp-controller="Comments" asp-route-username="@this.User.Identity.Name" class="btn btn-danger">Delete All</a>
         </div>
     </div>
 </div>

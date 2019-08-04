@@ -76,7 +76,7 @@ namespace BookCreatorApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeleteComment(string id)
+        public IActionResult DeleteCommentInControlPanel(string id)
         {
             this.commentService.DeleteComment(id);
 

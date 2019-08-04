@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BookCreator.Services.Interfaces;
 using BookCreator.Services.Utilities;
@@ -47,8 +48,7 @@ namespace BookCreatorApp.Controllers
         {
             this.commentService.DeleteAllComments(username);
 
-            //TODO: Replace this
-            return Redirect("/");
+            return this.RedirectToAction("UserMessages", "Messages", new { userId = User.FindFirstValue(ClaimTypes.NameIdentifier) });
         }
     }
 }
