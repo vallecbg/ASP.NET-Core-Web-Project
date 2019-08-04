@@ -60,10 +60,15 @@ namespace BookCreator.Services
 
         public Dictionary<string, int> GetCommentsForAWeek()
         {
+            DateTime[] last7Days = Enumerable.Range(0, 7)
+                .Select(i => DateTime.Now.Date.AddDays(-i))
+                .ToArray();
+
+
             var comments = this.Context.Comments
                 //.OrderBy(x => ((int)x.CommentedOn.DayOfWeek + 6) % 7)
                 //TODO: Check < 7 or <= 7
-                .Where(x => (x.CommentedOn.Day - DateTime.Now.Day) <= 7);
+                .Where(x => last7Days.Any(c => c.Day == x.CommentedOn.Day && c.Month == x.CommentedOn.Month));
             var commentsReport = LoadCommentsReportWithDates();
             foreach (var comment in comments)
             {
@@ -284,7 +289,6 @@ namespace BookCreator.Services
 
         private async Task DeleteUsersEntities(string userId)
         {
-            //TODO: Add notifications here
             var blockedUsers = this.Context.BlockedUsers
                 .Where(x => x.BlockedUserId == userId || x.BookCreatorUserId == userId);
             var messages = this.Context.Messages
