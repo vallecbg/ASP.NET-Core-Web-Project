@@ -111,7 +111,7 @@
         <div class="messaging">
             <div class="inbox_msg card col-md-12 border border-dark">
                 <div class="mesgs">
-                    <div class="msg_history">
+                    <div class="msg_history" id="messageBox" style="overflow:auto">
                         <div class="received_msg">
                             <div class="received_withd_msg">
                                 @foreach (var message in chatroomMessages)
@@ -138,6 +138,11 @@
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
 @section scripts{
-
+    <script>
+        $(document).ready(function(){
+            $('#messageBox').animate({
+                scrollTop: $('#messageBox')[0].scrollHeight}, 2000);
+        });
+    </script>
     @{ await Html.RenderPartialAsync("_MyScriptsPartial"); }
 }
