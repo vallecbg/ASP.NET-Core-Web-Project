@@ -9,7 +9,6 @@
 	{
 		public override void OnActionExecuting(ActionExecutingContext context)
 		{
-			//TODO keep in mind some unofficial codes!
 			var code = context.HttpContext.Response.StatusCode;
 
 			if (code >= 400)
