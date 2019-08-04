@@ -11,7 +11,7 @@
     var followingCount = this.BookService.FollowingCount(Model.Id);
 
 }
-
+@* //TODO: Check for UTC Now or just NOW it depends of the machine time *@
 <div class="row col-md-12">
     <div class="col-md-4">
         <div class="card w-100">
@@ -99,7 +99,7 @@
             <form asp-action="AddComment" asp-controller="Comments" asp-area="" method="post">
                 <div class="form-group">
                     <input type="text" hidden="hidden" value="@Model.Id" name="BookId" />
-                    <input type="datetime" hidden="hidden" value="@DateTime.UtcNow" name="CommentedOn" />
+                    <input type="datetime" hidden="hidden" value="@DateTime.Now" name="CommentedOn" />
                     <input hidden="hidden" type="text" value="@user.UserName" name="CommentAuthor" />
                 </div>
                 <div class="form-group">

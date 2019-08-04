@@ -48,14 +48,14 @@
   color: #777777;
   font-weight: 300;
 }
-
+/*vallec*/
 body {
-  color: #777777;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.625em;
-  position: relative;
+    color: #777777 !important;
+    font-family: "Poppins", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 300 !important;
+    line-height: 1.625em !important;
+    position: relative !important;
 }
 
 ol, ul {
@@ -82,9 +82,9 @@ a {
 iframe {
   border: 0;
 }
-
+/*vallec*/
 a, a:focus, a:hover {
-  text-decoration: none;
+  text-decoration: none !important;
   outline: 0;
 }
 
@@ -116,14 +116,15 @@ a, a:focus, a:hover {
   background: #f9f9ff;
 }
 
+/*vallec*/
 h1, h2, h3,
 h4, h5, h6 {
-  font-family: "Poppins", sans-serif;
-  color: #222222;
-  line-height: 1.2em !important;
-  margin-bottom: 0;
-  margin-top: 0;
-  font-weight: 600;
+    font-family: "Poppins", sans-serif !important;
+    color: #222222;
+    line-height: 1.2em !important;
+    margin-bottom: 0;
+    margin-top: 0 !important;
+    font-weight: 600;
 }
 
 .h1, .h2, .h3,
@@ -1913,8 +1914,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header #logo img {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
+    /*vallec*/
+    max-height: 40px;
 }
 
 @media (max-width: 768px) {
@@ -2738,12 +2741,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding-top: 100px;
   background-color: #222222;
 }
-
+/*vallec*/
 h6 {
-  color: #fff;
-  margin-bottom: 25px;
-  font-size: 18px;
-  font-weight: 600;
+  color: #fff !important;
+  margin-bottom: 25px !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
 }
 
 .copy-right-text i, .copy-right-text a {
@@ -2878,9 +2881,9 @@ h6 {
 .footer-text {
   padding-top: 20px;
 }
-
+/*vallec*/
 .footer-text a, .footer-text i {
-  color: #f53f51;
+  color: #f53f51 !important;
 }
 
 .whole-wrap {

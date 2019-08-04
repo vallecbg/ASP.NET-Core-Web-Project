@@ -1,5 +1,5 @@
 *Important*
-- Improve chat room view
+- Check for UTC Now or just NOW it depends of the machine time
 - Need to create Error Page
 - Check all TODO's in visual studio
 - Check for remember me button

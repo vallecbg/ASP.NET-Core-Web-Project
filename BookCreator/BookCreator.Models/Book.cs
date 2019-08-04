@@ -42,7 +42,6 @@ namespace BookCreator.Models
 
         public ICollection<UserBook> Followers { get; set; }
 
-        //TODO: Add functionality
         public double Rating => this.BookRatings.Any() ? this.BookRatings.Average(x => x.UserRating.Rating) : 0;
         public int Length => this.Chapters.Sum(x => x.Length);
     }
