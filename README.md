@@ -20,8 +20,6 @@ where you can share your work with the other people.
 - Users can Comment and Rate other Books,
 - Users can Block and Unblock other Users,
 - Users can write Messages to other Users.
-- Moderators have all rights a Regular User has,
-- Moderators can moderate Books Comments.
 - Administrators have all rights,
 - Administrators can do everything.
 
