@@ -25,6 +25,7 @@ namespace BookCreatorApp.Areas.Administration.Controllers
             this.bookService = bookService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return this.View();

@@ -3,6 +3,13 @@
 
 ## Type - Site for Book Writing
 
+Demo Users
+Username: usertest
+Password: user
+
+Username: admintest
+Password: admin
+
 ## Description
 
 You are a reader and like to write. Book Creator is a platform
